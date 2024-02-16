@@ -13,13 +13,12 @@
             </div>
             <div class="col-auto my-auto">
                 <div class="h-100">
-                    <h5 class="mb-1">
-                        Localizar Produto </h5>
+                    <h5 class="mb-1">Localizar Produto</h5>
                     <p class="mb-0 font-weight-bold text-sm">
                         <div class="input-group">
-                            <span class="input-group-text text-body"><i class="fas fa-search"
-                                    aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" placeholder="Digite o nome ou código">
+                            <span class="input-group-text text-body">
+                                <i class="fas fa-search" aria-hidden="true"></i>
+                            </span>
                         </div>
                     </p>
                 </div>
@@ -35,7 +34,23 @@
             </div>
 
 
-            @include('paginas.conteudo.vendas.listar.list')
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2>Produtos</h2>
+                        <input type="text" id="termo" class="form-control mb-3" placeholder="Digite o termo de busca">
+                        <div id="resultado" class="mb-3"></div>
+                    </div>
+                    <div id="carrinho" class="col-md-8 mb-3">
+                        <h2>Carrinho</h2>
+                        <ul id="lista-carrinho" class="list-group"></ul>
+                        <div id="total"></div>
+                        <button id="finalizarCompra" class="btn btn-primary mt-3">Finalizar Compra</button>
+                    </div>
+                </div>
+            </div>
+
+            
 
 
             @include('paginas.base.rodape.rodape')

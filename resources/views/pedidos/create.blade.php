@@ -184,7 +184,7 @@ var totalPrice = 0;
 window.onload = function() {
   $('card-image-wrapper').addClass('card-image-wrapper');
   
-	$('.img-container').append('<button class="btn btn-success btn-add-cart"><span class="glyphicon glyphicon-shopping-cart"></span> Comprar </button>');
+	$('.img-container').append('<button class="btn btn-success btn-add-cart"><span class="glyphicon glyphicon-shopping-cart"></span> Comprar aa </button>');
 
 $('.btn-add-cart').click( (e) => { 
 		//animation

@@ -6,6 +6,9 @@ use App\Models\Empresa_Cliente;
 use App\Models\Recibo;
 use App\Models\MinhaEmpresa;
 use App\Models\Produto;
+use App\Models\Contrato;
+use App\Models\User;
+use App\Models\Fornecedor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 use Maatwebsite\Excel\Facades\Excel;
@@ -30,11 +33,7 @@ class ReciboController extends Controller
          $this->middleware('permission:recibo-delete', ['only' => ['destroy']]);
          $this->middleware('permission:recibo-invoice', ['only' => ['invoice']]);
         }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function index()
     {
         $titulo = 'Recibos';
@@ -43,6 +42,9 @@ class ReciboController extends Controller
         $empresa_cliente = Empresa_Cliente::get();
         $search = request('search');
 
+
+
+        
         if($search) {
             $empresa_cliente = Empresa_Cliente::where([['Nome_fantasia', 'like', '%'.$search. '%' ]])->get();
 
@@ -58,11 +60,9 @@ class ReciboController extends Controller
 
     }
     
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+
+
     public function create()
     {
         $titulo = 'Recibos';
@@ -72,12 +72,32 @@ class ReciboController extends Controller
         return view('recibo.create', compact('empresa_cliente','produto','titulo'));
     }
     
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function vendas()
+    {
+
+        $titulo = 'Recibos';
+        $contratos = Contrato::with('empresa_cliente')->orderBy('id', 'DESC')->paginate(5);
+        $recibos   = Recibo::with('empresa_cliente')->orderBy('id', 'DESC')->paginate(5);
+        $clientes = Empresa_Cliente::count();
+        $produto  = Produto::count();
+        $contrato = Contrato::count();
+        $recibo   = Recibo::count();
+        $user   = User::count();
+        $fornecedor   = Fornecedor::count();
+
+        return view('paginas.conteudo.vendas.vendas', compact(
+            'clientes',
+            'produto',
+            'contrato',
+            'recibo',
+            'contratos',
+            'recibos',
+            'titulo',
+            'user',
+            'fornecedor'
+        ));
+    }
+
     public function store(Request $request)
     {
     

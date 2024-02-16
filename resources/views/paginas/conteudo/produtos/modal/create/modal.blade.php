@@ -1,167 +1,181 @@
-<button type="button" class="btn btn-icon btn-3 btn-primary" data-bs-toggle="modal" data-bs-target="#Create">
-    <span class="btn-inner--icon"><i class="ni ni-box-2"> </i>
-        Novo Produto</button>
+<button type="button" class="btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal"
+    data-bs-target="#Create"><i class="fas fa-pencil-alt text-dark me-2"
+        aria-hidden="true"></i>Create</button>
 
-
-
-
-<div class="modal fade" id="Create" tabindex="-1" role="dialog" aria-labelledby="Create" aria-hidden="true">
-    <div class="modal-dialog modal-danger modal-dialog-centered modal-lg" role="document">
+<div class="modal fade" id="Create" tabindex="-1" aria-labelledby="Create"
+    aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
-
+            <div class="modal-header">
+                <h5 class="" id="Create"> Você está editando o Produto: <b>
+                     </b> </h5>
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">Fechar
+                    (X)</button>
+            </div>
             <div class="modal-body">
-                <div class="py-3 text-center">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYQhFy_94bv6cGo0Qxxd1yKfoZSOr88yuRGJPrgFeang&s"
-                        class="avatar avatar-xxl  me-3">
-                    <!-- <i class="ni ni-bell-55 ni-3x"></i> -->
-                    <h4 class="text-gradient text-danger mt-4">Novo Produto
-                    </h4>
-                </div>
+
+
                 <div class="card-body">
+                    <div class="container-fluid py-2">
 
-                    <form role="form text-left">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group has-success">
-                                    <i class="ni ni-collection ">
+                        <div class="row mt-4">
+                            <div class="col-lg-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="font-weight-bolder"></h5>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <img class="w-40 border-radius-lg shadow-lg mt-3"
+                                                    src=""
+                                                    alt="product_image" width="200px">
+                                            </div>
 
-                                        <label>Código</label></i>
-                                    <input type="text" placeholder="Success" class="form-control is-valid" />
+                                            <div class="col-lg-12 mt-5">
+
+                                              {!! Form::open(['route' => 'produtos.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+
+                                                <div class="d-flex">
+                                                    {!! Form::file('image', ['class' => 'form-control ']) !!}
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group has-danger">
-                                    <label>Nome do Produto</label>
-                                    <input type="email" placeholder="Error Input" class="form-control is-invalid" />
+
+
+                            <div class="col-lg-8 mt-lg-0 mt-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                
+                                        <h5 class="font-weight-bolder">Informação de Produto</h5>
+                                        <div class="row">
+                                            <div class="col-12 col-sm-4">
+                                                <label>Código de Barras</label>
+                                                {!! Form::text('Codigo_barra', null, ['class' => 'form-control']) !!}
+                                            </div>
+                                            <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                                <label>Nome do produto</label>
+                                                {!! Form::text('Nome_Produto', null,  ['class' => 'form-control valid']) !!}
+                                            </div>
+                                            <div class="col-2 col-sm-2 mt-3 mt-sm-0">
+                                                <label>Quantidade</label>
+                                                {!! Form::text('Quantidade_Produto', null, ['class' => 'form-control']) !!}
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="col-3">
+                                                <label class="mt-4">Categoria do Produto</label>
+                                                {!! Form::text('Categoria_Produto', null, ['class' => 'form-control']) !!}
+                                            </div>
+                                            <div class="col-3">
+                                                <label class="mt-4">Peso Líquido</label>
+                                                {!! Form::text('Peso_Liquido', null, ['class' => 'form-control']) !!}
+                                            </div>
+                                            <div class="col-3">
+                                                <label class="mt-4">Peso Bruto</label>
+                                                {!! Form::text('Peso_Bruto', null, ['class' => 'form-control']) !!}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="col-sm-2">
+                                                <label class="mt-4">Marca</label>
+                                                {!! Form::text('Marca', null, ['class' => 'form-control']) !!}
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label class="mt-4">Unidade de Medida</label>
+                                                {!! Form::text('Unidade_Medida', null, ['class' => 'form-control']) !!}
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label class="mt-4">Vencimento</label>
+                                                {!! Form::date('Data_Vencimento', null,  ['class' => 'form-control']) !!}
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label class="mt-4">Lote </label>
+                                                {!! Form::date('Data_Lote', null, ['class' => 'form-control']) !!}
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label class="mt-4">Localização</label>
+                                                {!! Form::text('Localizacao', null, ['class' => 'form-control']) !!}
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
-                        <label class="form-check-label" for="rememberMe">Apresentar no Site</label>
+                        <div class="row mt-4">
+                            <div class="col-sm-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="font-weight-bolder">Fornecedor</h5>
+                                        <select name="Fornecedor_id" id="Fornecedor_id" class="form-control">
+                                            <option value="" disabled> Selecione o Fornecedor</option>
+                                            @foreach ($fornecedor as $fornecedores)
+                                                <option value=" {{ $fornecedores->id }}"> {{ $fornecedores->id }} -
+                                                    {{ $fornecedores->Nome_fantasia }} <small> <b> <i> CNPJ:
+                                                                {{ $fornecedores->Cnpj }} <b> </i></small></option>
+                                                {{-- {!! Form::text('Fornecedor_id', $produtos->Nome_fantasia . ' ' . $produtos->Nome_responsavel, ['class' => 'form-control']) !!} --}}
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8 mt-sm-0 mt-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <h5 class="font-weight-bolder">Preços</h5>
+                                            <div class="col-3">
+                                                <label>Preço de Venda</label>
+                                                {!! Form::text('Preco_Venda', null, ['class' => 'form-control']) !!}
+                                            </div>
+                                            <div class="col-4">
+                                                <label>Preço de Custo</label>
+                                                {!! Form::text('Preco_Custo', null, ['class' => 'form-control']) !!}
+
+                                            </div>
+                                            <div class="col-5">
+                                                <label>SKU</label>
+                                                <input class="form-control" type="text" value="71283476591" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-8 mt-sm-2 mt-4">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        name="Status_Produto" value="Sim">
+                                                    <label class="form-check-label" for="site">Disponível no
+                                                        site?</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-8 mt-sm-1 mt-4">
+                                                <div class="form-check form-switch">
+
+                                                    <input class="form-check-input" type="checkbox"
+                                                        name="Estoque_Produto" value="Sim">
+                                                    <label class="form-check-label" for="Estoque">Produto em
+                                                        Estoque?</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit"
+                                            class="btn btn-round bg-gradient-info btn-lg w-100 mt-4 mb-0">Salvar</button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    {!! Form::open(['route' => 'produtos.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-
-                    <div class="card-body">
-                      <form>
-                        <div class="row">
-                          <div class="col-md-5 pr-1">
-                            <div class="form-group">
-                              <label>Nome do Produto</label>
-                              {!! Form::text('Nome_Produto', null, ['placeholder' => 'Nome do produto', 'class' => 'form-control']) !!}
-                            </div>
-                          </div>
-                          <div class="col-md-3 px-1">
-                            <div class="form-group">
-                              <label>Categoria</label>
-                              {!! Form::text('Categoria_Produto', null, ['placeholder' => 'Categoria do Produto', 'class' => 'form-control']) !!}
-                            </div>
-                          </div>
-                          <div class="col-md-4 pl-1">
-                            <div class="form-group">
-                              <label for="exampleInputEmail1">Preço</label>
-                              {!! Form::text('Preco_Produto', null, ['placeholder' => 'R$', 'class' => 'form-control']) !!}
-                            </div>
-            
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-2 pr-1">
-                            <div class="form-group">
-                              <label>Quantidade em Estoque</label>
-                              {!! Form::number('Quantidade_Produto', null, array('class' => 'form-control')) !!}
-                            </div>
-                          </div>
-                          <div class="col-md-2 pl-1">
-                            <div class="form-group">
-                              <label>Em Estoque?</label>
-            
-                              
-                              <select name="Estoque_Produto" id="Estoque_Produto"
-                              class="form-control">
-                              <option value=""> Selecione </option>
-                              <option value="Não"> Não </option>
-                              <option value="Sim"> Sim </option>
-                          </select>                </div>
-                          </div>
-            
-                          <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                            <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-                          </div>
-                          
-                          <div class="col-md-2 pl-1">
-                            <div class="form-group">
-                              <label>Disponível no Site?</label>
-            
-                              
-                              <select id="Status_Produto" name="Status_Produto"
-                              class="form-control">
-                              <option value=""> Selecione </option>
-                              <option value="0"> Desativado </option>
-                              <option value="1"> Ativo </option>
-                          </select>
-                          </div> </div>
-                        </div>
-            
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label>Descrição do Produto</label>
-                              <textarea rows="4" cols="80" id="Descricao" class="form-control" value="Escreva a descrição do produto aqui."> </textarea>
-                            </div>
-                          </div>
-                        </div>
-                        <button type="submit"
-                        class="btn btn-primary me-1 mb-1 text-light">Salvar
-                    </button>
-                    </div>
-                  </div>
-                </div>
-               
-               
-                <div class="col-md-4">
-                  <div class="card card-user">
-                    <div class="image">
-                      <img src="https://www.cursospm3.com.br/wp-content/uploads/2022/04/product-designer-o-que-faz-a-pessoa-de-design-de-produto.png" alt="...">
-                    </div>
-                    <div class="card-body">
-                      <div class="author">
-                        <a>
-                          <img class="avatar border-gray" src="{{ asset('/images/cart.png') }}" alt="...">
-                        </a>
-                 
-                      </div>
-                      <p class="description text-center">
-                        <div class="upload">
-                            <input type="file" title="" id="image" name="image"  class="drop-here">
-                            <div class="text text-drop">Imagem</div>
-                            <div class="text text-upload">Enviando</div>
-                            <svg class="progress-wrapper" width="300" height="300">
-                              <circle class="progress" r="115" cx="150" cy="150"></circle>
-                            </svg>
-                            <svg class="check-wrapper" width="130" height="130">
-                              <polyline class="check" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
-                            </svg>
-                            <div class="shadow"></div>
-                          </div> 
-                      </p> 
-            
-            
-                   
-            </div>
-            </form>
-
-                    <div class="text-center">
-                        <button type="button"
-                            class="btn btn-round bg-gradient-info btn-lg w-100 mt-4 mb-0">Salvar</button>
-                    </div>
-                    </form>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

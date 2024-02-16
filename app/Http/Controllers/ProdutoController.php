@@ -41,6 +41,23 @@ class ProdutoController extends Controller
         return view('paginas.conteudo.produtos.produtos', compact('produto','fornecedor', 'search', 'titulo', 'produtoqtd'));
     }
 
+
+    public function buscar(Request $request)
+    {
+        try {
+            $termo = $request->input('termo');
+    
+            $produtos = Produto::where('Nome_Produto', 'LIKE', "%$termo%")
+                                ->orWhere('Codigo_barra', $termo)
+                                ->get();
+    
+            return response()->json($produtos);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -53,25 +70,21 @@ class ProdutoController extends Controller
         return view('produtos.create', compact('titulo'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
 
 
-        // Produto::create($request->all());
-        $criar_produto =  new Produto;
+        //  $criar_produto =  new Produto;
+        $criar_produto =  Produto::create($request->all());
 
-        $criar_produto->Nome_Produto       = $request->Nome_Produto;
-        $criar_produto->Categoria_Produto  = $request->Categoria_Produto;
-        $criar_produto->Status_Produto     = $request->Status_Produto;
-        $criar_produto->Preco_Produto      = $request->Preco_Produto;
-        $criar_produto->Estoque_Produto    = $request->Estoque_Produto;
-        $criar_produto->Quantidade_Produto = $request->Quantidade_Produto;
+        //$criar_produto = $request->all();
+        // $criar_produto->Nome_Produto       = $request->Nome_Produto;
+        // $criar_produto->Categoria_Produto  = $request->Categoria_Produto;
+        // $criar_produto->Status_Produto     = $request->Status_Produto;
+        // $criar_produto->Preco_Produto      = $request->Preco_Produto;
+        // $criar_produto->Estoque_Produto    = $request->Estoque_Produto;
+        // $criar_produto->Quantidade_Produto = $request->Quantidade_Produto;
 
         // Imagem do produto upload
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -97,16 +110,9 @@ class ProdutoController extends Controller
 
 
 
-        // return redirect()->route('produtos.index')
-        //                 ->with('success','produto created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
+  
     public function show(Produto $produto)
     {
         return view('produtos.show', compact('produto'));

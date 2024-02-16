@@ -75,9 +75,14 @@ Route::get('/painel', [PainelGerencialController::class, 'dashboard']);
 
 
 // N O V O ---  PDV
-Route::get('/vendas', [PainelGerencialController::class, 'vendas']);
+Route::get('/vendas', [ReciboController::class, 'vendas']);
+Route::get('/buscar', [ProdutoController::class, 'buscar'])->name('buscar');
 
-Route::resource('produtos',                  ProdutoController::class);
+Route::resource('produtos', ProdutoController::class);
+Route::post('/adicionar-carrinho', 'ProdutoController@adicionarCarrinho')->name('adicionarCarrinho');
+Route::post('/finalizar-compra', 'ProdutoController@finalizarCompra')->name('finalizarCompra');
+
+
 
 
 
