@@ -28,8 +28,8 @@ class ProdutoController extends Controller
         $titulo = 'Produtos';
         $produtoqtd  = Produto::count();
 
-      //  $produto = Produto::get();
-        $produto = Produto::with('fornecedor')->get();  
+        //  $produto = Produto::get();
+        $produto = Produto::with('fornecedor')->get();
         $fornecedor = Fornecedor::get();
         $search = request('search');
 
@@ -38,7 +38,7 @@ class ProdutoController extends Controller
         } else {
             $produto = Produto::all();
         }
-        return view('paginas.conteudo.produtos.produtos', compact('produto','fornecedor', 'search', 'titulo', 'produtoqtd'));
+        return view('paginas.conteudo.produtos.produtos', compact('produto', 'fornecedor', 'search', 'titulo', 'produtoqtd'));
     }
 
 
@@ -46,11 +46,12 @@ class ProdutoController extends Controller
     {
         try {
             $termo = $request->input('termo');
-    
+
             $produtos = Produto::where('Nome_Produto', 'LIKE', "%$termo%")
-                                ->orWhere('Codigo_barra', $termo)
-                                ->get();
-    
+                ->orWhere('Codigo_barra', $termo)
+                ->get();
+
+   
             return response()->json($produtos);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
@@ -107,12 +108,9 @@ class ProdutoController extends Controller
         toast('Produto criado com sucesso!', 'success');
 
         return redirect('/produtos')->with('success', 'Produto criado com sucesso!');
-
-
-
     }
 
-  
+
     public function show(Produto $produto)
     {
         return view('produtos.show', compact('produto'));
@@ -170,7 +168,7 @@ class ProdutoController extends Controller
             $produto->image = $imageName;
         }
 
-           $produto->update();
+        $produto->update();
 
 
 

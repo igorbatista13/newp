@@ -68,72 +68,9 @@
                                         </div>
                                     </div>
                                 </div>
-
+                            </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <div class="d-flex px-2 py-1">
-                                    <div>
-                                        <img src="https://shoppr.com.br/cdn/shop/products/Imagem1_ca1e4f8f-a188-49df-8b20-b0b05a9af929_2048x.png?v=1628118810"
-                                            class="avatar avatar-sm me-3" alt="user2">
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <h6 class="mb-0 text-sm">Carvão 3kg</h6>
-                                        <p class="text-xs text-secondary mb-0">Descrição do produto</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <span class="badge bg-gradient-success">1</span>
-                            </td>
-                            <td>
-                                <span class="badge bg-gradient-success">R$ 10,00</span>
-                            </td>
-
-                            <td class="align-middle text-center">
-
-
-
-
-                                <button type="button" class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                    data-bs-toggle="modal" data-bs-target="#EDITAR"><i
-                                        class="far fa-trash-alt fa-2x me-2" aria-hidden="true"></i></button>
-                                <div class="modal fade" id="EDITAR" tabindex="-1" role="dialog"
-                                    aria-labelledby="EDITAR" aria-hidden="true">
-                                    <div class="modal-dialog modal-danger modal-dialog-centered modal-lg"
-                                        role="document">
-                                        <div class="modal-content">
-
-                                            <div class="modal-body">
-                                                <div class="py-3 text-center">
-                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYQhFy_94bv6cGo0Qxxd1yKfoZSOr88yuRGJPrgFeang&s"
-                                                        class="avatar avatar-xxl  me-3">
-                                                    <!-- <i class="ni ni-bell-55 ni-3x"></i> -->
-
-
-
-
-
-                                                    <h4 class="text-gradient text-danger mt-4">Deseja excluir este
-                                                        produto?</h4>
-                                                </div>
-                                                <div class="card-body">
-
-                                                    <div class="text-center">
-                                                        <button type="button"
-                                                            class="btn btn-round bg-gradient-danger btn-lg w-100 mt-4 mb-0">Excluir</button>
-
-                                                    </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-
-
-                        </tr>
+                        
 
 
 

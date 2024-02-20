@@ -11,46 +11,64 @@
                         alt="profile_image" class="w-100 border-radius-lg shadow-sm">
                 </div>
             </div>
-            <div class="col-auto my-auto">
-                <div class="h-100">
-                    <h5 class="mb-1">Localizar Produto</h5>
-                    <p class="mb-0 font-weight-bold text-sm">
-                        <div class="input-group">
-                            <span class="input-group-text text-body">
-                                <i class="fas fa-search" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                    </p>
+            <div class="col-lg-3 my-auto">
+
+                    <h2>Produtos</h2>
+                    <input type="text" id="termo" class="form-control"
+                        placeholder="Digite o termo de busca">
+                    <div id="resultado"></div>
                 </div>
-            </div>
-            <div class="col-lg-2 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
-                <div class="nav-wrapper position-relative end-0">
-                            <button class="btn btn-icon btn-3 btn-primary" type="button">
-                                <span class="btn-inner--icon"><i class="ni ni-box-2"> </i></span>
-                                <span class="btn-inner--text">Cadastrar Produto</span>
-                            </button>
+                
+                <div class="col-auto">
+                    <div class="avatar avatar-xl position-relative">
+                        <img src="https://pngimg.com/uploads/shopping_cart/shopping_cart_PNG54.png"
+                            alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                    </div>
+                </div>
+                <div id="carrinho" class="col-lg-5">
+                    <h2>Carrinho</h2>
                     
+                    <ul id="lista-carrinho" class="list-group"></ul>
                 </div>
+                
+                <div class="col-lg-2 my-auto">
+                    <div class="avatar avatar-xl position-relative">
+                        <img src="https://pngimg.com/uploads/shopping_cart/shopping_cart_PNG54.png"
+                            alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                    </div>
+                    <div id="total"> Total: R$ </div>
+                    <button id="finalizarCompra" class="btn btn-primary mt-3">Finalizar Compra</button>
+                </div>
+                
             </div>
 
-
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-md-4">
-                        <h2>Produtos</h2>
-                        <input type="text" id="termo" class="form-control mb-3" placeholder="Digite o termo de busca">
-                        <div id="resultado" class="mb-3"></div>
+            <div class="col-md-5 mt-4">
+            <div class="card-body pt-2 p-3">
+                <ul class="list-group">
+                  <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                    <div class="d-flex flex-column">
+                      <h6 class="mb-3 text-sm">Oliver Liam</h6>
+                      <span class="mb-2 text-xs">Company Name: <span class="text-dark font-weight-bold ms-sm-2">Viking Burrito</span></span>
+                      <span class="mb-2 text-xs">Email Address: <span class="text-dark ms-sm-2 font-weight-bold">oliver@burrito.com</span></span>
+                      <span class="text-xs">VAT Number: <span class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
                     </div>
-                    <div id="carrinho" class="col-md-8 mb-3">
-                        <h2>Carrinho</h2>
-                        <ul id="lista-carrinho" class="list-group"></ul>
-                        <div id="total"></div>
-                        <button id="finalizarCompra" class="btn btn-primary mt-3">Finalizar Compra</button>
+                    <div class="ms-auto text-end">
+                        <button class="btn btn-primary btn-sm adicionar" data-id="' +
+                            produto.id + '" data-nome_produto="' + produto.Nome_Produto +
+                            '" data-preco_venda="' + produto.Preco_Venda +
+                            '" data-image= "' + produto.image + '" data-Codigo_barra= "' +
+                            produto
+                            .Codigo_barra + '">Adicionar</button>';
+                      <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
                     </div>
-                </div>
-            </div>
-
-            
+                  </li>
+                </ul></div> </div>
 
 
-            @include('paginas.base.rodape.rodape')
+
+
+
+
+
+
+    @include('paginas.base.rodape.rodape')

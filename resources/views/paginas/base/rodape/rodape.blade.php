@@ -196,7 +196,7 @@
     $(document).ready(function() {
         $('#termo').on('input', function() {
             var termo = $(this).val();
-            if (termo.length > 0) {
+            if (termo.length >= 2) {
                 buscarProduto(termo);
             } else {
                 $('#resultado').empty();
@@ -205,12 +205,17 @@
 
         $(document).on('click', '.adicionar', function() {
             var produtoId = $(this).data('id');
-            var produtoNome = $(this).data('Nome_Produto');
-            var produtoPreco = $(this).data('Preco_Venda');
+            var produtoNome = $(this).data('nome_produto'); // Corrigido para 'nome_produto'
+            var produtoPreco = $(this).data('preco_venda');
+            var produtoCodigo = $(this).data('Codigo_barra');
+            var produtoImage = $(this).data('image');
+
             var produto = {
                 id: produtoId,
                 nome: produtoNome,
-                preco: produtoPreco
+                preco: produtoPreco,
+                image: produtoImage,
+                codigo_barra: produtoCodigo
             };
 
             adicionarAoCarrinho(produto);
@@ -218,101 +223,115 @@
 
         function buscarProduto(termo) {
             $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 url: '/buscar',
                 type: 'GET',
-                data: { termo: termo },
+                data: {
+                    termo: termo
+                },
                 success: function(produtos) {
+                    //       console.log(produtos); // Verifique os dados recebidos
                     $('#resultado').empty();
                     produtos.forEach(function(produto) {
-                        var resultadoHtml = '<li class="list-group-item d-flex justify-content-between align-items-center">';
-                            resultadoHtml += '<div class="row mt-3">';
-                                resultadoHtml += '<div class="col-4">';
-                                    resultadoHtml += '<img class="w-100 border-radius-lg shadow-lg" src="{{ asset('images/produtos/') }}/' + produto.image + '" alt="product_image">';
-                                    resultadoHtml += '</div>';
-                                    resultadoHtml += '<div class="col-8">';
-                                        resultadoHtml += '<p><b>Produto:</b> ' + produto.Nome_Produto +  '</p>';
-                                        resultadoHtml += '<p><b>Código de Barras:</b> ' + produto.Codigo_barra + '</p>';
-                                        resultadoHtml += '<p><b>Preço:</b> R$ ' + produto.Preco_Venda + '</p>';
-                                        resultadoHtml += '<button class="btn btn-primary btn-sm adicionar" data-id="' + produto.id + '">Adicionar</button>';
+                        var resultadoHtml = '';
+                        resultadoHtml += '<div class="col-md-12 mt-2">';
+                        resultadoHtml += '<div class="card-body pt-6 p-3">';
+                        resultadoHtml += '<ul class="list-group">';
+                        resultadoHtml += '<li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">';
+                        resultadoHtml += '<div class="d-flex flex-column">';
+                        resultadoHtml +=
+                            '<img class="w-100 border-radius-lg shadow-lg" src="{{ asset('images/produtos/') }}/' +
+                            produto.image + '" alt="product_image">';
+                        resultadoHtml += '<h6 class="mb-3 text-sm">Produto: '+ produto.Nome_Produto +'</h6>';
+                        resultadoHtml += '<span class="mb-2 text-xs">Código: <span class="text-dark font-weight-bold ms-sm-2">'+ produto.Codigo_barra +'</span></span>';
+                            '<li class="list-group-item d-flex justify-content-between align-items-center">';
+                        resultadoHtml += '<span class="mb-2 text-xs">Preço <span class="text-dark ms-sm-2 font-weight-bold">'+ produto.Preco_Venda + '</span></span>';                               
+                        resultadoHtml += '<span class="text-xs">VAT Number: <span class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>';                               
+                        resultadoHtml += '</div>';                               
+                        resultadoHtml += '<div class="ms-auto text-end">';                               
+                        resultadoHtml += '<button class="btn btn-primary btn-sm adicionar" data-id="' +
+                            produto.id + '" data-nome_produto="' + produto.Nome_Produto +
+                            '" data-preco_venda="' + produto.Preco_Venda +
+                            '" data-image= "' + produto.image + '" data-Codigo_barra= "' + produto.Codigo_barra + '">Adicionar</button>';                               
+                        resultadoHtml += '</div>';                               
+                        resultadoHtml += '</li>';                               
+                        resultadoHtml += '</ul>';                               
+                        resultadoHtml += '</div>';                               
+                        resultadoHtml += '</div>';
 
-                                        resultadoHtml += '</div>';
-                                        resultadoHtml += '</div>';
-                                        resultadoHtml += '</li>';
-                                        $('#resultado').append(resultadoHtml);
+                   
+                        $('#resultado').append(resultadoHtml);
                     });
                 },
                 error: function(xhr, status, error) {
                     console.error('Erro ao buscar produtos:', error);
                 }
-
             });
-            adicionarAoCarrinho(produto);
-
         }
+
         function adicionarAoCarrinho(produto) {
-            var produtoNome = produto.nome;
-            var produtoPreco = produto.preco;
-            var carrinhoHtml = $('#carrinho').html();
-            carrinhoHtml += '<div class="container-fluid py-4">';
-            carrinhoHtml += '<div class="card mb-4">';
-            carrinhoHtml += '<div class="card-body px-0 pt-0 pb-2">';
-            carrinhoHtml += '<div class="table-responsive p-0">';
-            carrinhoHtml += '<table class="table align-items-center mb-0">';
-            carrinhoHtml += '<thead>';
-            carrinhoHtml += '<tr>';
-            carrinhoHtml += '<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ITENS</th>';
-            carrinhoHtml += '<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Quantidade</th>';
-            carrinhoHtml += '<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Preço</th>';
-            carrinhoHtml += '<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Ação</th>';
-            carrinhoHtml += '</tr>';
-            carrinhoHtml += '</thead>';
-            carrinhoHtml += '<tbody>';
+            //   console.log(produto); // Verifique o objeto produto recebido
+
+            // Iniciando    
+
+            var carrinhoHtml = '';
             carrinhoHtml += ' <tr>';
-            carrinhoHtml += '<td> ';
+            carrinhoHtml += '<td>';
             carrinhoHtml += '<div class="d-flex px-2 py-1">';
-            carrinhoHtml += '<div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYQhFy_94bv6cGo0Qxxd1yKfoZSOr88yuRGJPrgFeang&s"class="avatar avatar-sm me-3" alt="user1"></div>';
-            carrinhoHtml += '<div class="d-flex flex-column justify-content-center"><h6 class="mb-0 text-sm">'+ produto.Nome_Produto + '</h6><p class="text-xs text-secondary mb-0">' 
-                ' </p></div>';
-            carrinhoHtml += '</div>';
+            carrinhoHtml += '<img class="border-radius-lg" src="{{ asset('images/produtos/') }}/' +
+                produto.image + '" alt="product_image" width="150px">';
+            carrinhoHtml += '<br>';
+            carrinhoHtml += ' <h5 class="mb-2 ">' +
+                produto.nome + '<h5>';
+            carrinhoHtml += ' </div>';
             carrinhoHtml += '</td>';
-            carrinhoHtml += '<td><input type="number" min="1" value="1" class="form-control form-control-sm quantidade" style="width: 70px; display: inline-block;"></td>';
-            carrinhoHtml += '<td><span class="badge bg-gradient-success">R$ ' + produto.preco + '</span></td>';
-            carrinhoHtml += '<td class="align-middle text-center"><button type="button" class="btn btn-link text-danger text-gradient px-3 mb-0"data-bs-toggle="modal" data-bs-target="#EDITAR"><iclass="far fa-trash-alt fa-2x me-2" aria-hidden="true"></i></button><div class="modal fade" id="EDITAR" tabindex="-1" role="dialog"aria-labelledby="EDITAR" aria-hidden="true"><div class="modal-dialog modal-danger modal-dialog-centered modal-lg"role="document"><div class="modal-content"><div class="modal-body"><div class="py-3 text-center"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYQhFy_94bv6cGo0Qxxd1yKfoZSOr88yuRGJPrgFeang&s"class="avatar avatar-xxl  me-3"><h4 class="text-gradient text-danger mt-4">Deseja excluir esteproduto?</h4></div><div class="card-body"><div class="text-center"><button type="button"class="btn btn-round bg-gradient-danger btn-lg w-100 mt-4 mb-0">Excluir</button></div></form></div></div></div></div></div></td>';
-            carrinhoHtml += '<div class="mb-2">';
-            carrinhoHtml += '<span class="nome">' + produto.nome + '</span>';
-            carrinhoHtml += '<span class="preco"> ' + produto.preco + '</span>';
-            carrinhoHtml += '<button class="btn btn-danger btn-sm remover" data-id="' + produto.id +
-                '">Remover</button>';
-            carrinhoHtml += '<input type="number" min="1" value="1" class="form-control form-control-sm quantidade" style="width: 70px; display: inline-block;">';
-            carrinhoHtml += '</div>';
 
-            $('#carrinho').html(carrinhoHtml);
+            carrinhoHtml += '<td>';
+            carrinhoHtml +=
+                '<input type="number" min="1" value="1" class="form-control form-control-sm quantidade" style="width: 50px; display: inline-block;">';
+            carrinhoHtml += '</td>';
 
-            atualizarTotal();
+            carrinhoHtml += '<td class="preco">'; // Adicionando uma classe para o preço
+            carrinhoHtml += '<span class="badge bg-gradient-success"> ' + produto.preco + '</span>';
+            carrinhoHtml += '</td>';
+
+
+            carrinhoHtml += '<td>';
+            carrinhoHtml +=
+                '<button class="btn btn-link text-danger text-gradient px-3 mb-0 remover" data-id="' + produto
+                .id + '"><i class="far fa-trash-alt fa-2x me-2" aria-hidden="true"></i></button>';
+            carrinhoHtml += '</td>'
+            carrinhoHtml += '</tr>';
+
+            $('#carrinho').append(carrinhoHtml);
+            
+            $('#carrinho tr').last().find('.quantidade').on('input', function() {
+                atualizarTotal();
+    });
         }
-
 
         // Função para remover produto do carrinho
-        $('#carrinho').on('click', '.remover', 'container-fluid py-4', function() {
-            $(this).parent().remove();
+        $('#carrinho').on('click', '.remover', function() {
+            $(this).closest('tr').remove(); // Remove a linha <tr> mais próxima
             atualizarTotal();
         });
 
         // Função para atualizar total do carrinho
         function atualizarTotal() {
             var total = 0;
-            $('.mb-2').each(function() {
-                var preco = parseFloat($(this).find('produto.preco').text().replace('R$ ', ''));
-                var quantidade = parseInt($(this).find('produto.quantidade').val());
+            $('#carrinho tr').each(function() {
+                var preco = parseFloat($(this).find('.preco span').text().replace('R$', '').trim());
+                var quantidade = parseInt($(this).closest('tr').find('.quantidade').val());
                 total += preco * quantidade;
             });
             $('#total').html('<p>Total: R$ ' + total.toFixed(2) + '</p>');
         }
-
-        // Função para finalizar compra
         $('#finalizarCompra').click(function() {
             alert('Compra finalizada!');
         });
+
     });
 </script>
 </body>
