@@ -236,32 +236,54 @@
                     $('#resultado').empty();
                     produtos.forEach(function(produto) {
                         var resultadoHtml = '';
-                        resultadoHtml += '<div class="col-md-12 mt-2">';
-                        resultadoHtml += '<div class="card-body pt-6 p-3">';
-                        resultadoHtml += '<ul class="list-group">';
-                        resultadoHtml += '<li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">';
-                        resultadoHtml += '<div class="d-flex flex-column">';
+                        resultadoHtml += '<div class="row mt-2">';
+                        resultadoHtml += '<div class="col-lg-12 col-md-6 mb-4 mb-lg-0">';
+                        resultadoHtml += '<div class="card h-100 ">';
+                        resultadoHtml += '<div class="card-header">';
                         resultadoHtml +=
-                            '<img class="w-100 border-radius-lg shadow-lg" src="{{ asset('images/produtos/') }}/' +
-                            produto.image + '" alt="product_image">';
-                        resultadoHtml += '<h6 class="mb-3 text-sm">Produto: '+ produto.Nome_Produto +'</h6>';
-                        resultadoHtml += '<span class="mb-2 text-xs">Código: <span class="text-dark font-weight-bold ms-sm-2">'+ produto.Codigo_barra +'</span></span>';
-                            '<li class="list-group-item d-flex justify-content-between align-items-center">';
-                        resultadoHtml += '<span class="mb-2 text-xs">Preço <span class="text-dark ms-sm-2 font-weight-bold">'+ produto.Preco_Venda + '</span></span>';                               
-                        resultadoHtml += '<span class="text-xs">VAT Number: <span class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>';                               
-                        resultadoHtml += '</div>';                               
-                        resultadoHtml += '<div class="ms-auto text-end">';                               
-                        resultadoHtml += '<button class="btn btn-primary btn-sm adicionar" data-id="' +
+                            '<h5 class="mb-0 text-capitalize">Produtos encontrado:</h5>';
+                        resultadoHtml += '<hr>';
+                        resultadoHtml += '</div>';
+                        resultadoHtml += '<div class="card-body pt-0">';
+                        resultadoHtml += '<ul class="list-group list-group-flush">';
+                        resultadoHtml += '<li class="list-group-item px-0">';
+                        resultadoHtml += '<div class="row align-items-center">';
+                        resultadoHtml += '<div class="col-auto d-flex align-items-center">';
+                        resultadoHtml +=
+                            '<img class="border-radius-lg" width="100px" alt="Image placeholder" src="{{ asset('images/produtos/') }}/' +
+                            produto.image + '"">';
+                        resultadoHtml += '</div>';
+                        resultadoHtml += '<div class="col ml-2">';
+                        resultadoHtml += '<h6 class="mb-0">';
+                        resultadoHtml += '<a href="javascript:;">' + produto.Nome_Produto +
+                            '</a>';
+                        resultadoHtml += '</h6>';
+                        resultadoHtml += '<span class="text-xs">Código: ' + produto
+                            .Codigo_barra + ' </span>';
+                        resultadoHtml += '<p>';
+                        resultadoHtml += '<span class="badge bg-gradient-success"> ' +
+                            produto.Preco_Venda + '</span>';
+                        resultadoHtml += '</p>';
+                        resultadoHtml += '</div>';
+                        resultadoHtml += '<div class="col-auto">';
+                        resultadoHtml +=
+                            '<button type="button" class="btn btn-outline-success btn-xs mb-0 adicionar"  data-id="' +
                             produto.id + '" data-nome_produto="' + produto.Nome_Produto +
                             '" data-preco_venda="' + produto.Preco_Venda +
-                            '" data-image= "' + produto.image + '" data-Codigo_barra= "' + produto.Codigo_barra + '">Adicionar</button>';                               
-                        resultadoHtml += '</div>';                               
-                        resultadoHtml += '</li>';                               
-                        resultadoHtml += '</ul>';                               
-                        resultadoHtml += '</div>';                               
+                            '" data-image= "' + produto.image + '" data-Codigo_barra= "' +
+                            produto.Codigo_barra + '">Adicionar</button>';
+                        resultadoHtml += '</div>';
+                        resultadoHtml += '</div>';
+                        resultadoHtml += '</li>';
+                        resultadoHtml += '</ul>';
+                        resultadoHtml += '</div>';
+                        resultadoHtml += '</div>';
                         resultadoHtml += '</div>';
 
-                   
+
+
+
+
                         $('#resultado').append(resultadoHtml);
                     });
                 },
@@ -277,60 +299,120 @@
             // Iniciando    
 
             var carrinhoHtml = '';
-            carrinhoHtml += ' <tr>';
-            carrinhoHtml += '<td>';
-            carrinhoHtml += '<div class="d-flex px-2 py-1">';
-            carrinhoHtml += '<img class="border-radius-lg" src="{{ asset('images/produtos/') }}/' +
-                produto.image + '" alt="product_image" width="150px">';
-            carrinhoHtml += '<br>';
-            carrinhoHtml += ' <h5 class="mb-2 ">' +
-                produto.nome + '<h5>';
-            carrinhoHtml += ' </div>';
-            carrinhoHtml += '</td>';
-
-            carrinhoHtml += '<td>';
+            carrinhoHtml += '<div class="row mt-2">';
+            carrinhoHtml += '<div class="col-sm-10">';
+            carrinhoHtml += '<div class="card h-100">';
+            carrinhoHtml += '<div class="card-header pb-0 p-3">';
+            carrinhoHtml += '<div class="row">';
+            carrinhoHtml += '<div class="col-md-6">';
+            carrinhoHtml += '<h6 class="mb-0">Itens adicionado:</h6>';
+            carrinhoHtml += '</div>';
+            carrinhoHtml += '<div class="col-md-6 d-flex justify-content-end align-items-center">';
+            carrinhoHtml += '<i class="far fa-calendar-alt me-2"></i>';
+            carrinhoHtml += '<small>23 - 30 March 2021</small>';
+            carrinhoHtml += '</div>';
+            carrinhoHtml += '</div>';
+            carrinhoHtml += '</div>';
+            carrinhoHtml += '<div class="card-body p-3">';
+            carrinhoHtml += '<ul class="list-group">';
+            carrinhoHtml += '<li class="list-group-item justify-content-between ps-0 pb-0 ">';
+            carrinhoHtml += '<div class="d-flex">';
+            carrinhoHtml += '<div class="d-flex align-items-center">';
+            carrinhoHtml += '<span class="p-2 d-flex align-items-center justify-content-center">';
+            carrinhoHtml += '<img  src="{{ asset('images/produtos/') }}/' + produto.image + '" width="50px"/>';
+            carrinhoHtml += '</span>';
+            carrinhoHtml += '<div class="d-flex flex-column">';
+            carrinhoHtml += '<h6 class="mb-1 text-dark text-sm">  ' + produto.nome + '</h6>';
+            carrinhoHtml += '<span class="text-xs">Quantidade</span>';
             carrinhoHtml +=
-                '<input type="number" min="1" value="1" class="form-control form-control-sm quantidade" style="width: 50px; display: inline-block;">';
-            carrinhoHtml += '</td>';
+                '<input type="number" min="1" value="1" class="form-control form-control-sm quantidade" style="width: 60px; display: inline-block;">';
 
-            carrinhoHtml += '<td class="preco">'; // Adicionando uma classe para o preço
-            carrinhoHtml += '<span class="badge bg-gradient-success"> ' + produto.preco + '</span>';
-            carrinhoHtml += '</td>';
+            carrinhoHtml += '</div>';
+            carrinhoHtml += '</div>';
 
-
-            carrinhoHtml += '<td>';
+            carrinhoHtml +=
+                '<div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold ms-auto preco"> + R$ ' +
+                produto.preco + '';
             carrinhoHtml +=
                 '<button class="btn btn-link text-danger text-gradient px-3 mb-0 remover" data-id="' + produto
                 .id + '"><i class="far fa-trash-alt fa-2x me-2" aria-hidden="true"></i></button>';
-            carrinhoHtml += '</td>'
-            carrinhoHtml += '</tr>';
+            carrinhoHtml += '</div>';
+            carrinhoHtml += '</div>';
+            carrinhoHtml += '<hr class="horizontal dark mt-3 mb-2" />';
+            carrinhoHtml += '</li>';
+            carrinhoHtml += '</ul>';
+            carrinhoHtml += '</div>';
+            carrinhoHtml += '</div>';
+            carrinhoHtml += '</div>';
+            carrinhoHtml += '</div>';
 
             $('#carrinho').append(carrinhoHtml);
-            
-            $('#carrinho tr').last().find('.quantidade').on('input', function() {
+
+            $('#carrinho li').last().find('.quantidade').on('input', function() {
                 atualizarTotal();
-    });
+            });
+            atualizarTotal();
         }
+
+
+
 
         // Função para remover produto do carrinho
         $('#carrinho').on('click', '.remover', function() {
-            $(this).closest('tr').remove(); // Remove a linha <tr> mais próxima
+            $(this).closest('li').remove(); // Remove a linha <tr> mais próxima
             atualizarTotal();
         });
 
         // Função para atualizar total do carrinho
         function atualizarTotal() {
             var total = 0;
-            $('#carrinho tr').each(function() {
-                var preco = parseFloat($(this).find('.preco span').text().replace('R$', '').trim());
-                var quantidade = parseInt($(this).closest('tr').find('.quantidade').val());
+            $('#carrinho li').each(function() {
+                var preco = parseFloat($(this).find('.preco').text().replace('+ R$ ', '').trim());
+                var quantidade = parseInt($(this).find('.quantidade').val());
                 total += preco * quantidade;
             });
             $('#total').html('<p>Total: R$ ' + total.toFixed(2) + '</p>');
         }
+
         $('#finalizarCompra').click(function() {
-            alert('Compra finalizada!');
+            // Recuperar informações necessárias
+            var nomeCliente =
+                ''; // Defina como você vai recuperar o nome do cliente (pode ser a partir de um campo de input)
+            var total = parseFloat($('#total').text().replace('Total: R$ ',
+                '')); // Recuperar o valor total da compra
+            // Abre a modal para selecionar o tipo de pagamento
+            $('#modalPagamento').modal('show');
+            // Preenche os campos do formulário de pagamento com as informações recuperadas
+            $('#nomeCliente').val(nomeCliente);
+            // Atualize aqui com os campos adicionais, se houver
         });
+
+        // Função para lidar com o envio do formulário de pagamento
+        $('#formPagamento').submit(function(event) {
+    event.preventDefault(); // Impede o envio padrão do formulário
+
+    // Obter os dados do formulário
+    var formData = $(this).serialize();
+    console.log(formData);
+    // Realizar a requisição AJAX para a rota de vendas
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '/venda-finalizar',
+        method: 'POST',
+        data: formData, // Envie os dados do formulário
+        success: function(response) {
+            // Sucesso - fazer algo, como redirecionar para uma página de confirmação
+            window.location.href = '/vendas';
+        },
+        error: function(xhr, status, error) {
+            // Tratar erro
+            console.error('ERRO AO ENVIAR-->>:', error);
+        }
+    });
+    console.log(formData);
+});
 
     });
 </script>

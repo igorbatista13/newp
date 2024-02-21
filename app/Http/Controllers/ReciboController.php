@@ -7,6 +7,7 @@ use App\Models\Recibo;
 use App\Models\MinhaEmpresa;
 use App\Models\Produto;
 use App\Models\Contrato;
+use App\Models\Venda;
 use App\Models\User;
 use App\Models\Fornecedor;
 use Illuminate\Http\Request;
@@ -72,31 +73,7 @@ class ReciboController extends Controller
         return view('recibo.create', compact('empresa_cliente','produto','titulo'));
     }
     
-    public function vendas()
-    {
 
-        $titulo = 'Recibos';
-        $contratos = Contrato::with('empresa_cliente')->orderBy('id', 'DESC')->paginate(5);
-        $recibos   = Recibo::with('empresa_cliente')->orderBy('id', 'DESC')->paginate(5);
-        $clientes = Empresa_Cliente::count();
-        $produto  = Produto::count();
-        $contrato = Contrato::count();
-        $recibo   = Recibo::count();
-        $user   = User::count();
-        $fornecedor   = Fornecedor::count();
-
-        return view('paginas.conteudo.vendas.vendas', compact(
-            'clientes',
-            'produto',
-            'contrato',
-            'recibo',
-            'contratos',
-            'recibos',
-            'titulo',
-            'user',
-            'fornecedor'
-        ));
-    }
 
     public function store(Request $request)
     {

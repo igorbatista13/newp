@@ -8,6 +8,7 @@ use App\Models\Produto;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ProdutoExport;
 use App\Models\Fornecedor;
+use App\Models\Venda;
 
 class ProdutoController extends Controller
 {
@@ -29,16 +30,17 @@ class ProdutoController extends Controller
         $produtoqtd  = Produto::count();
 
         //  $produto = Produto::get();
-        $produto = Produto::with('fornecedor')->get();
+        $produto = Produto::get();
         $fornecedor = Fornecedor::get();
         $search = request('search');
+        $venda = Venda::get();
 
         if ($search) {
             $produto = Produto::where([['Nome_Produto', 'like', '%' . $search . '%']])->get();
         } else {
             $produto = Produto::all();
         }
-        return view('paginas.conteudo.produtos.produtos', compact('produto', 'fornecedor', 'search', 'titulo', 'produtoqtd'));
+        return view('paginas.conteudo.produtos.produtos', compact('venda','produto', 'fornecedor', 'search', 'titulo', 'produtoqtd'));
     }
 
 
