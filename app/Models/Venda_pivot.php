@@ -18,15 +18,13 @@ class Venda_pivot extends Model
         'produto_id',
     ];
 
-    public function venda()
-    {
+    public function vendas(){
         return $this->belongsTo(Venda::class);
     }
-    public function produto()
-    {
+
+    public function produto(){
         return $this->belongsTo(Produto::class);
     }
-
 
     
 }

@@ -129,38 +129,52 @@
                 </div>
             </div>
         </div>
-        @foreach ($venda as $vendas)
+        <div class="container">
+            <div class="row">
+            <div class="card-body">
+          <div class="table-responsive">
+              <table class="table app-table-hover mb-0 text-left">
+                    <thead>
+                        
+        @foreach ($venda as $key => $vendas)
+        <tbody>
+            <tr>
+             
+        <td> <strong>Cliente:</strong> {{ $vendas->Nome_Cliente }}</p> </td>
+        <td> <strong>Forma de Pagamento:</strong> {{ $vendas->Forma_Pagamento }}</p> </td>
+        <td> <strong>Obs.</strong> {{ $vendas->Observacoes }}</p></td>
+        <td>
 
-        <p><strong>Cliente:</strong> {{ $vendas->Nome_Cliente }}</p>
-        <p><strong>Quantidade:</strong> {{ $vendas->Quantidade }}</p>
-        <p><strong>Forma de Pagamento:</strong> {{ $vendas->Forma_Pagamento }}</p>
-      TOTAL:   {{ $vendas->total }}
+            <a href="{{asset('/venda/invoice/')}}/{{$vendas->id}}" button type="button" class="btn btn-outline-secondary" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
+            <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+            <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/>
+          </svg>
+            Ver
+            </button> </a>
+           </td>
+    
         <!-- Outras informações da venda -->
-        @endforeach
-
-        <h2>Itens da Venda</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Produto</th>
-                    <th>Quantidade</th>
-                    <th>Preço Unitário</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{-- @foreach($venda->produtos as $produto)
-                <tr>
-                    <td>{{ $produto->Nome_Produto }}</td>
-                    <td>{{ $produto->pivot->Quantidade }}</td>
-                    <td>{{ $produto->Preco_Venda }}</td>
-                    <td>{{ $produto->Preco_Venda * $produto->pivot->Quantidade }}</td>
-                </tr>
-                @endforeach   --}}
-            </tbody>
-        </table>
+        @endforeach 
+     
+  
+            {{-- <tr>
+                @foreach($venda->produto as $item)
+                
+              </td>
+                  <td>{{$item->Nome_Produto}}</td>
+                  <td>{{$quantidade = $item->pivot['Quantidade'] }}</td>
+                  {{-- <td class="unit">R$ {{$preco= $item['Preco_Produto']}} </td> --}}
+                  {{-- <td> {{"R$ " . number_format($preco= $item['Preco_Produto'], 2, ",", ".")  }} </td>
+                  
+                  <td> {{"R$ " . number_format($total1 = $preco * (int)$quantidade, 2, ",", ".")  }} <?php $total2 += $total1; ?> </td>
+           --}}
+            {{-- </tr> --}}
+            {{-- @endforeach --}} 
+        </tbody>
+    </table>
         
-        {{-- <p><strong>Total da Venda:</strong> R$ {{ $venda->total }}</p> --}}
+        {{-- <strong>Total da Venda:</strong> R$ {{ $venda->total }}</p> --}}
         
 
 

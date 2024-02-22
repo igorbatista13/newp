@@ -34,16 +34,22 @@ class Produto extends Model
     {
         return $this->belongsToMany(Recibo::class);
     }
+    public function vendas()
+    {
+        return $this->belongsToMany(Venda::class, 'vendas_pivot', 'produto_id', 'vendas_id')
+                    ->withPivot('Quantidade'); // Se quiser acessar a quantidade através do relacionamento
+    }
 
-    public function fornecedor() {
+    public function fornecedor()
+    {
 
         return $this->belongsToMany(Fornecedor::class);
     }
 
 
-    public function vendas()
-{
-    return $this->belongsToMany(Venda::class, 'vendas_pivot')
-        ->withPivot('preco', 'quantidade');
-}
+    // public function vendas()
+    // {
+    //     return $this->belongsToMany(Venda::class, 'vendas_pivot', 'produto_id', 'vendas_id')
+    //         ->withPivot('Quantidade'); // Se quiser acessar a quantidade através do relacionamento
+    // }
 }

@@ -375,18 +375,29 @@
         }
 
         $('#finalizarCompra').click(function() {
-            // Recuperar informações necessárias
-            var nomeCliente =
-                ''; // Defina como você vai recuperar o nome do cliente (pode ser a partir de um campo de input)
-            var total = parseFloat($('#total').text().replace('Total: R$ ',
-                '')); // Recuperar o valor total da compra
+    
+            var nomeCliente = $('#Nome_Cliente').val(); // Recuperar o nome do cliente do campo de entrada
+
+            var total = parseFloat($('#total').text().replace('Total: R$ ', '')); 
+
+            
             // Abre a modal para selecionar o tipo de pagamento
             $('#modalPagamento').modal('show');
             // Preenche os campos do formulário de pagamento com as informações recuperadas
             $('#nomeCliente').val(nomeCliente);
             // Atualize aqui com os campos adicionais, se houver
-        });
 
+
+            
+        });
+        var produtos = [];
+        var quantidades = [];
+        $('#carrinho li').each(function() {
+        var produtoId = $(this).find('.adicionar').data('id');
+        var quantidade = $(this).find('.quantidade').val();
+        produtos.push(produtoId);
+        quantidades.push(quantidade);
+    });
         // Função para lidar com o envio do formulário de pagamento
         $('#formPagamento').submit(function(event) {
     event.preventDefault(); // Impede o envio padrão do formulário
@@ -402,6 +413,7 @@
         url: '/venda-finalizar',
         method: 'POST',
         data: formData, // Envie os dados do formulário
+
         success: function(response) {
             // Sucesso - fazer algo, como redirecionar para uma página de confirmação
             window.location.href = '/vendas';
@@ -411,7 +423,7 @@
             console.error('ERRO AO ENVIAR-->>:', error);
         }
     });
-    console.log(formData);
+    // console.log(formData);
 });
 
     });

@@ -24,7 +24,7 @@ class PainelGerencialController extends Controller
         $titulo = 'Recibos';
         $contratos = Contrato::with('empresa_cliente')->orderBy('id', 'DESC')->paginate(5);
         $recibos   = Recibo::with('empresa_cliente')->orderBy('id', 'DESC')->paginate(5);
-        $clientes = Empresa_Cliente::count();
+        $clientes = Empresa_Cliente::all();
         $produto  = Produto::count();
         $contrato = Contrato::count();
         $recibo   = Recibo::count();

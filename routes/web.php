@@ -76,6 +76,7 @@ Route::get('/painel', [PainelGerencialController::class, 'dashboard']);
 
 // N O V O ---  PDV
 Route::get('/vendas', [VendaController::class, 'index']);
+
 Route::get('/buscar', [ProdutoController::class, 'buscar'])->name('buscar');
 
 Route::resource('produtos', ProdutoController::class);
@@ -84,6 +85,7 @@ Route::post('/finalizar-compra', 'ProdutoController@finalizarCompra')->name('fin
 
 Route::post('/venda-finalizar', [VendaController::class, 'finalizarCompra']);
 
+Route::get('/venda/invoice/{id}',    [VendaController::class, 'invoice']);
 
 
 
