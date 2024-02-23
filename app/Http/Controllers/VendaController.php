@@ -26,7 +26,7 @@ class VendaController extends Controller
         ));
     }
 
-    
+
     // public function finalizarCompra(Request $request)
     // {
     //     $nomeCliente = $request->input('Nome_Cliente');
@@ -55,43 +55,53 @@ class VendaController extends Controller
     //     return response()->json(['message' => 'Venda criada com sucesso', 'venda' => $venda], 201);
     // }
 
+    public function atcfinalizarVenda(Request $request)
+{
+    // Validação dos dados do formulário, se necessário
+
+    dd($request);
+    // Crie uma nova instância de Venda e atribua os valores recebidos do formulário
+    $venda = new Venda();
+    $venda->nome_cliente = $request->Nome_Cliente;
+    $venda->forma_pagamento = $request->Forma_Pagamento;
+    $venda->observacoes = $request->Observacoes; // Se você tiver o campo Observacoes
+    // Atribua outros campos da venda, se houver
+    // Salve a venda no banco de dados
+    $venda->save();
+
+    // Agora, você precisa anexar os produtos vendidos à venda
+    foreach ($request->produtos as $produto_id => $quantidade) {
+        $venda->produtos()->attach($produto_id, ['quantidade' => $quantidade]);
+    }
+
+    // Redirecione para uma página de confirmação, por exemplo
+    return redirect()->route('pagina_de_confirmacao');
+}
+
 
     public function finalizarCompra(Request $request)
     {
+        try {
+            // Código que pode gerar exceções
+            $venda = Venda::create($request->all());
 
-        // $formaPagamento = $request->input('Forma_Pagamento');
-        // $nomeCliente = $request->input('Nome_Cliente');
-        // $observacoes = $request->input('Observacoes');
-   
-        // $venda = Venda::create([
-        //     'Forma_Pagamento' => $formaPagamento,
-        //     'Nome_Cliente' => $nomeCliente,
-        //     'Observacoes' => $observacoes,
-        // ]);
-
-
-        $venda = Venda::create($request->all());
-        
-        
-        
-        $produtos = $request->input('id', []); // Recebe os IDs dos produtos
-        $quantidades = $request->input('quantidade', []); // Recebe as quantidades dos produtos
-        
-        // Loop pelos produtos e associar cada um à venda
-        for ($i = 0; $i < count($produtos); $i++) {
-            // Verifica se o ID do produto não está vazio
-            if (!empty($produtos[$i])) {
-                // Associa o produto à venda com sua quantidade correspondente
-                $venda->produtos()->attach($produtos[$i], ['Quantidade' => $quantidades[$i]]);
+            // Debugando o conteúdo de $venda
+            //    dd($venda);
+            $products = $request->input('products', []);
+            $quantities = $request->input('quantities', []);
+            for ($product=0; $product < count($products); $product++) {
+                if ($products[$product] != '') {
+                    $venda->produto()->attach($products[$product], ['Quantidade' => $quantities[$product]]);
+                }
             }
-        }
-        // $produtos = $request->input('produtos');
-        // dd($produtos);
 
-        // Retorne uma resposta de sucesso
-        return response()->json(['message' => 'Venda criada com sucesso', 'venda' => $venda], 201);
-    
-}
+
+            return response()->json(['message' => 'Venda finalizada com sucesso', 'data' => $venda], 200);
+        } catch (\Exception $e) {
+            // Captura e trata a exceção
+            return response()->json(['message' => 'Ocorreu um erro ao finalizar a venda', 'error' => $e->getMessage()], 500);
+        }
+    }
 
 
     public function invoice($id)
@@ -100,38 +110,10 @@ class VendaController extends Controller
 
         $vendas = Venda::all();
 
-        return view('paginas.conteudo.vendas.invoice', ['venda' => $venda, 'vendas' => $vendas
-                            
+        return view('paginas.conteudo.vendas.invoice', [
+            'venda' => $venda, 'vendas' => $vendas
 
-       ]);
 
+        ]);
     }
-    public function xfinalizarCompra(Request $request)
-    {
-        // Validar os dados do formulário, se necessário
-
-        // Criar uma nova venda
-        // Criar uma nova venda
-        $venda = new Venda();
-        $venda->Nome_Cliente = $request->input('nome_cliente');
-        $venda->Forma_Pagamento = $request->input('forma_pagamento');
-        $venda->DataRetirada = $request->input('data_retirada');
-        // Adicione os outros campos conforme necessário
-        $venda->total = $request->input('total');
-        $venda->save();
-
-        // Adicionar produtos à venda
-        $produtos = $request->input('produtos');
-        foreach ($produtos as $produto) {
-            $venda_pivot = new Venda_pivot();
-            $venda_pivot->Quantidade = $produto['quantidade'];
-            $venda_pivot->vendas_id = $venda->id;
-            $venda_pivot->produto_id = $produto['id'];
-            $venda_pivot->save();
-        }
-
-
-        // Retornar uma resposta de sucesso (pode redirecionar ou retornar JSON, conforme necessário)
-        return response()->json(['success' => true]);
-    }
-}
+   }

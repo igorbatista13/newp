@@ -8,10 +8,12 @@ use App\Http\Controllers\
     {
 
     Empresa_ClienteController, MinhaEmpresaController, ProdutoController, OrcamentoController, ReciboController, ContratoController,
-    HomeController, AlunosController, APIController, PainelGerencialController, FornecedorController,
+    HomeController,  APIController, PainelGerencialController, FornecedorController,
     UsuariosController, RoleController, UserController, 
     PessoaController, Ficha_Conselho, CalendarController,
-    ObjetosController, SaldoController, SiteController, PedidosController, VendaController
+    ObjetosController, SaldoController, SiteController, PedidosController, 
+    
+    VendaController, AlunosController
 };
 
  Route::get('/escola/teste',      [PessoaController::class, 'index']);
@@ -83,9 +85,13 @@ Route::resource('produtos', ProdutoController::class);
 Route::post('/adicionar-carrinho', 'ProdutoController@adicionarCarrinho')->name('adicionarCarrinho');
 Route::post('/finalizar-compra', 'ProdutoController@finalizarCompra')->name('finalizarCompra');
 
-Route::post('/venda-finalizar', [VendaController::class, 'finalizarCompra']);
 
+//VENDA
+Route::post('/venda-finalizar', [VendaController::class, 'finalizarCompra']);
 Route::get('/venda/invoice/{id}',    [VendaController::class, 'invoice']);
+
+// ALUNOS
+Route::resource('alunos', AlunosController::class);
 
 
 

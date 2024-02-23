@@ -14,13 +14,16 @@
             <div class="col-lg-3 my-auto">
 
                 <h2>Produtos</h2>
-                <input type="text" id="termo" class="form-control" placeholder="Digite o termo de busca">
+                <div style="display: flex; align-items: center;">
+                    <img src="https://i.pinimg.com/736x/8a/a5/96/8aa596d474baee6cf6549cd1c979b29b.jpg" width="100px" style="margin-right: -5px;" />
+                    <input type="text" id="termo" class="form-control" placeholder="Digite o termo de busca">
+                </div>
                 <div id="resultado"></div>
             </div>
 
             <div class="col-auto">
                 <div class="avatar avatar-xl position-relative">
-                    <img src="https://pngimg.com/uploads/shopping_cart/shopping_cart_PNG54.png" alt="profile_image"
+                    <img src="https://logowik.com/content/uploads/images/shopping-cart5929.jpg" alt="profile_image"
                         class="w-100 border-radius-lg shadow-sm">
                 </div>
             </div>
@@ -44,57 +47,6 @@
 
 
         <!-- Modal de Pagamento -->
-        <!-- Modal de Pagamento -->
-        {{-- <div class="modal fade" id="modalPagamento" tabindex="-1" aria-labelledby="modalPagamentoLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalPagamentoLabel">Selecionar Forma de Pagamento</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="formPagamento" action="{{ route('vendas.store') }}" method="POST">
-                            @csrf
-
-                            <div class="mb-3">
-                                <label for="nomeCliente" class="form-label">Nome do Cliente</label>
-                                <input type="text" class="form-control" id="nomeCliente" name="Nome_Cliente">
-                            </div>
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="tipoPagamento" id="pix"
-                                        value="pix">
-                                    <label class="form-check-label" for="pix">
-                                        Pix
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="tipoPagamento"
-                                        id="cartaoCredito" value="cartaoCredito">
-                                    <label class="form-check-label" for="cartaoCredito">
-                                        Cartão de Crédito
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="tipoPagamento" id="dinheiro"
-                                        value="dinheiro">
-                                    <label class="form-check-label" for="dinheiro">
-                                        Dinheiro
-                                    </label>
-                                </div>
-
-                           
-                                <button type="submit" class="btn btn-primary">Finalizar Pagamento</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
- --}}
-
-
-        <!-- Modal de Pagamento -->
         <div class="modal fade" id="modalPagamento" tabindex="-1" aria-labelledby="modalPagamentoLabel"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -109,6 +61,8 @@
                             <div class="mb-3">
                                 <label for="Nome_Cliente" class="form-label">Nome do Cliente</label>
                                 <input type="text" class="form-control" id="Nome_Cliente" name="Nome_Cliente">
+
+
                             </div>
                             <div class="mb-3">
                                 <label for="formaPagamento" class="form-label">Forma de Pagamento</label>
@@ -129,6 +83,8 @@
                 </div>
             </div>
         </div>
+
+        <HR> 
         <div class="container">
             <div class="row">
             <div class="card-body">

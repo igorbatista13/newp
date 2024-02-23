@@ -4,9 +4,6 @@
             <div class="col-lg-6 mb-lg-0 mb-4">
                 <div class="copyright text-center text-sm text-muted text-lg-start">
                     ©
-                    <script>
-                        document.write(new Date().getFullYear())
-                    </script>
                     <i class="fa fa-heart"></i>
                     <a href="https://www.webmonkey.com.br" class="font-weight-bold" target="_blank">Web Monkey</a>
 
@@ -191,6 +188,7 @@
     });
 </script>
 
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
     $(document).ready(function() {
@@ -215,7 +213,8 @@
                 nome: produtoNome,
                 preco: produtoPreco,
                 image: produtoImage,
-                codigo_barra: produtoCodigo
+                codigo_barra: produtoCodigo,
+
             };
 
             adicionarAoCarrinho(produto);
@@ -297,6 +296,17 @@
             //   console.log(produto); // Verifique o objeto produto recebido
 
             // Iniciando    
+            var produtosSelecionados = $('#produtosSelecionados').val();
+            var produtoJson = JSON.stringify(produto);
+            if (produtosSelecionados) {
+                produtosSelecionados += ',' + produtoJson;
+            } else {
+                produtosSelecionados = produtoJson;
+            }
+
+
+            $('#produtosSelecionados').val(produtosSelecionados);
+
 
             var carrinhoHtml = '';
             carrinhoHtml += '<div class="row mt-2">';
@@ -356,12 +366,12 @@
 
 
 
-
         // Função para remover produto do carrinho
         $('#carrinho').on('click', '.remover', function() {
             $(this).closest('li').remove(); // Remove a linha <tr> mais próxima
             atualizarTotal();
         });
+
 
         // Função para atualizar total do carrinho
         function atualizarTotal() {
@@ -373,14 +383,17 @@
             });
             $('#total').html('<p>Total: R$ ' + total.toFixed(2) + '</p>');
         }
+        
+        
+        $('#finalizarCompra').click(function(produto) {
+            var preco = parseFloat($(this).find('.preco').text().replace('+ R$ ', '').trim());
 
-        $('#finalizarCompra').click(function() {
-    
-            var nomeCliente = $('#Nome_Cliente').val(); // Recuperar o nome do cliente do campo de entrada
+            var nomeCliente = $('#Nome_Cliente')
+        .val(); // Recuperar o nome do cliente do campo de entrada
+            console.log(nomeCliente);
+            var total = parseFloat($('#total').text().replace('Total: R$ ', ''));
 
-            var total = parseFloat($('#total').text().replace('Total: R$ ', '')); 
 
-            
             // Abre a modal para selecionar o tipo de pagamento
             $('#modalPagamento').modal('show');
             // Preenche os campos do formulário de pagamento com as informações recuperadas
@@ -388,46 +401,52 @@
             // Atualize aqui com os campos adicionais, se houver
 
 
-            
+
         });
-        var produtos = [];
-        var quantidades = [];
+
         $('#carrinho li').each(function() {
-        var produtoId = $(this).find('.adicionar').data('id');
-        var quantidade = $(this).find('.quantidade').val();
-        produtos.push(produtoId);
-        quantidades.push(quantidade);
-    });
+            var produtoId = $(this).find('.adicionar').data('id');
+            var quantidade = $(this).find('.quantidade').val();
+            produtos.push(produtoId);
+            quantidades.push(quantidade);
+        });
+
+        //////////////////////////////////////////////////////////////////////////////
+
         // Função para lidar com o envio do formulário de pagamento
         $('#formPagamento').submit(function(event) {
-    event.preventDefault(); // Impede o envio padrão do formulário
+            event.preventDefault(); // Impede o envio padrão do formulário
+            // Obter os dados do formulário
+            var formData = $(this).serialize();
+            var quantidades = $('#quantidades').val();
+            var produtos = $('#produtos').val();
+            // Adicionar os valores dos campos hidden aos dados do formulário
+            formData += '&quantidades=' + quantidades + '&produtos=' + produtos;
 
-    // Obter os dados do formulário
-    var formData = $(this).serialize();
-    console.log(formData);
-    // Realizar a requisição AJAX para a rota de vendas
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        url: '/venda-finalizar',
-        method: 'POST',
-        data: formData, // Envie os dados do formulário
+            // Realizar a requisição AJAX para a rota de vendas
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '/venda-finalizar',
+                method: 'POST',
+                data: formData, // Envie os dados do formulário
 
-        success: function(response) {
-            // Sucesso - fazer algo, como redirecionar para uma página de confirmação
-            window.location.href = '/vendas';
-        },
-        error: function(xhr, status, error) {
-            // Tratar erro
-            console.error('ERRO AO ENVIAR-->>:', error);
-        }
-    });
-    // console.log(formData);
-});
+                success: function(response) {
+                    // Sucesso - fazer algo, como redirecionar para uma página de confirmação
+                    window.location.href = '/vendas';
+                },
+                error: function(xhr, status, error) {
+                    // Tratar erro
+                    console.error('ERRO AO ENVIAR-->>:', error);
+                }
+            });
+            // console.log(formData);
+        });
 
     });
 </script>
+
 </body>
 
 </html>

@@ -38,4 +38,6 @@ class Venda extends Model
 
         return $this->belongsToMany(Venda_pivot::class);
     }
+
+    
 }
