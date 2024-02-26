@@ -149,10 +149,14 @@
     <div class="col-8 my-auto">
     <div class="numbers">
     <p class="text-sm mb-0 text-capitalize font-weight-bold opacity-7">Wheather today</p>
-       
-        @include('/paginas/conteudo/modalidades/modal/create')
-        @include('/paginas/conteudo/alunos/modal/create')
+    <div class="row">
 
+        @include('/paginas/conteudo/modalidades/modal/create')
+
+    </div>
+        <div class="row">
+        @include('/paginas/conteudo/alunos/modal/create')
+    </div>
 
     </div>
     

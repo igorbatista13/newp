@@ -1,18 +1,16 @@
 {{-- ALUNOS MODAL CRIAR --}}
 <div class="card h-100">
     <div class="card-body d-flex flex-column justify-content-center text-center">
-        <button type="button" class="btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal"
-        data-bs-target="#CreateModalidades">
+        <button type="button" class="btn btn-link text-dark px-3 mb-0 Create" data-bs-toggle="modal"
+        data-bs-target="#Create">
             
             <i class="fa fa-plus text-secondary mb-3" aria-hidden="true"></i>
-            <h5 class="text-secondary"> Modalidades </h5>
+            <h5 class="text-secondary"> Alunos </h5>
         </button>
     </div>
 </div>
 
 
-<button type="button" class="btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal" data-bs-target="#Create"><i
-        class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Novo Aluno</button>
 
 <div class="modal fade" id="Create" tabindex="-1" aria-labelledby="Create" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
