@@ -390,9 +390,10 @@
 
             var nomeCliente = $('#Nome_Cliente')
         .val(); // Recuperar o nome do cliente do campo de entrada
-            console.log(nomeCliente);
-            var total = parseFloat($('#total').text().replace('Total: R$ ', ''));
-
+            
+        var total = parseFloat($('#total').text().replace('Total: R$ ', ''));
+        
+        
 
             // Abre a modal para selecionar o tipo de pagamento
             $('#modalPagamento').modal('show');

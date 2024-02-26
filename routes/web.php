@@ -13,7 +13,7 @@ use App\Http\Controllers\
     PessoaController, Ficha_Conselho, CalendarController,
     ObjetosController, SaldoController, SiteController, PedidosController, 
     
-    VendaController, AlunosController
+    VendaController, AlunosController, ModalidadesController
 };
 
  Route::get('/escola/teste',      [PessoaController::class, 'index']);
@@ -92,6 +92,11 @@ Route::get('/venda/invoice/{id}',    [VendaController::class, 'invoice']);
 
 // ALUNOS
 Route::resource('alunos', AlunosController::class);
+
+
+// Modalidades
+Route::resource('modalidades', ModalidadesController::class);
+
 
 
 

@@ -19,23 +19,27 @@ class Alunos extends Model
         'RG',
         'Data_Nascimento',
         'Telefone',
-        'Profissão',
+        'Profissao',
         'Empresa',
         'Anexo',
         'image',
-        'Endereço',
+        'Endereco',
         'CEP',
         'Numero',
         'Complemento',
         'Bairro',
         'Cidade',
-        'Estado'
+        'Estado',
+        'modalidade_id'
         ];
         
     protected $table = 'alunos';
 
+    public function modalidades()
+    {
+        return $this->belongsTo(modalidades::class, 'modalidade_id');
+    }
 
-    
 
 
 }

@@ -107,13 +107,10 @@ class VendaController extends Controller
     public function invoice($id)
     {
         $venda        = Venda::findOrFail($id);
-
         $vendas = Venda::all();
 
         return view('paginas.conteudo.vendas.invoice', [
             'venda' => $venda, 'vendas' => $vendas
-
-
         ]);
     }
    }

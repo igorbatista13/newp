@@ -273,18 +273,18 @@
               </a>
             </div>
             <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
-              <a href="{{asset ('/clientes')}}" class="card-link">
+              <a href="{{asset ('/alunos    ')}}" class="card-link">
                 <div class="card">
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">CLIENTES</p>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">ALUNOS</p>
                                     <h5 class="font-weight-bolder">
-                                        CLIENTES
+                                        ALUNOS
                                     </h5>
                                     <p class="mb-0">
-                                        <span class="text-danger text-sm font-weight-bolder">N° de Clientes</span>
+                                        <span class="text-danger text-sm font-weight-bolder">N° de Alunos</span>
                                         {{-- <span class="text-danger text-sm font-weight-bolder">{{ $clientes }}</span> --}}
                                     </p>
                                 </div>

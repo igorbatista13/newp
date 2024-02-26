@@ -12,7 +12,7 @@ class Alunos extends Migration
 
         $table->increments('id');
 
-        // $table->foreignId('empresa_cliente_id')->constrained('empresa__clientes')->onDelete('cascade')->nullable;
+        $table->foreignId('modalidade_id')->constrained('modalidades')->onDelete('cascade')->nullable;
         
         $table->string('Nome_Completo')->nullable();
         $table->string('Email')->nullable();
@@ -21,17 +21,18 @@ class Alunos extends Migration
         $table->string('RG')->nullable();
         $table->string('Data_Nascimento')->nullable();
         $table->string('Telefone')->nullable();
-        $table->string('Profissão')->nullable();
+        $table->string('Profissao')->nullable();
         $table->string('Empresa')->nullable();
         $table->string('Anexo')->nullable();
         $table->string('image')->nullable();
-        $table->string('Endereço')->nullable();
+        $table->string('Endereco')->nullable();
         $table->string('CEP')->nullable();
         $table->string('Numero')->nullable();
         $table->string('Complemento')->nullable();
         $table->string('Bairro')->nullable();
         $table->string('Cidade')->nullable();
         $table->string('Estado')->nullable();
+        
         
         $table->timestamps();
 
