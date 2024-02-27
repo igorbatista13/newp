@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Alunos extends Model
 {
     use HasFactory;
-    use HasFactory;
 
     protected $fillable = [
 
@@ -37,9 +36,20 @@ class Alunos extends Model
 
     public function modalidades()
     {
-        return $this->belongsTo(modalidades::class, 'modalidade_id');
+        return $this->belongsToMany(modalidades::class);
     }
 
+       // Convertendo a string JSON armazenada no banco de dados de volta para um array
+       public function getModalidadeIdAttribute($value)
+       {
+           return json_decode($value, true);
+       }
+   
+       // Convertendo o array para uma string JSON antes de salvar no banco de dados
+       public function setModalidadeIdAttribute($value)
+       {
+           $this->attributes['modalidade_id'] = json_encode($value);
+       }
 
 
 }

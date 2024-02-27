@@ -12,8 +12,9 @@ class Alunos extends Migration
 
         $table->increments('id');
 
-        $table->foreignId('modalidade_id')->constrained('modalidades')->onDelete('cascade')->nullable;
-        
+       // $table->foreignId('modalidade_id')->constrained('modalidades')->onDelete('cascade')->nullable();
+       $table->json('modalidade_id')->nullable();
+
         $table->string('Nome_Completo')->nullable();
         $table->string('Email')->nullable();
         $table->string('CPF')->nullable();

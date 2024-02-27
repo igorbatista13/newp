@@ -1,22 +1,21 @@
 {{-- ALUNOS MODAL CRIAR --}}
-<div class="card h-100">
-    <div class="card-body d-flex flex-column justify-content-center text-center">
-        <button type="button" class="btn btn-link text-dark px-3 mb-0 Create" data-bs-toggle="modal"
-        data-bs-target="#Create">
-            
-            <i class="fa fa-plus text-secondary mb-3" aria-hidden="true"></i>
-            <h5 class="text-secondary"> Alunos </h5>
-        </button>
-    </div>
-</div>
 
 
 
-<div class="modal fade" id="Create" tabindex="-1" aria-labelledby="Create" aria-hidden="true">
+<button class="btn btn-icon btn-outline-dark ms-2 export" data-bs-toggle="modal"
+data-bs-target="#CreateAlunos" type="button">
+    <span class="btn-inner--icon"><i class="fa fa-plus"></i></span>
+    <span class="btn-inner--text"> Alunos </span>
+    </button>
+
+
+
+
+<div class="modal fade" id="CreateAlunos" tabindex="-1" aria-labelledby="CreateAlunos" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="" id="Create"> Novo Aluno: <b>
+                <h5 class="" id="CreateAlunosLabel"> Novo Aluno: <b>
                     </b> </h5>
                 <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">Fechar
                     (X)</button>
@@ -112,22 +111,24 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row mt-4">
                             <div class="col-sm-4">
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="font-weight-bolder">Modalidade</h5>
-                                        <select name="modalidade_id" id="modalidade_id" class="form-control">
-                                            <option value="" disabled> Selecione o Fornecedor</option>
-                                             @foreach ($alunos as $aluno)
-                                                <option value=" {{ $aluno->modalidades->id }}">
-                                                   
-                                                        {{ $aluno->modalidades->Nome_Modalidade }} </option>
-                                            @endforeach 
-                                        </select>
+                                        @foreach ($modalidades as $modalidade)
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="modalidade_id[]" id="modalidade_{{ $modalidade->id }}" value="{{ $modalidade->id }}">
+                                            <label class="form-check-label" for="modalidade_{{ $modalidade->id }}">
+                                                {{ $modalidade->Nome_Modalidade }}
+                                            </label>
+                                        </div>
+                                    @endforeach
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="col-sm-8 mt-sm-0 mt-4">
                                 <div class="card">
                                     <div class="card-body">

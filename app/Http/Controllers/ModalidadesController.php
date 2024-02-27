@@ -7,20 +7,12 @@ use Illuminate\Http\Request;
 
 class ModalidadesController extends Controller
 {
-    function __construct()
-    {
-        $this->middleware('permission:produtos-list|produtos-create|produtos-edit|produtos-delete', ['only' => ['index', 'show']]);
-        $this->middleware('permission:produtos-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:produtos-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:produtos-delete', ['only' => ['destroy']]);
-    }
-
 
     public function index()
     {
      //   $alunos = Alunos::get();
-        $modalidades = modalidades::with('modalidades')->get();  
-        return view('/paginas/conteudo/modalidades/modal/create', compact('modalidades'));
+      //  $modalidades = modalidades::with('modalidades')->get();  
+      return back();
     
     }
 

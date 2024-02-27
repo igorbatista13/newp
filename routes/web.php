@@ -93,13 +93,8 @@ Route::get('/venda/invoice/{id}',    [VendaController::class, 'invoice']);
 // ALUNOS
 Route::resource('alunos', AlunosController::class);
 
-
 // Modalidades
 Route::resource('modalidades', ModalidadesController::class);
-
-
-
-
 
 
 Route::get('/painel/index', [PainelGerencialController::class, 'index']);
