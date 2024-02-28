@@ -13,10 +13,10 @@
 
 
     <div class="modal fade" id="CreateModalidades" tabindex="-1" aria-labelledby="CreateModalidades" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="" id="Create"> Novo Modalidade <b>
+                    <h5 class="" id="Create"> Nova Modalidade <b>
                         </b> </h5>
                     <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">Fechar
                         (X)</button>
@@ -34,7 +34,7 @@
                                             <h5 class="font-weight-bolder"></h5>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <img class="w-40 border-radius-lg shadow-lg mt-3" src=""
+                                                    <img class="w-100 border-radius-lg shadow-lg mt-3" src="https://png.pngtree.com/png-vector/20220617/ourmid/pngtree-gym-icon-lifting-vector-weight-png-image_5124835.png"
                                                         alt="product_image" width="200px">
                                                 </div>
 
@@ -43,7 +43,6 @@
                                                     {!! Form::open(['route' => 'modalidades.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
                                                     <div class="d-flex">
-                                                        {!! Form::file('image', ['class' => 'form-control ']) !!}
 
                                                     </div>
                                                 </div>

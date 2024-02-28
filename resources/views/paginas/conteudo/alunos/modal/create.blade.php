@@ -1,5 +1,6 @@
 {{-- ALUNOS MODAL CRIAR --}}
 
+   
 
 
 <button class="btn btn-icon btn-outline-dark ms-2 export" data-bs-toggle="modal"
@@ -21,8 +22,6 @@ data-bs-target="#CreateAlunos" type="button">
                     (X)</button>
             </div>
             <div class="modal-body">
-
-
                 <div class="card-body">
                     <div class="container-fluid py-2">
 
@@ -33,7 +32,7 @@ data-bs-target="#CreateAlunos" type="button">
                                         <h5 class="font-weight-bolder"></h5>
                                         <div class="row">
                                             <div class="col-12">
-                                                <img class="w-40 border-radius-lg shadow-lg mt-3" src=""
+                                                <img class="w-50 border-radius-lg shadow-lg mt-0" src="https://img.freepik.com/vetores-premium/modelo-de-logotipo-de-icone-de-academia-com-barra-haltere-design-de-logotipo-de-fitness_757387-345.jpg?w=2000"
                                                     alt="product_image" width="200px">
                                             </div>
 
@@ -116,7 +115,7 @@ data-bs-target="#CreateAlunos" type="button">
                             <div class="col-sm-4">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="font-weight-bolder">Modalidade</h5>
+                                        <h5 class="font-weight-bolder">Modalidades</h5>
                                         @foreach ($modalidades as $modalidade)
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="modalidade_id[]" id="modalidade_{{ $modalidade->id }}" value="{{ $modalidade->id }}">

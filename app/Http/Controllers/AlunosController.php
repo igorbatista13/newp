@@ -16,12 +16,13 @@ class AlunosController extends Controller
     {
         $modalidades = modalidades::all();
       //  $alunos = Alunos::all();
-        $alunos = Alunos::latest()->take(5)->get();
+        $alunos = Alunos::latest()->take(3)->get();
         return view('paginas.conteudo.alunos.index', compact('alunos', 'modalidades'));
     }
 
     public function create()
     {
+        
     }
 
 
