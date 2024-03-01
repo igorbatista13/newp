@@ -51,5 +51,10 @@ class Alunos extends Model
            $this->attributes['modalidade_id'] = json_encode($value);
        }
 
+       public function matriculas()
+       {
+           return $this->hasMany(Matricula::class);
+       }
+   
 
 }

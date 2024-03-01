@@ -13,10 +13,10 @@ data-bs-target="#CreateAlunos" type="button">
 
 
 <div class="modal fade" id="CreateAlunos" tabindex="-1" aria-labelledby="CreateAlunos" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="" id="CreateAlunosLabel"> Novo Aluno: <b>
+                <h5 class="" id="CreateAlunosLabel"> Novo Aluno <b>
                     </b> </h5>
                 <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">Fechar
                     (X)</button>
@@ -25,25 +25,36 @@ data-bs-target="#CreateAlunos" type="button">
                 <div class="card-body">
                     <div class="container-fluid py-2">
 
-                        <div class="row mt-4">
-                            <div class="col-lg-4">
+                        <div class="row mt-3">
+                            <div class="col-lg-3">
                                 <div class="card h-100">
                                     <div class="card-body">
                                         <h5 class="font-weight-bolder"></h5>
                                         <div class="row">
                                             <div class="col-12">
-                                                <img class="w-50 border-radius-lg shadow-lg mt-0" src="https://img.freepik.com/vetores-premium/modelo-de-logotipo-de-icone-de-academia-com-barra-haltere-design-de-logotipo-de-fitness_757387-345.jpg?w=2000"
-                                                    alt="product_image" width="200px">
+                                                    <div class="card-body">
+                                                        {{-- <img class="w-50 border-radius-lg shadow-lg mt-0" src="https://img.freepik.com/vetores-premium/modelo-de-logotipo-de-icone-de-academia-com-barra-haltere-design-de-logotipo-de-fitness_757387-345.jpg?w=2000"
+                                                        alt="product_image" width="200px">   --}}
+                                                        <h5 class="font-weight-bolder">Modalidades</h5>
+                                                        @foreach ($modalidades as $modalidade)
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="checkbox" name="modalidade_id[]" id="modalidade_{{ $modalidade->id }}" value="{{ $modalidade->id }}">
+                                                            <label class="form-check-label" for="modalidade_{{ $modalidade->id }}">
+                                                                {{ $modalidade->Nome_Modalidade }} 
+                                                            </label>
+                                                        </div>
+                                                    @endforeach
+                                                    
+                                                    
+                                                    </div>  
+                                             
                                             </div>
 
                                             <div class="col-lg-12 mt-5">
 
                                                 {!! Form::open(['route' => 'alunos.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
-                                                <div class="d-flex">
-                                                    {!! Form::file('image', ['class' => 'form-control ']) !!}
-
-                                                </div>
+                                            
                                             </div>
                                         </div>
                                     </div>
@@ -51,7 +62,7 @@ data-bs-target="#CreateAlunos" type="button">
                             </div>
 
 
-                            <div class="col-lg-8 mt-lg-0 mt-4">
+                            <div class="col-lg-9 mt-lg-0 mt-4">
                                 <div class="card">
                                     <div class="card-body">
 
@@ -82,7 +93,6 @@ data-bs-target="#CreateAlunos" type="button">
                                                 {!! Form::text('Categoria_Produto', null, ['class' => 'form-control']) !!}
                                             </div>
 
-                                            <Select></Select>
 
 
                                             <div class="col-3">
@@ -111,10 +121,12 @@ data-bs-target="#CreateAlunos" type="button">
                             </div>
                         </div>
 
-                        <div class="row mt-4">
+                        <div class="row mt-3">
                             <div class="col-sm-4">
                                 <div class="card">
                                     <div class="card-body">
+                                        {{-- <img class="w-30 border-radius-lg shadow-lg mt-0" src="https://img.freepik.com/vetores-premium/modelo-de-logotipo-de-icone-de-academia-com-barra-haltere-design-de-logotipo-de-fitness_757387-345.jpg?w=2000"
+                                        alt="product_image" width="200px">   --}}
                                         <h5 class="font-weight-bolder">Modalidades</h5>
                                         @foreach ($modalidades as $modalidade)
                                         <div class="form-check">
