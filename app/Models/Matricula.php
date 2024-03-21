@@ -18,4 +18,9 @@ class Matricula extends Model
     {
         return $this->belongsTo(Alunos::class);
     }
+
+    public function plano()
+    {
+        return $this->belongsTo(Planos::class);
+    }
 }

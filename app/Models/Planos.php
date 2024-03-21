@@ -18,4 +18,9 @@ class planos extends Model
     {
         return $this->belongsTo(Alunos::class);
     }
+
+    public function matriculas()
+    {
+        return $this->hasMany(Matricula::class);
+    }
 }
