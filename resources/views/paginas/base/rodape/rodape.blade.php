@@ -447,6 +447,103 @@
 
     });
 </script>
+<script>
+    $(document).ready(function() {
+        $('#termoAluno').on('input', function() {
+            var termoAluno = $(this).val();
+            if (termoAluno.length >= 3) {
+                buscarAlunos(termoAluno);
+            } else {
+                $('#resultado').empty();
+            }
+        });
+
+        $(document).on('click', '.adicionar-aluno', function() {
+            var alunoId = $(this).data('id');
+            var alunoNome = $(this).data('Nome_Completo');
+            var alunoImage = $(this).data('image');
+
+            var aluno = {
+                id: alunoId,
+                nome: alunoNome,
+                image: alunoImage,
+            };
+
+            adicionarAoCarrinhoAluno(aluno);
+        });
+
+        function buscarAlunos(termoAluno) {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '/buscar-alunos',
+                type: 'GET',
+                data: {
+                    termoAluno: termoAluno
+                },
+                success: function(alunos) {
+                    $('#resultado').empty();
+                    alunos.forEach(function(aluno) {
+                        var resultadoHtml = '';
+                        resultadoHtml += '<div class="row mt-2">';
+                        resultadoHtml += '<div class="col-lg-12 col-md-6 mb-4 mb-lg-0">';
+                        resultadoHtml += '<div class="card h-100 ">';
+                        resultadoHtml += '<div class="card-header">';
+                        resultadoHtml += '<h5 class="mb-0 text-capitalize">Alunos encontrado:</h5>';
+                        resultadoHtml += '<hr>';
+                        resultadoHtml += '</div>';
+                        resultadoHtml += '<div class="card-body pt-0">';
+                        resultadoHtml += '<ul class="list-group list-group-flush">';
+                        resultadoHtml += '<li class="list-group-item px-0">';
+                        resultadoHtml += '<div class="row align-items-center">';
+                        resultadoHtml += '<div class="col-auto d-flex align-items-center">';
+                        resultadoHtml += '<img class="border-radius-lg" width="100px" alt="Image placeholder" src="{{ asset('images/usuarios/') }}/' +
+                            aluno.image + '"">';
+                        resultadoHtml += '</div>';
+                        resultadoHtml += '<div class="col ml-2">';
+                        resultadoHtml += '<h6 class="mb-0">';
+                        resultadoHtml += '<a href="javascript:;">' + aluno.Nome_Completo +
+                            '</a>';
+                        resultadoHtml += '</h6>';
+                        resultadoHtml += '<p>';
+                        resultadoHtml += '</p>';
+                        resultadoHtml += '</div>';
+                        resultadoHtml += '<div class="col-auto">';
+                        resultadoHtml +=
+                            '<button type="button" class="btn btn-outline-success btn-xs mb-0 adicionar-aluno"  data-id="' +
+                            aluno.id + '" data-nome_completo="' + aluno.Nome_Completo +
+                            '" data-image= "' + aluno.image + '">Adicionar</button>';
+                        resultadoHtml += '</div>';
+                        resultadoHtml += '</div>';
+                        resultadoHtml += '</li>';
+                        resultadoHtml += '</ul>';
+                        resultadoHtml += '</div>';
+                        resultadoHtml += '</div>';
+                        resultadoHtml += '</div>';
+                        resultadoHtml += '</div>';
+
+                        $('#resultado').append(resultadoHtml);
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Erro ao buscar alunos:', error);
+                }
+            });
+        }
+
+        function adicionarAoCarrinhoAluno(aluno) {
+            var alunoJson = JSON.stringify(aluno);
+            console.log(alunoJson);
+            // Aqui você pode adicionar o aluno ao carrinho como desejar
+            $('#alunoId').val(aluno.id);
+            
+
+        }
+    });
+</script>
+
+
 
 </body>
 

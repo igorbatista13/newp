@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Matricula;
 
 use Illuminate\Http\Request;
 
@@ -34,7 +35,12 @@ class MatriculaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $matricula = new Matricula();
+        $matricula = Matricula::create($request->all());
+        
+        //   dd($matricula);
+        $matricula->save();
+        return back()->with('success', 'Aluno Matriculado com sucesso!');
     }
 
     /**

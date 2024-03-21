@@ -80,6 +80,7 @@ Route::get('/painel', [PainelGerencialController::class, 'dashboard']);
 Route::get('/vendas', [VendaController::class, 'index']);
 
 Route::get('/buscar', [ProdutoController::class, 'buscar'])->name('buscar');
+Route::get('/buscar-alunos', [AlunosController::class, 'buscarAlunos'])->name('buscarAlunos');
 
 Route::resource('produtos', ProdutoController::class);
 Route::post('/adicionar-carrinho', 'ProdutoController@adicionarCarrinho')->name('adicionarCarrinho');
@@ -92,6 +93,11 @@ Route::get('/venda/invoice/{id}',    [VendaController::class, 'invoice']);
 
 // ALUNOS
 Route::resource('alunos', AlunosController::class);
+Route::patch('/alunos/{aluno}', [AlunosController::class, 'update'])->name('alunos.update');
+Route::post('/alunos/matricula', [AlunosController::class, 'matricula'])->name('alunos.matricula');
+
+
+// MATRICULAS
 
 // Modalidades
 Route::resource('modalidades', ModalidadesController::class);

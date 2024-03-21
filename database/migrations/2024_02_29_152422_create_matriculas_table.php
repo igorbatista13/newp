@@ -15,12 +15,12 @@ return new class extends Migration
     {
     Schema::create('matriculas', function (Blueprint $table) {
         $table->id();
-        $table->unsignedBigInteger('aluno_id'); // Chave estrangeira para o aluno
-        // Outros campos relacionados à matrícula
-        $table->foreign('aluno_id')->references('id')->on('alunos')->onDelete('cascade');
-     
-
-        
+        $table->unsignedInteger('alunos_id');
+        $table->foreign('alunos_id')->references('id')->on('alunos')->onDelete('cascade');
+           
+        $table->unsignedInteger('planos_id');
+        $table->foreign('planos_id')->references('id')->on('planos')->onDelete('cascade');
+           
         $table->timestamps();
     
     });

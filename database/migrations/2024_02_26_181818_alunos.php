@@ -20,7 +20,7 @@ class Alunos extends Migration
         $table->string('CPF')->nullable();
         $table->string('Sexo')->nullable();
         $table->string('RG')->nullable();
-        $table->string('Data_Nascimento')->nullable();
+        $table->date('Data_Nascimento')->nullable();
         $table->string('Telefone')->nullable();
         $table->string('Profissao')->nullable();
         $table->string('Empresa')->nullable();
@@ -33,6 +33,7 @@ class Alunos extends Migration
         $table->string('Bairro')->nullable();
         $table->string('Cidade')->nullable();
         $table->string('Estado')->nullable();
+        $table->string('Perfil')->nullable();
         
         
         $table->timestamps();

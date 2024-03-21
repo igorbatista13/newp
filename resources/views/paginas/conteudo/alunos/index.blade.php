@@ -2,43 +2,9 @@
 @include('paginas.base.topo.topo')
 @include('paginas.mensagens.mensagem')
 
-<div class="card shadow-lg mx-4 card-profile-bottom">
-    <div class="card-body p-3">
-        <div class="row gx-4">
-            <div class="col-auto">
-                <div class="avatar avatar-xl position-relative">
-                    <img src="https://img.elo7.com.br/product/zoom/33F8A2D/adesivo-de-parede-academia-fitness-musculacao-crossfit-peso-crossfit.jpg"
-                        alt="profile_image" class="w-100 border-radius-lg shadow-sm">
-                </div>
-            </div>
-            <div class="col-auto my-auto">
-                <div class="h-100">
-                    <h5 class="mb-1">
-                        Alunos
-                    </h5>
-                    <p class="mb-0 font-weight-bold text-sm">
-                        ----
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
-                <div class="nav-wrapper position-relative end-0">
+{{-- SMENU ALUNOS --}}
+@include('paginas.conteudo.alunos.menu_alunos')
 
-                    <div class="dropdown d-inline">
-
-                        @include('/paginas/conteudo/modalidades/modal/create')
-
-
-
-                    </div>
-                    @include('/paginas/conteudo/alunos/modal/create')
-
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="container-fluid py-4">
     <div class="row">
@@ -54,10 +20,10 @@
                             <div class="row">
                                 <div class="col-8 my-auto">
                                     <div class="numbers">
-                                        <p class="text-sm mb-0 text-capitalize font-weight-bold opacity-7">Atualizado
-                                        </p>
+                                        {{-- <p class="text-sm text-success mb-0 text-capitalize font-weight-bold opacity-7">Atualizado
+                                        </p> --}}
                                         <h5 class="font-weight-bolder mb-0">
-                                            ÚLTIMOS ALUNOS CADASTRADOS
+                                            ÚLTIMOS USUÁRIOS CADASTRADOS
                                         </h5>
                                     </div>
 
@@ -78,9 +44,14 @@
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Sexo</th>
+
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Perfil</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Modalidade</th>
+                                        <th> </th>
 
 
                                     </tr>
@@ -91,10 +62,9 @@
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
-                                                        <img src="https://img.elo7.com.br/product/zoom/33F8A2D/adesivo-de-parede-academia-fitness-musculacao-crossfit-peso-crossfit.jpg"
+                                                        <img src="{{ asset('/images/usuarios/') }}/{{ $aluno->image }}"
                                                             class="avatar avatar-sm me-3" alt="avatar image">
-                                                        {{-- <img src="https://i.pinimg.com/736x/42/9d/63/429d631659a11a9eb666b103d811470a.jpg" class="avatar avatar-sm me-3"
-                                                            alt="avatar image"> --}}
+
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
                                                         <h6 class="mb-0 text-sm">{{ $aluno->Nome_Completo }}</h6>
@@ -102,27 +72,60 @@
                                                 </div>
                                             </td>
                                             <td>
+                                                <span class="badge badge-dot me-4">
+                                                    <i class="bg-info"></i>
+                                                    <span class="text-dark text-xs">{{ $aluno->Email }}</span>
+                                                </span>
                                                 <p class="text-sm text-secondary mb-0">{{ $aluno->Email }}</p>
                                             </td>
                                             <td>
                                                 <span class="badge badge-dot me-4">
                                                     <i class="bg-info"></i>
+
                                                     <span class="text-dark text-xs">{{ $aluno->Sexo }}
 
                                                     </span>
                                                 </span>
                                             </td>
+                                            <td>
+                                                <span class="badge badge-dot me-4">
+                                                    <i class="bg-info"></i>
+                                                    <span
+                                                        class="badge bg-warning me-0">{{ $aluno->Perfil !== null ? $aluno->Perfil : 'Não informado' }}</span>
+
+                                                    <span class="text-dark text-xs">
+
+                                                    </span>
+                                                </span>
+                                            </td>
                                             <td class="align-middle text-center text-sm">
-                                                @foreach (json_decode($aluno->modalidade_id) as $modalidadeId)
-                                                    <div class="d-flex px-2 py-0">
-                                                        <span class="badge bg-primary me-3"> </span>
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-sm">
-                                                                {{ \App\Models\Modalidades::find($modalidadeId)->Nome_Modalidade }}
-                                                            </h6>
-                                                        </div>
-                                                @endforeach
+                                                @if (!empty($aluno->modalidade_id))
+                                                    @php
+                                                        $modalidades = json_decode($aluno->modalidade_id, true);
+                                                    @endphp
+
+                                                    @if ($modalidades !== null)
+                                                        @foreach ($modalidades as $modalidadeId)
+                                                            <div class="d-flex px-0 py-1">
+                                                                {{-- <span class="badge bg-warning me-0"> </span> --}}
+                                                                <div class="d-flex flex-column justify-content-center">
+                                                                    <small class="mb-0 text-sm text-bold">
+                                                                        <img src="https://img.elo7.com.br/product/zoom/33F8A2D/adesivo-de-parede-academia-fitness-musculacao-crossfit-peso-crossfit.jpg"
+                                                                            class="" width="30px"
+                                                                            alt="avatar image">
+
+                                                                        {{ \App\Models\Modalidades::find($modalidadeId)->Nome_Modalidade }}
+                                                                    </small>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    @endif
+                                                @endif
+
                         </div>
+                        </td>
+                        <td>
+                            @include('/paginas/conteudo/alunos/modal/edit')
                         </td>
 
                         </tr>
@@ -142,7 +145,7 @@
 
         <div class="container-fluid py-4">
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-12">
+                <div class="col-lg-5 col-md-6 col-12">
                     <div class="card overflow-hidden shadow-lg"
                         style="background-image: url('https://png.pngtree.com/png-vector/20230928/ourmid/pngtree-woman-lifts-weights-gym-body-building-png-image_10043037.png');
             background-size: cover;">
@@ -154,7 +157,7 @@
                                         <i class="ni ni-circle-08 text-dark text-lg opacity-10" aria-hidden="true"></i>
                                     </div>
                                     <h5 class="text-white font-weight-bolder mb-0 mt-3">
-                                        X alunos
+                                        {{ $qtdalunos }}
                                     </h5>
                                     <span class="text-white text-sm">Total de Alunos</span>
                                 </div>
@@ -163,7 +166,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12 mt-4 mt-md-0">
+                <div class="col-lg-5 col-md-6 col-12 mt-4 mt-md-0">
                     <div class="card overflow-hidden shadow-lg"
                         style="background-image: url('https://academiaindside.com.br/wp-content/uploads/2015/12/homem-3-pronto-para-entrar-em-forma-indside-academia-toledo-pr.png');
             background-size: cover;">
@@ -175,9 +178,9 @@
                                         <i class="ni ni-active-40 text-dark text-lg opacity-10" aria-hidden="true"></i>
                                     </div>
                                     <h5 class="text-white font-weight-bolder mb-0 mt-3">
-                                        357
+                                        {{ $qtdprofessor }}
                                     </h5>
-                                    <span class="text-white text-sm">Alunos Matriculados</span>
+                                    <span class="text-white text-sm">Professores</span>
                                 </div>
 
                             </div>
@@ -186,7 +189,7 @@
                 </div>
             </div>
             <div class="row mt-4">
-                <div class="col-lg-4 col-md-6 col-12">
+                <div class="col-lg-5 col-md-6 col-12">
                     <div class="card overflow-hidden shadow-lg"
                         style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/reports3.jpg');
             background-size: cover;">
@@ -198,7 +201,7 @@
                                         <i class="ni ni-cart text-dark text-lg opacity-10" aria-hidden="true"></i>
                                     </div>
                                     <h5 class="text-white font-weight-bolder mb-0 mt-3">
-                                        10
+                                        {{ $qtdmodalidades }}
                                     </h5>
                                     <span class="text-white text-sm">Modalidades</span>
                                 </div>
@@ -207,7 +210,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12 mt-4 mt-md-0">
+                <div class="col-lg-5 col-md-6 col-12 mt-4 mt-md-0">
                     <div class="card overflow-hidden shadow-lg"
                         style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/reports4.jpg');
             background-size: cover;">
@@ -220,9 +223,9 @@
                                             aria-hidden="true"></i>
                                     </div>
                                     <h5 class="text-white font-weight-bolder mb-0 mt-3">
-                                        940
+                                        {{ $qtdfunc }}
                                     </h5>
-                                    <span class="text-white text-sm">Professores</span>
+                                    <span class="text-white text-sm">Funcionários</span>
                                 </div>
 
                             </div>
@@ -231,16 +234,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
     </div>
 </div>
 </div>
@@ -374,155 +367,12 @@
     </div>
 </div> --}}
 <hr class="horizontal dark my-4">
+@foreach ($matricula as $matriculas)
+    {{ $matriculas }}
+@endforeach
 
-<div class="row">
-    <div class="col-lg-2 col-sm-6">
-        <div class="card overflow-hidden shadow-lg"
-            style="background-image: url('https://i.pinimg.com/474x/14/3a/a3/143aa34f85a3bf11f91908cafe38776e.jpg');
-            background-size: cover;">
+{{-- Incluir a parte inferior de blocos --}}
+@include('paginas.conteudo.alunos.blocos')
 
-            <div class="card-body">
-                <div class="d-flex mb-0">
-                    <p class="mb-0 text-white"></p>
-                    <div class="form-check form-switch ms-auto">
-                        <button class="btn btn-icon btn-dark ms-2 export" data-bs-toggle="modal"
-                            data-bs-target="#CreateAlunos" type="button">
-                            <span class="btn-inner--text"> Alunos </span>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body text-center">
-                    <h1 class="text-gradient text-primary">
-                        <span class="text-lg ms-n2"> </span>
-                    </h1>
-                    {{-- <h6 class="mb-0 font-weight-bolder">Alunos</h6> --}}
-                    <p class="mt-2 mb-0 font-weight-bold text-white">Alunos</p>
-                    <p class="opacity-8 mb-0 text-sm"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- Profesores --}}
-    <div class="col-lg-2 col-sm-6 mt-lg-0 mt-4">
-        <div class="card overflow-hidden shadow-lg"
-            style="background-image: url('https://blog.totalpass.com.br/wp-content/uploads/2023/01/motivar-os-alunos-para-treinar.jpg');
-        background-size: cover;">
-
-            <div class="card-body">
-                <div class="d-flex mb-0">
-                    <p class="mb-0 text-white"></p>
-                    <div class="form-check form-switch ms-auto">
-                        <button class="btn btn-icon btn-dark ms-2 export" data-bs-toggle="modal"
-                            data-bs-target="#CreateAlunos" type="button">
-                            <span class="btn-inner--text"> Professores </span>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body text-center">
-                    <h1 class="text-gradient text-primary">
-                        <span class="text-lg ms-n2"> </span>
-                    </h1>
-                    {{-- <h6 class="mb-0 font-weight-bolder">Professores</h6> --}}
-                    <p class="mt-2 mb-0 font-weight-bold text-white">Professores</p>
-                    <p class="opacity-8 mb-0 text-sm"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-2 col-sm-6 mt-lg-0 mt-4">
-        <div class="card overflow-hidden shadow-lg"
-            style="background-image: url('https://gestaofitness.com.br/files/2021/05/gestaoacademia_foto.png');
-        background-size: cover;">
-
-            <div class="card-body">
-                <div class="d-flex mb-0">
-                    <p class="mb-0 text-white"></p>
-                    <div class="form-check form-switch ms-auto">
-                        <button class="btn btn-icon btn-dark ms-2 export" data-bs-toggle="modal"
-                            data-bs-target="#CreateAlunos" type="button">
-                            <span class="btn-inner--text"> Funcionários </span>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body text-center">
-                    <h1 class="text-gradient text-primary">
-                        <span class="text-lg ms-n2"> </span>
-                    </h1>
-                    {{-- <h6 class="mb-0 font-weight-bolder">Funcionários</h6> --}}
-                    <p class="mt-2 mb-0 font-weight-bold text-white">Funcionários</p>
-                    <p class="opacity-8 mb-0 text-sm"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-2 col-sm-6 mt-lg-0 mt-4">
-        <div class="card overflow-hidden shadow-lg"
-            style="background-image: url('https://fitnessone.com.br/wp-content/uploads/2014/04/showroom-1.jpg');
-        background-size: cover;">
-
-            <div class="card-body">
-                <div class="d-flex mb-0">
-                    <p class="mb-0 text-white"></p>
-                    <div class="form-check form-switch ms-auto">
-                        <button class="btn btn-icon btn-dark ms-2 export" data-bs-toggle="modal"
-                            data-bs-target="#CreateAlunos" type="button">
-                            <span class="btn-inner--text"> Fornecedores </span>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body text-center">
-                    <h1 class="text-gradient text-primary">
-                        <span class="text-lg ms-n2"> </span>
-                    </h1>
-                    {{-- <h6 class="mb-0 font-weight-bolder">Fornecedores</h6> --}}
-                    <p class="mt-2 mb-0 font-weight-bold text-white">Fornecedores</p>
-                    <p class="opacity-8 mb-0 text-sm"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- <div class="col-lg-2 col-sm-6 mt-lg-0 mt-4">
-        <div class="card bg-default h-100">
-            <div class="card-body">
-                <div class="d-flex mb-4">
-                    <p class="mb-0 text-white">On</p>
-                    <div class="form-check form-switch ms-auto">
-                        <input class="form-check-input" type="checkbox" id="flexwifiCheckDefault" checked>
-                    </div>
-                </div>
-                <svg width="45px" viewBox="0 0 41 31" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <title>wifi</title>
-                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                        <g id="wifi" transform="translate(3.000000, 3.000000)">
-                            <path
-                                d="M7.37102658,14.6156105 C12.9664408,9.02476091 22.0335592,9.02476091 27.6289734,14.6156105"
-                                stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-                            </path>
-                            <circle id="Oval" fill="#FFFFFF" cx="17.5039082" cy="22.7484921" r="4.9082855">
-                            </circle>
-                            <path d="M0,7.24718945 C9.66583791,-2.41572982 25.3341621,-2.41572982 35,7.24718945"
-                                stroke="#FFFFFF" stroke-width="5" opacity="0.398982558" stroke-linecap="round"
-                                stroke-linejoin="round"></path>
-                        </g>
-                    </g>
-                </svg>
-                <p class="font-weight-bold mt-4 mb-0 text-white">Wi-fi</p>
-                <span class="text-xs text-white">Active</span>
-            </div>
-        </div>
-    </div> --}}
-    {{-- <div class="col-lg-2 col-sm-6 mt-sm-0 mt-4">
-        <div class="card h-100">
-            <div class="card-body d-flex flex-column justify-content-center text-center">
-                <a href="javascript:;">
-                    <i class="fa fa-plus text-secondary mb-3" aria-hidden="true"></i>
-                    <h5 class="text-secondary"> New device </h5>
-                </a>
-            </div>
-        </div>
-    </div> --}}
-</div>
-
-
+{{-- Rodapé --}}
 @include('paginas.base.rodape.rodape')

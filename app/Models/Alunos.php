@@ -29,6 +29,7 @@ class Alunos extends Model
         'Bairro',
         'Cidade',
         'Estado',
+        'Perfil',
         'modalidade_id'
         ];
         

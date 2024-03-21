@@ -1,22 +1,22 @@
-{{-- ALUNOS MODAL CRIAR --}}
+{{-- ALUNOS MODAL EDITAR --}}
 
 
 
 
-<button class="btn btn-icon btn-outline-dark ms-2 export" data-bs-toggle="modal" data-bs-target="#CreateAlunos"
+<button class="btn btn-icon btn-outline-dark ms-2 export" data-bs-toggle="modal" data-bs-target="#EditUsuario_{{ $aluno->id }}"
     type="button">
-    <span class="btn-inner--icon"><i class="fa fa-plus"></i></span>
-    <span class="btn-inner--text"> Usuários </span>
+    <span class="btn-inner--icon"><i class="fa fa-edit"></i></span>
+    <span class="btn-inner--text"> Editar Usuário </span>
 </button>
 
 
 
 
-<div class="modal fade" id="CreateAlunos" tabindex="-1" aria-labelledby="CreateAlunos" aria-hidden="true">
+<div class="modal fade" id="EditUsuario_{{ $aluno->id }}" tabindex="-1" aria-labelledby="EditUsuario_{{ $aluno->id }}" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="" id="CreateAlunosLabel"> Novo Usuário <b>
+                <h5 class="" id="EditUsuariosLabel"> Editar Usuário <b>
                     </b> </h5>
                 <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">Fechar
                     (X)</button>
@@ -24,7 +24,10 @@
             <div class="modal-body">
                 <div class="card-body">
                     <div class="container-fluid py-2">
-                        {!! Form::open(['route' => 'alunos.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+
+                        {!! Form::model($alunos, ['method' => 'PATCH', 'enctype' => 'multipart/form-data', 'route' => ['alunos.update', $aluno->id]] ) !!} 
+
+                        {{-- {!! Form::open(['route' => 'alunos.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!} --}}
 
                         <div class="row mt-3">
                             <div class="col-lg-3">
@@ -38,7 +41,10 @@
                                                         alt="product_image" width="200px">   --}}
                                                     <h5 class="font-weight-bolder text-center">Foto</h5>
 
-                                                    <input type="file" name="image" id="image" class="form-control">
+                                                    <img src="{{ asset('/images/usuarios/') }}/{{ $aluno->image }}"
+                                                    class="avatar avatar-xl position-relative" alt="avatar image">
+
+                                            <input type="file" name="image" id="image" class="form-control">
 
                                                 </div>
 
@@ -63,26 +69,26 @@
                                         <div class="row">
                                             <div class="col-6 ">
                                                 <label  class="mt-3" >Nome Completo</label>
-                                                {!! Form::text('Nome_Completo', null, ['class' => 'form-control']) !!}
+                                                {!! Form::text('Nome_Completo', $aluno->Nome_Completo, ['class' => 'form-control']) !!}
                                             </div>
                                             <div class="col-6 col-sm-4 mt-3 mt-sm-0">
                                                 <label  class="mt-3">E-mail</label>
-                                                {!! Form::text('Email', null, ['class' => 'form-control valid']) !!}
+                                                {!! Form::text('Email',  $aluno->Email, ['class' => 'form-control valid']) !!}
                                             </div>
                                             <div class="col-2 col-sm-4 mt-3 mt-sm-0">
                                                 <label  class="mt-3">CPF</label>
-                                                {!! Form::text('CPF', null, ['class' => 'form-control']) !!}
+                                                {!! Form::text('CPF',  $aluno->CPF, ['class' => 'form-control']) !!}
                                             </div>
                                             <div class="col-2 col-sm-4 mt-3 mt-sm-0">
                                                 <label  class="mt-3" >RG</label>
-                                                {!! Form::text('RG', null, ['class' => 'form-control']) !!}
+                                                {!! Form::text('RG',  $aluno->RG, ['class' => 'form-control']) !!}
                                             </div>
                                             <div class="col-2 col-sm-4 mt-3 mt-sm-0">
                                                 <label  class="mt-3">Sexo</label>
                                                 <select name="Sexo" id="Sexo" class="form-select">
-                                                    <option value="">Não desclarado</option>
-                                                    <option value="Masculino">Masculino</option>
-                                                    <option value="Feminino">Feminino</option>
+                                                    <option value="" {{ $aluno->Sexo == '' ? 'selected' : '' }}>Não declarado</option>
+                                                    <option value="Masculino" {{ $aluno->Sexo == 'Masculino' ? 'selected' : '' }}>Masculino</option>
+                                                    <option value="Feminino" {{ $aluno->Sexo == 'Feminino' ? 'selected' : '' }}>Feminino</option>
                                                 </select>
                                             </div>
 
@@ -91,19 +97,19 @@
 
                                             <div class="col-3">
                                                 <label class="mt-4">Data de Nascimento</label>
-                                                {!! Form::date('Data_Nascimento', null, ['class' => 'form-control']) !!}
+                                                {!! Form::date('Data_Nascimento', $aluno->Data_Nascimento, ['class' => 'form-control']) !!}
                                             </div>
                                             <div class="col-3">
                                                 <label class="mt-4">Telefone</label>
-                                                {!! Form::text('Telefone', null, ['class' => 'form-control']) !!}
+                                                {!! Form::text('Telefone',  $aluno->Telefone, ['class' => 'form-control']) !!}
                                             </div>
                                             <div class="col-sm-3">
                                                 <label class="mt-4">Profissão</label>
-                                                {!! Form::text('Profissao', null, ['class' => 'form-control']) !!}
+                                                {!! Form::text('Profissao',  $aluno->Profissao, ['class' => 'form-control']) !!}
                                             </div>
                                             <div class="col-sm-3">
                                                 <label class="mt-4">Empresa</label>
-                                                {!! Form::text('Empresa', null, ['class' => 'form-control']) !!}
+                                                {!! Form::text('Empresa',  $aluno->Empresa, ['class' => 'form-control']) !!}
                                             </div>
                                         </div>
                 
@@ -119,7 +125,7 @@
                                         {{-- <img class="w-30 border-radius-lg shadow-lg mt-0" src="https://img.freepik.com/vetores-premium/modelo-de-logotipo-de-icone-de-academia-com-barra-haltere-design-de-logotipo-de-fitness_757387-345.jpg?w=2000"
                                         alt="product_image" width="200px">   --}}
                                         <h5 class="font-weight-bolder">Modalidades</h5>
-                                        @foreach ($modalidades as $modalidade)
+                                        {{-- @foreach ($modalidades as $modalidade)
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="modalidade_id[]"
                                                     id="modalidade_{{ $modalidade->id }}" value="{{ $modalidade->id }}">
@@ -127,7 +133,7 @@
                                                     {{ $modalidade->Nome_Modalidade }}
                                                 </label>
                                             </div>
-                                        @endforeach
+                                        @endforeach --}}
                                     </div>
                                     <div class="card-body">
                                         {{-- <img class="w-30 border-radius-lg shadow-lg mt-0" src="https://img.freepik.com/vetores-premium/modelo-de-logotipo-de-icone-de-academia-com-barra-haltere-design-de-logotipo-de-fitness_757387-345.jpg?w=2000"
