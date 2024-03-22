@@ -13,7 +13,7 @@ use App\Http\Controllers\
     PessoaController, Ficha_Conselho, CalendarController,
     ObjetosController, SaldoController, SiteController, PedidosController, 
     
-    VendaController, AlunosController, ModalidadesController
+    VendaController, AlunosController, ModalidadesController, PlanosController
 };
 
  Route::get('/escola/teste',      [PessoaController::class, 'index']);
@@ -72,6 +72,7 @@ Route::get('/API/responsavel/',[APIController::class, 'responsavel']);
 
 
 
+
 ////// PAINEL GERENCIAL (DASHBOARD)
 Route::get('/painel', [PainelGerencialController::class, 'dashboard']);
 
@@ -93,7 +94,8 @@ Route::get('/venda/invoice/{id}',    [VendaController::class, 'invoice']);
 
 // ALUNOS
 Route::resource('alunos', AlunosController::class);
-Route::patch('/alunos/{aluno}', [AlunosController::class, 'update'])->name('alunos.update');
+
+// Route::patch('/alunos/{alunos}', [AlunosController::class, 'update'])->name('alunos.update');
 Route::post('/alunos/matricula', [AlunosController::class, 'matricula'])->name('alunos.matricula');
 
 
@@ -101,6 +103,26 @@ Route::post('/alunos/matricula', [AlunosController::class, 'matricula'])->name('
 
 // Modalidades
 Route::resource('modalidades', ModalidadesController::class);
+
+// PLANOS
+Route::resource('planos', PlanosController::class);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Route::get('/painel/index', [PainelGerencialController::class, 'index']);

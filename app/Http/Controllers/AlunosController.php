@@ -14,18 +14,29 @@ class AlunosController extends Controller
 
     public function index(Request $request)
     {
-        $plano = Planos::all();
-        $matricula = Matricula::all();
+        // Obter os últimos 5 alunos ordenados por data de criação
+        // $alunos = Alunos::with('matriculas.planos')
+        //                ->orderBy('created_at', 'desc')
+        //                ->take(5)
+        //                ->get();
+     //   $alunos = Alunos::orderBy('created_at', 'desc')->take(5)->get();
+        $alunos = Alunos::get();
 
-        $alunos = Alunos::orderBy('created_at', 'desc')->take(5)->get();
-
+        // Obter todas as modalidades
         $modalidades = modalidades::all();
-        // COUNT {
+    
+        // Obter a contagem de modalidades
         $qtdmodalidades = modalidades::count();
-        $qtdalunos = Alunos::where('Perfil', 'Aluno')->count();
-        $qtdprofessor = Alunos::where('Perfil', 'Professor')->count();
-        $qtdfunc = Alunos::where('Perfil', 'Funcionario')->count();
-        // }
+    
+        // Obter a contagem de alunos por perfil
+        $qtdalunos = Alunos::where('perfil', 'Aluno')->count();
+        $qtdprofessor = Alunos::where('perfil', 'Professor')->count();
+        $qtdfunc = Alunos::where('perfil', 'Funcionario')->count();
+    
+        // Obter todas as matrículas e planos
+        $matricula = Matricula::all();
+        $plano = Planos::all();
+    
         return view('paginas.conteudo.alunos.index', compact(
             'alunos',
             'modalidades',
@@ -34,11 +45,10 @@ class AlunosController extends Controller
             'qtdfunc',
             'qtdmodalidades',
             'matricula',
-            'plano'
-
+            'plano',
         ));
     }
-
+    
     public function buscarAlunos(Request $request)
     {
         $termoAluno = $request->termoAluno;
@@ -87,9 +97,26 @@ class AlunosController extends Controller
         return back()->with('success', 'Aluno adicionado com sucesso!');
     }
 
-    public function update(Request $request, Alunos $alunos)
+    public function update(Request $request, Alunos $aluno)
     {
-        $alunos->update($request->all());
+        
+        $aluno->update($request->all());
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+
+            $request->image->move(public_path('images/usuarios'), $imageName);
+
+            $aluno->image = $imageName;
+        }
+      //  $alunos->save();
+
+     //   dd($alunos); // Verifique os dados recebidos do formulário
         // $alunos->update();
 
         return back()->with('edit', 'Aluno atualizado com sucesso!');

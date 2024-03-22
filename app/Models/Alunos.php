@@ -54,7 +54,7 @@ class Alunos extends Model
 
        public function matriculas()
        {
-           return $this->hasMany(Matricula::class);
+        return $this->hasMany(Matricula::class, 'alunos_id');
        }
    
 

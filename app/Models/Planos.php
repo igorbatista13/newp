@@ -14,13 +14,13 @@ class planos extends Model
     ];
 
 
-    public function aluno()
-    {
-        return $this->belongsTo(Alunos::class);
-    }
+    // public function alunos()
+    // {
+    //     return $this->belongsTo(Alunos::class);
+    // }
 
     public function matriculas()
     {
-        return $this->hasMany(Matricula::class);
+        return $this->hasMany(Matricula::class, 'planos_id');
     }
 }

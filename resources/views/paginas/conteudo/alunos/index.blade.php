@@ -6,7 +6,7 @@
 @include('paginas.conteudo.alunos.menu_alunos')
 
 
-<div class="container-fluid py-4">
+<div class="container-fluid py-0">
     <div class="row">
         <div class="col-xl-8">
 
@@ -38,20 +38,15 @@
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Nome</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            E-mail</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Sexo</th>
+                                      
+                                          
 
                                         <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Perfil</th>
-                                        <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Modalidade</th>
-                                        <th> </th>
+                                            </th>
+
+                                        <th> Plano </th>
+                                        <th>  </th>
 
 
                                     </tr>
@@ -68,36 +63,15 @@
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
                                                         <h6 class="mb-0 text-sm">{{ $aluno->Nome_Completo }}</h6>
+                                                        <p class="text-sm text-secondary mb-0">{{ $aluno->Email }}</p>
+                                                        <span
+                                                        class="badge bg-warning me-0">{{ $aluno->Perfil !== null ? $aluno->Perfil : 'Não informado' }}</span>
+
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <span class="badge badge-dot me-4">
-                                                    <i class="bg-info"></i>
-                                                    <span class="text-dark text-xs">{{ $aluno->Email }}</span>
-                                                </span>
-                                                <p class="text-sm text-secondary mb-0">{{ $aluno->Email }}</p>
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-dot me-4">
-                                                    <i class="bg-info"></i>
-
-                                                    <span class="text-dark text-xs">{{ $aluno->Sexo }}
-
-                                                    </span>
-                                                </span>
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-dot me-4">
-                                                    <i class="bg-info"></i>
-                                                    <span
-                                                        class="badge bg-warning me-0">{{ $aluno->Perfil !== null ? $aluno->Perfil : 'Não informado' }}</span>
-
-                                                    <span class="text-dark text-xs">
-
-                                                    </span>
-                                                </span>
-                                            </td>
+                                 
+                             
                                             <td class="align-middle text-center text-sm">
                                                 @if (!empty($aluno->modalidade_id))
                                                     @php
@@ -124,26 +98,33 @@
 
                         </div>
                         </td>
+                        <td>                                @foreach ($aluno->matriculas as $matricula)
+
+                            {{-- @foreach ($aluno->matriculas as $matricula) --}}
+                            {{-- <b> Matrícula: </b> {{ $aluno->matriculas->id }} --}}
+                            <b> {{$matricula->id }}  - {{ $matricula->planos->Nome_Plano }} </b>
+                            @endforeach
+
+                            {{-- <p class="text-sm text-secondary mb-0">{{ $aluno->modalidade->Nome_Modalidade }}</p> --}}
+                        </td>
                         <td>
                             @include('/paginas/conteudo/alunos/modal/edit')
+                            {{-- @include('/paginas/conteudo/planos/modal/edit') --}}
                         </td>
-
                         </tr>
                         </tbody>
-                        @endforeach
+                        @endforeach 
+
                         </table>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
+
+
     <div class="col-xl-4 mt-xl-0 mt-4">
-
-
-
-        <div class="container-fluid py-4">
+        <div class="container-fluid py-0">
             <div class="row">
                 <div class="col-lg-5 col-md-6 col-12">
                     <div class="card overflow-hidden shadow-lg"
@@ -366,10 +347,8 @@
         </div>
     </div>
 </div> --}}
-<hr class="horizontal dark my-4">
-@foreach ($matricula as $matriculas)
-    {{ $matriculas }}
-@endforeach
+{{-- <hr class="horizontal dark my-4"> --}}
+
 
 {{-- Incluir a parte inferior de blocos --}}
 @include('paginas.conteudo.alunos.blocos')

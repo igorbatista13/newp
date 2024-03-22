@@ -14,13 +14,13 @@ class Matricula extends Model
     ];
 
 
-    public function aluno()
+    public function alunos()
     {
-        return $this->belongsTo(Alunos::class);
+        return $this->belongsTo(Alunos::class, 'alunos_id');
     }
 
-    public function plano()
+    public function planos()
     {
-        return $this->belongsTo(Planos::class);
+        return $this->belongsTo(Planos::class, 'planos_id');
     }
 }

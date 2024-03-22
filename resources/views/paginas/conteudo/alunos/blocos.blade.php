@@ -1,5 +1,60 @@
+<div class="container-fluid py-4">
+    <div class="row">
 
-<div class="row">
+    <div class="col-lg-2 col-sm-6 mt-lg-0 mt-4">
+        <div class="card overflow-hidden shadow-lg"
+            style="background-image: url('https://avatars.mds.yandex.net/i?id=e024e60e00f85109fd3dd228efff483b77001104-10088009-images-thumbs&ref=rim&n=33&w=357&h=200');
+        background-size: cover;">
+
+            <div class="card-body">
+                <div class="d-flex mb-0">
+                    <p class="mb-0 text-white"></p>
+                    <div class="form-check form-switch ms-auto">
+                        <button class="btn btn-icon btn-dark ms-2 export" data-bs-toggle="modal"
+                            data-bs-target="#CreateAlunos" type="button">
+                            <span class="btn-inner--text"> Matrículas </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h1 class="text-gradient text-primary">
+                        <span class="text-lg ms-n2"> </span>
+                    </h1>
+                    {{-- <h6 class="mb-0 font-weight-bolder">Vendas</h6> --}}
+                    <p class="mt-2 mb-0 font-weight-bold text-white">Matrículas</p>
+                    <p class="opacity-8 mb-0 text-sm"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-sm-6 mt-lg-0 mt-4">
+        <div class="card overflow-hidden shadow-lg"
+            style="background-image: url('https://avatars.mds.yandex.net/i?id=e024e60e00f85109fd3dd228efff483b77001104-10088009-images-thumbs&ref=rim&n=33&w=357&h=200');
+        background-size: cover;">
+
+            <div class="card-body">
+                <div class="d-flex mb-0">
+                    <p class="mb-0 text-white"></p>
+                    <div class="form-check form-switch ms-auto">
+                        <button class="btn btn-icon btn-dark ms-2 export" data-bs-toggle="modal"
+                            data-bs-target="#CreateAlunos" type="button">
+                            <span class="btn-inner--text"> Planos </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h1 class="text-gradient text-primary">
+                        <span class="text-lg ms-n2"> </span>
+                    </h1>
+                    {{-- <h6 class="mb-0 font-weight-bolder">Vendas</h6> --}}
+                    <p class="mt-2 mb-0 font-weight-bold text-white">Planos</p>
+                    <p class="opacity-8 mb-0 text-sm"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="col-lg-2 col-sm-6">
         <div class="card overflow-hidden shadow-lg"
             style="background-image: url('https://avatars.mds.yandex.net/i?id=198066ca5cf6c72cc9a92cbf2bc106bb587b030f-7025550-images-thumbs&n=13');
@@ -105,7 +160,10 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-2 col-sm-6 mt-lg-0 mt-4">
+</div>
+
+<div class="row">
+    <div class="col-lg-2 col-sm-6 mt-lg-4 mt-4">
         <div class="card overflow-hidden shadow-lg"
             style="background-image: url('https://avatars.mds.yandex.net/i?id=e024e60e00f85109fd3dd228efff483b77001104-10088009-images-thumbs&ref=rim&n=33&w=357&h=200');
         background-size: cover;">
@@ -131,6 +189,8 @@
             </div>
         </div>
     </div>
+
+    
     {{-- <div class="col-lg-2 col-sm-6 mt-lg-0 mt-4">
         <div class="card bg-default h-100">
             <div class="card-body">
@@ -161,8 +221,8 @@
                 <span class="text-xs text-white">Active</span>
             </div>
         </div>
-    </div> --}}
-    {{-- <div class="col-lg-2 col-sm-6 mt-sm-0 mt-4">
+    </div> 
+   <div class="col-lg-2 col-sm-6 mt-sm-0 mt-4">
         <div class="card h-100">
             <div class="card-body d-flex flex-column justify-content-center text-center">
                 <a href="javascript:;">
@@ -171,5 +231,5 @@
                 </a>
             </div>
         </div>
-    </div> --}}
+    </div>  --}}
 </div>

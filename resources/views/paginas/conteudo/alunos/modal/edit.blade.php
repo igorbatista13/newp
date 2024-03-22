@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <div class="container-fluid py-2">
 
-                        {!! Form::model($alunos, ['method' => 'PATCH', 'enctype' => 'multipart/form-data', 'route' => ['alunos.update', $aluno->id]] ) !!} 
+                        {!! Form::model($alunos, ['method' => 'PATCH', 'enctype' => 'multipart/form-data', 'route' => ['alunos.update', $aluno->id]] ) !!}
 
                         {{-- {!! Form::open(['route' => 'alunos.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!} --}}
 
