@@ -10,7 +10,10 @@ class planos extends Model
     use HasFactory;
     protected $table = 'planos';
     protected $fillable = [
-        'Nome_Plano', 'Status', 'image'
+        'Nome_Plano', 'Status', 
+        'image', 'Preco', 'Obs',
+        'Beneficos', 'Vigencia',
+       // 'Beneficios'
     ];
 
 

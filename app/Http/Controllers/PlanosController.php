@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Alunos;
+
 use App\Models\Planos;
 
 
@@ -8,9 +11,19 @@ use Illuminate\Http\Request;
 
 class PlanosController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $titulo = 'Planos';
+        $alunos = Alunos::get();
+
+
+        $plano = Planos::orderBy('id', 'DESC')->paginate(20);
+        return view('paginas.conteudo.planos.index', compact(
+            'plano',
+            'titulo',
+            'alunos',
+        ))
+            ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -33,7 +46,7 @@ class PlanosController extends Controller
     {
         $plano = new Planos();
         $plano = Planos::create($request->all());
-        
+
         //   dd($matricula);
         $plano->save();
         return back()->with('success', 'Novo Plano criado com sucesso!');

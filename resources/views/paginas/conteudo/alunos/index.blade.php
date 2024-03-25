@@ -9,11 +9,7 @@
 <div class="container-fluid py-0">
     <div class="row">
         <div class="col-xl-8">
-
-
-
             <div class="row my-4">
-
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body p-3">
@@ -38,15 +34,12 @@
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Nome</th>
-                                      
-                                          
-
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            </th>
+                                        </th>
 
                                         <th> Plano </th>
-                                        <th>  </th>
+                                        <th> </th>
 
 
                                     </tr>
@@ -65,13 +58,13 @@
                                                         <h6 class="mb-0 text-sm">{{ $aluno->Nome_Completo }}</h6>
                                                         <p class="text-sm text-secondary mb-0">{{ $aluno->Email }}</p>
                                                         <span
-                                                        class="badge bg-warning me-0">{{ $aluno->Perfil !== null ? $aluno->Perfil : 'Não informado' }}</span>
+                                                            class="badge bg-warning me-0">{{ $aluno->Perfil !== null ? $aluno->Perfil : 'Não informado' }}</span>
 
                                                     </div>
                                                 </div>
                                             </td>
-                                 
-                             
+
+
                                             <td class="align-middle text-center text-sm">
                                                 @if (!empty($aluno->modalidade_id))
                                                     @php
@@ -98,11 +91,11 @@
 
                         </div>
                         </td>
-                        <td>                                @foreach ($aluno->matriculas as $matricula)
-
-                            {{-- @foreach ($aluno->matriculas as $matricula) --}}
-                            {{-- <b> Matrícula: </b> {{ $aluno->matriculas->id }} --}}
-                            <b> {{$matricula->id }}  - {{ $matricula->planos->Nome_Plano }} </b>
+                        <td>
+                            @foreach ($aluno->matriculas as $matricula)
+                                {{-- @foreach ($aluno->matriculas as $matricula) --}}
+                                {{-- <b> Matrícula: </b> {{ $aluno->matriculas->id }} --}}
+                                <b> {{ $matricula->id }} - {{ $matricula->planos->Nome_Plano }} </b>
                             @endforeach
 
                             {{-- <p class="text-sm text-secondary mb-0">{{ $aluno->modalidade->Nome_Modalidade }}</p> --}}
@@ -113,7 +106,7 @@
                         </td>
                         </tr>
                         </tbody>
-                        @endforeach 
+                        @endforeach
 
                         </table>
                     </div>

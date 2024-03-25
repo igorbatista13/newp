@@ -13,19 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-    Schema::create('matriculas', function (Blueprint $table) {
-        $table->id();
-        $table->unsignedInteger('alunos_id');
-        $table->foreign('alunos_id')->references('id')->on('alunos')->onDelete('cascade');
-           
-        $table->unsignedInteger('planos_id');
-        $table->foreign('planos_id')->references('id')->on('planos')->onDelete('cascade');
-           
-        $table->timestamps();
+        Schema::create('matriculas', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedInteger('alunos_id')->nullable();
+            $table->unsignedInteger('planos_id');
+            $table->foreign('planos_id')->references('id')->on('planos')->onDelete('cascade');
     
-    });
-
-}
+            // Definindo a chave estrangeira com opção ON UPDATE CASCADE
+            $table->foreign('alunos_id')->references('id')->on('alunos')
+                ->onUpdate('cascade')->onDelete('cascade');
+            
+            $table->timestamps();
+        });
+    }
     /**
      * Reverse the migrations.
      *

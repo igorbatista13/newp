@@ -14,13 +14,17 @@ class AlunosController extends Controller
 
     public function index(Request $request)
     {
-        // Obter os últimos 5 alunos ordenados por data de criação
-        // $alunos = Alunos::with('matriculas.planos')
-        //                ->orderBy('created_at', 'desc')
-        //                ->take(5)
-        //                ->get();
-     //   $alunos = Alunos::orderBy('created_at', 'desc')->take(5)->get();
+        $alunos = Alunos::orderBy('created_at', 'desc')->take(5)->get();
         $alunos = Alunos::get();
+        $badgeClasses = [
+            'bg-primary',
+            'bg-secondary',
+            'bg-info',
+            'bg-success',
+            'bg-warning',
+            'bg-danger',
+            // Adicione mais cores se necessário
+        ];
 
         // Obter todas as modalidades
         $modalidades = modalidades::all();
@@ -35,7 +39,7 @@ class AlunosController extends Controller
     
         // Obter todas as matrículas e planos
         $matricula = Matricula::all();
-        $plano = Planos::all();
+        $plano = Planos::where('Status', 'Ativo')->get();
     
         return view('paginas.conteudo.alunos.index', compact(
             'alunos',
@@ -46,6 +50,7 @@ class AlunosController extends Controller
             'qtdmodalidades',
             'matricula',
             'plano',
+            'badgeClasses'
         ));
     }
     
@@ -58,15 +63,22 @@ class AlunosController extends Controller
 
     public function matricula(Request $request)
     {
-        $matricula = new Matricula();
-        // $matricula = Matricula::create($request->all());
-  // Atribua os valores aos campos
-  $matricula->alunos_id = $request->alunos_id;
-  $matricula->planos_id = $request->planos_id;
+        // Verificar se já existe uma matrícula para o aluno especificado
+        $matriculaExistente = Matricula::where('alunos_id', $request->alunos_id)->first();
 
-    //    dd($matricula);
-        $matricula->save();
-        return back()->with('success', 'Aluno Matriculado com sucesso!');
+        if ($matriculaExistente) {
+            // Se já existe uma matrícula, atualize o plano associado a ela
+            $matriculaExistente->planos_id = $request->planos_id;
+            $matriculaExistente->save();
+            return back()->with('success', 'Matrícula atualizada com sucesso!');
+        } else {
+            // Se não existe uma matrícula, crie um novo registro
+            $matricula = new Matricula();
+            $matricula->alunos_id = $request->alunos_id;
+            $matricula->planos_id = $request->planos_id;
+            $matricula->save();
+            return back()->with('success', 'Aluno Matriculado com sucesso!');
+        }
     }
 
     public function store(Request $request)

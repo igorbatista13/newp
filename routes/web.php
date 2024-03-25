@@ -13,7 +13,7 @@ use App\Http\Controllers\
     PessoaController, Ficha_Conselho, CalendarController,
     ObjetosController, SaldoController, SiteController, PedidosController, 
     
-    VendaController, AlunosController, ModalidadesController, PlanosController
+    VendaController, AlunosController, MatriculaController, ModalidadesController, PlanosController
 };
 
  Route::get('/escola/teste',      [PessoaController::class, 'index']);
@@ -100,6 +100,7 @@ Route::post('/alunos/matricula', [AlunosController::class, 'matricula'])->name('
 
 
 // MATRICULAS
+Route::resource('matriculas', MatriculaController::class);
 
 // Modalidades
 Route::resource('modalidades', ModalidadesController::class);

@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Matricula;
+use App\Models\Alunos;
 
 use Illuminate\Http\Request;
 
@@ -12,9 +14,19 @@ class MatriculaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $titulo = 'Matrículas';
+        $alunos = Alunos::get();
+
+
+        $data = Matricula::orderBy('id', 'DESC')->paginate(20);
+        return view('paginas.conteudo.matriculas.index', compact(
+            'data',
+            'titulo',
+            'alunos',
+        ))
+            ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -37,7 +49,7 @@ class MatriculaController extends Controller
     {
         $matricula = new Matricula();
         $matricula = Matricula::create($request->all());
-        
+
         //   dd($matricula);
         $matricula->save();
         return back()->with('success', 'Aluno Matriculado com sucesso!');

@@ -21,7 +21,13 @@ return new class extends Migration
         //    $table->json('modalidade_id')->nullable();
     
             $table->string('Nome_Plano')->nullable();
+            $table->string('Preco')->nullable();
+            $table->string('Obs')->nullable();
             $table->string('Status')->nullable();
+            $table->String('Beneficos')->nullable();
+            $table->String('Vigencia')->nullable(); 
+            // Mensal, Trimestral, Semestral, Anual
+            // 
             $table->string('image')->nullable();
         
             $table->timestamps();

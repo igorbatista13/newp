@@ -39,62 +39,49 @@
 
                                                     <h5 class="font-weight-bolder">Planos</h5>
                                                     @foreach ($plano as $planos)
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="planos_id" id="plano{{ $planos->id }}" value="{{ $planos->id }}">
-                                                        <label class="form-check-label" for="plano{{ $planos->id }}">
-                                                            {{ $planos->Nome_Plano }}
-                                                        </label>
-                                                    </div>
-                                                @endforeach
-                                                
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio"
+                                                                name="planos_id" id="plano{{ $planos->id }}"
+                                                                value="{{ $planos->id }}">
+                                                            <label class="form-check-label"
+                                                                for="plano{{ $planos->id }}">
+                                                                <span
+                                                                    class="badge {{ $badgeClasses[$loop->index % count($badgeClasses)] }} me-3">{{ $planos->Nome_Plano }}</span>
+                                                            </label>
+                                                        </div>
+                                                    @endforeach
                                                 </div>
-
                                             </div>
-
                                             <div class="col-lg-12 mt-5">
-
-
-
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="col-lg-9 mt-lg-0 mt-4">
                                 <div class="card">
                                     <div class="card-body">
 
-                                        <h5 class="font-weight-bolder">Informação </h5>
+                                        <h5 class="font-weight-bolder">Nome do Aluno </h5>
                                         <div class="row">
                                             <div class="card-body">
                                                 <input type="hidden" id="alunoId" name="alunos_id" value="">
-                                                
-                                                <input type="text" id="termoAluno" class="form-control" placeholder="Digite o nome">
+
+                                                <input type="text" id="termoAluno" class="form-control"
+                                                    placeholder="Digite o nome">
                                                 <div id="resultado"></div>
-
-
                                             </div>
-
-                                     
-                                
-                                            
-                                            </div>
-
                                         </div>
-                                        
-                
                                     </div>
+                                    <button type="submit" class="btn btn-primary">Salvar</button>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Salvar</button>
                             </div>
                         </div>
-                    </form>
                     </div>
-
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
