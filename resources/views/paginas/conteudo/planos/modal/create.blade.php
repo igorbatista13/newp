@@ -44,6 +44,7 @@
                                                                     <span class="badge {{ $badgeClasses[$key % count($badgeClasses)] }} me-3">{{ $planos->id }}</span>
                                                                     <div class="d-flex flex-column justify-content-center">
                                                                         <h6 class="mb-0 text-sm">{{ $planos->Nome_Plano }}</h6>
+                                                                        <small class=" text-sm">{{ $planos->Vigencia }}</small>
                                                                     </div>
                                                                 </div>
                                                             </td>

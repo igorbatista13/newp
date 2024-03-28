@@ -77,8 +77,13 @@ Route::get('/API/responsavel/',[APIController::class, 'responsavel']);
 Route::get('/painel', [PainelGerencialController::class, 'dashboard']);
 
 
-// N O V O ---  PDV
-Route::get('/vendas', [VendaController::class, 'index']);
+// N O V O
+
+//VENDAS
+// Route::get('/vendas', [VendaController::class, 'index']);
+
+Route::resource('vendas', VendaController::class);
+ Route::get('/venda/invoice/{id}',    [VendaController::class, 'invoice']);
 
 Route::get('/buscar', [ProdutoController::class, 'buscar'])->name('buscar');
 Route::get('/buscar-alunos', [AlunosController::class, 'buscarAlunos'])->name('buscarAlunos');
@@ -88,16 +93,16 @@ Route::post('/adicionar-carrinho', 'ProdutoController@adicionarCarrinho')->name(
 Route::post('/finalizar-compra', 'ProdutoController@finalizarCompra')->name('finalizarCompra');
 
 
-//VENDA
-Route::post('/venda-finalizar', [VendaController::class, 'finalizarCompra']);
-Route::get('/venda/invoice/{id}',    [VendaController::class, 'invoice']);
+// //VENDA
+// Route::post('/venda-finalizar', [VendaController::class, 'finalizarCompra']);
 
 // ALUNOS
 Route::resource('alunos', AlunosController::class);
-
-// Route::patch('/alunos/{alunos}', [AlunosController::class, 'update'])->name('alunos.update');
-Route::post('/alunos/matricula', [AlunosController::class, 'matricula'])->name('alunos.matricula');
-
+    // Professores
+    Route::get('/professores', [AlunosController::class, 'professores'])->name('professores');
+    // Matrícula 
+    Route::post('/alunos/matricula', [AlunosController::class, 'matricula'])->name('alunos.matricula');
+  
 
 // MATRICULAS
 Route::resource('matriculas', MatriculaController::class);

@@ -81,6 +81,16 @@ class AlunosController extends Controller
         }
     }
 
+public function professores(){
+
+    $professor = Alunos::where('Perfil', 'Professor')->get();
+    return view('paginas.conteudo.professor.index', compact(
+        'professor',
+   
+        ));
+
+}
+
     public function store(Request $request)
     {
         //    $modalidadeIds = $request->input('modalidade_id');

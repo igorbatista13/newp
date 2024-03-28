@@ -63,8 +63,6 @@
                                                     </div>
                                                 </div>
                                             </td>
-
-
                                             <td class="align-middle text-center text-sm">
                                                 @if (!empty($aluno->modalidade_id))
                                                     @php
@@ -89,16 +87,15 @@
                                                     @endif
                                                 @endif
 
+                                            </td>
                         </div>
-                        </td>
                         <td>
                             @foreach ($aluno->matriculas as $matricula)
                                 {{-- @foreach ($aluno->matriculas as $matricula) --}}
                                 {{-- <b> Matrícula: </b> {{ $aluno->matriculas->id }} --}}
-                                <b> {{ $matricula->id }} - {{ $matricula->planos->Nome_Plano }} </b>
+                                <span
+                                    class="badge {{ $badgeClasses[$loop->index % count($badgeClasses)] }} me-3">{{ $matricula->planos->Nome_Plano }}</span>
                             @endforeach
-
-                            {{-- <p class="text-sm text-secondary mb-0">{{ $aluno->modalidade->Nome_Modalidade }}</p> --}}
                         </td>
                         <td>
                             @include('/paginas/conteudo/alunos/modal/edit')
@@ -107,7 +104,6 @@
                         </tr>
                         </tbody>
                         @endforeach
-
                         </table>
                     </div>
                 </div>

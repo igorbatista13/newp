@@ -383,26 +383,21 @@
             });
             $('#total').html('<p>Total: R$ ' + total.toFixed(2) + '</p>');
         }
-        
-        
-        $('#finalizarCompra').click(function(produto) {
-            var preco = parseFloat($(this).find('.preco').text().replace('+ R$ ', '').trim());
 
-            var nomeCliente = $('#Nome_Cliente')
-        .val(); // Recuperar o nome do cliente do campo de entrada
-            
-        var total = parseFloat($('#total').text().replace('Total: R$ ', ''));
-        
-        
+
+        $('#finalizarCompra').click(function() {
+            //  var preco = parseFloat($(this).find('.preco').text().replace('+ R$ ', '').trim());
 
             // Abre a modal para selecionar o tipo de pagamento
             $('#modalPagamento').modal('show');
+
             // Preenche os campos do formulário de pagamento com as informações recuperadas
-            $('#nomeCliente').val(nomeCliente);
+            var nomeCliente = $('#Nome_Cliente')
+        .val(); // Recuperar o nome do cliente do campo de entrada
             // Atualize aqui com os campos adicionais, se houver
 
-
-
+            // Atualize os campos do formulário
+            $('#Nome_Cliente').val(nomeCliente);
         });
 
         $('#carrinho li').each(function() {
@@ -417,36 +412,41 @@
         // Função para lidar com o envio do formulário de pagamento
         $('#formPagamento').submit(function(event) {
             event.preventDefault(); // Impede o envio padrão do formulário
+
             // Obter os dados do formulário
             var formData = $(this).serialize();
-            var quantidades = $('#quantidades').val();
-            var produtos = $('#produtos').val();
+            var produtosSelecionados = $('#produtosSelecionados')
+                .val(); // Recuperar os produtos selecionados
+
             // Adicionar os valores dos campos hidden aos dados do formulário
-            formData += '&quantidades=' + quantidades + '&produtos=' + produtos;
+            formData += '&produtosSelecionados=' + produtosSelecionados;
 
             // Realizar a requisição AJAX para a rota de vendas
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '/venda-finalizar',
+                url: '/vendas/store',
                 method: 'POST',
                 data: formData, // Envie os dados do formulário
 
                 success: function(response) {
                     // Sucesso - fazer algo, como redirecionar para uma página de confirmação
-                    window.location.href = '/vendas';
+                    console.log('Venda realizada com sucesso:', response);
+                    window.location.href =
+                        '/vendas'; // Redirecionar para a página de vendas
                 },
                 error: function(xhr, status, error) {
                     // Tratar erro
-                    console.error('ERRO AO ENVIAR-->>:', error);
+                    console.error('Erro ao enviar formulário de pagamento:', error);
                 }
             });
-            // console.log(formData);
         });
 
     });
 </script>
+
+
 <script>
     $(document).ready(function() {
         $('#termoAluno').on('input', function() {
@@ -490,7 +490,8 @@
                         resultadoHtml += '<div class="col-lg-12 col-md-6 mb-4 mb-lg-0">';
                         resultadoHtml += '<div class="card h-100 ">';
                         resultadoHtml += '<div class="card-header">';
-                        resultadoHtml += '<h5 class="mb-0 text-capitalize">Alunos encontrado:</h5>';
+                        resultadoHtml +=
+                            '<h5 class="mb-0 text-capitalize">Alunos encontrado:</h5>';
                         resultadoHtml += '<hr>';
                         resultadoHtml += '</div>';
                         resultadoHtml += '<div class="card-body pt-0">';
@@ -498,7 +499,8 @@
                         resultadoHtml += '<li class="list-group-item px-0">';
                         resultadoHtml += '<div class="row align-items-center">';
                         resultadoHtml += '<div class="col-auto d-flex align-items-center">';
-                        resultadoHtml += '<img class="border-radius-lg" width="100px" alt="Image placeholder" src="{{ asset('images/usuarios/') }}/' +
+                        resultadoHtml +=
+                            '<img class="border-radius-lg" width="100px" alt="Image placeholder" src="{{ asset('images/usuarios/') }}/' +
                             aluno.image + '"">';
                         resultadoHtml += '</div>';
                         resultadoHtml += '<div class="col ml-2">';
@@ -537,7 +539,7 @@
             console.log(alunoJson);
             // Aqui você pode adicionar o aluno ao carrinho como desejar
             $('#alunoId').val(aluno.id);
-            
+
 
         }
     });

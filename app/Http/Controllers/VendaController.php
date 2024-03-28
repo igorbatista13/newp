@@ -55,11 +55,11 @@ class VendaController extends Controller
     //     return response()->json(['message' => 'Venda criada com sucesso', 'venda' => $venda], 201);
     // }
 
-    public function atcfinalizarVenda(Request $request)
+    public function astore(Request $request)
 {
     // Validação dos dados do formulário, se necessário
 
-    dd($request);
+ //   dd($request);
     // Crie uma nova instância de Venda e atribua os valores recebidos do formulário
     $venda = new Venda();
     $venda->nome_cliente = $request->Nome_Cliente;
@@ -79,8 +79,9 @@ class VendaController extends Controller
 }
 
 
-    public function finalizarCompra(Request $request)
+    public function store(Request $request)
     {
+        dd($request);
         try {
             // Código que pode gerar exceções
             $venda = Venda::create($request->all());

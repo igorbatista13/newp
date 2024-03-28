@@ -1,6 +1,7 @@
 @include('paginas.base.topo.topo')
 
 {{--      --}}
+{!! Form::open(['route' => 'vendas.store', 'method' => 'POST']) !!}
 
 <div class="card shadow-lg mx-3 card-profile ">
     <div class="card-body p-3">
@@ -15,7 +16,8 @@
 
                 <h2>Produtos</h2>
                 <div style="display: flex; align-items: center;">
-                    <img src="https://i.pinimg.com/736x/8a/a5/96/8aa596d474baee6cf6549cd1c979b29b.jpg" width="100px" style="margin-right: -5px;" />
+                    <img src="https://i.pinimg.com/736x/8a/a5/96/8aa596d474baee6cf6549cd1c979b29b.jpg" width="100px"
+                        style="margin-right: -5px;" />
                     <input type="text" id="termo" class="form-control" placeholder="Digite o termo de busca">
                 </div>
                 <div id="resultado"></div>
@@ -53,7 +55,9 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalPagamentoLabel">Selecionar Forma de Pagamento</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+                        </button>
                     </div>
                     <div class="modal-body">
                         <form id="formPagamento">
@@ -62,6 +66,12 @@
                                 <label for="Nome_Cliente" class="form-label">Nome do Cliente</label>
                                 <input type="text" class="form-control" id="Nome_Cliente" name="Nome_Cliente">
 
+                                {{-- <input type="hidden" id="vendas_id" name="vendas_id" value="{{$vendas->id}}"> --}}
+                                <input type="hidden" id="products" name="products[]" value="1">
+                                <input type="hidden" name="quantities[]" id="quantidade" class="form-control"
+                                    value="" />
+
+                                </td>
 
                             </div>
                             <div class="mb-3">
@@ -84,54 +94,59 @@
             </div>
         </div>
 
-        <HR> 
+        <HR>
         <div class="container">
             <div class="row">
-            <div class="card-body">
-          <div class="table-responsive">
-              <table class="table app-table-hover mb-0 text-left">
-                    <thead>
-                        
-        @foreach ($venda as $key => $vendas)
-        <tbody>
-            <tr>
-             
-        <td> <strong>Cliente:</strong> {{ $vendas->Nome_Cliente }}</p> </td>
-        <td> <strong>Forma de Pagamento:</strong> {{ $vendas->Forma_Pagamento }}</p> </td>
-        <td> <strong>Obs.</strong> {{ $vendas->Observacoes }}</p></td>
-        <td>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table app-table-hover mb-0 text-left">
+                            <thead>
 
-            <a href="{{asset('/venda/invoice/')}}/{{$vendas->id}}" button type="button" class="btn btn-outline-secondary" >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
-            <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
-            <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/>
-          </svg>
-            Ver
-            </button> </a>
-           </td>
-    
-        <!-- Outras informações da venda -->
-        @endforeach 
-     
-  
-            {{-- <tr>
-                @foreach($venda->produto as $item)
+                                @foreach ($venda as $key => $vendas)
+                            <tbody>
+                                <tr>
+
+                                    <td> <strong>Cliente:</strong> {{ $vendas->Nome_Cliente }}</p>
+                                    </td>
+                                    <td> <strong>Forma de Pagamento:</strong> {{ $vendas->Forma_Pagamento }}</p>
+                                    </td>
+                                    <td> <strong>Obs.</strong> {{ $vendas->Observacoes }}</p>
+                                    </td>
+                                    <td>
+
+                                        <a href="{{ asset('/venda/invoice/') }}/{{ $vendas->id }}" button
+                                            type="button" class="btn btn-outline-secondary">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
+                                                <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
+                                                <path
+                                                    d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z" />
+                                            </svg>
+                                            Ver
+                                            </button> </a>
+                                    </td>
+
+                                    <!-- Outras informações da venda -->
+                                    @endforeach
+
+
+                                    {{-- <tr>
+                @foreach ($venda->produto as $item)
                 
               </td>
                   <td>{{$item->Nome_Produto}}</td>
                   <td>{{$quantidade = $item->pivot['Quantidade'] }}</td>
                   {{-- <td class="unit">R$ {{$preco= $item['Preco_Produto']}} </td> --}}
-                  {{-- <td> {{"R$ " . number_format($preco= $item['Preco_Produto'], 2, ",", ".")  }} </td>
+                                    {{-- <td> {{"R$ " . number_format($preco= $item['Preco_Produto'], 2, ",", ".")  }} </td>
                   
                   <td> {{"R$ " . number_format($total1 = $preco * (int)$quantidade, 2, ",", ".")  }} <?php $total2 += $total1; ?> </td>
            --}}
-            {{-- </tr> --}}
-            {{-- @endforeach --}} 
-        </tbody>
-    </table>
-        
-        {{-- <strong>Total da Venda:</strong> R$ {{ $venda->total }}</p> --}}
-        
+                                    {{-- </tr> --}}
+                                    {{-- @endforeach --}}
+                            </tbody>
+                        </table>
+
+                        {{-- <strong>Total da Venda:</strong> R$ {{ $venda->total }}</p> --}}
 
 
-        @include('paginas.base.rodape.rodape')
+                        @include('paginas.base.rodape.rodape')
