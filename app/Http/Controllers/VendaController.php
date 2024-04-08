@@ -26,6 +26,32 @@ class VendaController extends Controller
         ));
     }
 
+    public function store(Request $request) {
+        $venda = Venda::create($request->all());
+    
+        $products = $request->input('products', []);
+        $quantities = $request->input('quantities', []);
+    
+        // Iterar sobre os produtos e quantidades
+        foreach ($products as $key => $productId) {
+            if (!empty($productId)) {
+                // Obter a quantidade correspondente para este produto
+                $quantity = isset($quantities[$key]) ? $quantities[$key] : 0;
+        
+                // Anexar o produto ao recibo com quantidade
+                $venda->produtos()->attach($productId, [
+                    'quantidade' => $quantity
+                ]);
+            }
+        }
+        
+    
+        // Salvar o recibo após anexar os produtos
+        $venda->save();
+    
+        return back()->with('success', 'A sua inscrição foi realizada com sucesso!');
+    }
+    
 
     // public function finalizarCompra(Request $request)
     // {
@@ -55,7 +81,7 @@ class VendaController extends Controller
     //     return response()->json(['message' => 'Venda criada com sucesso', 'venda' => $venda], 201);
     // }
 
-    public function astore(Request $request)
+    public function a1store(Request $request)
 {
     // Validação dos dados do formulário, se necessário
 
@@ -79,9 +105,9 @@ class VendaController extends Controller
 }
 
 
-    public function store(Request $request)
+    public function aastore(Request $request)
     {
-        dd($request);
+      //  dd($request);
         try {
             // Código que pode gerar exceções
             $venda = Venda::create($request->all());

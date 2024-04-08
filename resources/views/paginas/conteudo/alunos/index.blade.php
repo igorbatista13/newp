@@ -3,7 +3,9 @@
 @include('paginas.mensagens.mensagem')
 
 {{-- SMENU ALUNOS --}}
+@include('paginas.conteudo.alunos.1_alunos')
 @include('paginas.conteudo.alunos.menu_alunos')
+
 
 
 <div class="container-fluid py-0">

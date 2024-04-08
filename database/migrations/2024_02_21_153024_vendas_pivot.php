@@ -24,7 +24,8 @@ return new class extends Migration
                
             $table->unsignedInteger('produto_id');
             $table->foreign('produto_id')->references('id')->on('produtos')->onDelete('cascade');
-         });
+    
+        });
      }
 
     /**

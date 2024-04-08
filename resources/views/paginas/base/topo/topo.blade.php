@@ -172,9 +172,9 @@
                       <div class="row">
                           <div class="col-8">
                               <div class="numbers">
-                                  <p class="text-sm mb-0 text-uppercase font-weight-bold">Veja o seu Painel</p>
-                                  <h5 class="font-weight-bolder">
-                                      DASHBOARD </h5>
+                                  <p class="text-sm mb-0 text-uppercase font-weight-bold"></p>
+                                  <h6 class="font-weight-bolder">
+                                      PAINEL </h6>
                                   <p class="mb-0">
                                       <span class="text-success text-sm font-weight-bolder"> </span>
                                   </p>
@@ -198,9 +198,9 @@
                             <div class="row">
                                 <div class="col-8">
                                     <div class="numbers">
-                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">VENDAS</p>
-                                        <h5 class="font-weight-bolder">
-                                            VENDAS </h5>
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold"></p>
+                                        <h6 class="font-weight-bolder">
+                                            VENDAS </h6>
                                         <p class="mb-0">
                                             <span class="text-success text-sm font-weight-bolder">VENDAS</span>
                                         </p>
@@ -224,13 +224,13 @@
                             <div class="row">
                                 <div class="col-8">
                                     <div class="numbers">
-                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">PRODUTOS</p>
-                                        <h5 class="font-weight-bolder">
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold"></p>
+                                        <h6 class="font-weight-bolder">
                                             PRODUTOS
                                         </h5>
                                         <p class="mb-0">
                                             <span
-                                                class="text-success text-sm font-weight-bolder"> N° de produtos</span>
+                                                class="text-success text-sm font-weight-bolder"> N° </span>
                                                 {{-- class="text-success text-sm font-weight-bolder">{{ $produto }}</span> --}}
                                         </p>
                                     </div>
@@ -253,9 +253,9 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">PEDIDOS</p>
-                                    <h5 class="font-weight-bolder">
-                                        PEDIDOS </h5>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold"></p>
+                                    <h6 class="font-weight-bolder">
+                                        PEDIDOS </h6>
                                     <p class="mb-0">
                                         <span class="text-success text-sm font-weight-bolder">PEDIDOS</span>
                                     </p>
@@ -279,10 +279,10 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">ALUNOS</p>
-                                    <h5 class="font-weight-bolder">
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold"></p>
+                                    <h6 class="font-weight-bolder">
                                         ALUNOS
-                                    </h5>
+                                    </h6>
                                     <p class="mb-0">
                                         <span class="text-danger text-sm font-weight-bolder">N° de Alunos</span>
                                         {{-- <span class="text-danger text-sm font-weight-bolder">{{ $clientes }}</span> --}}
@@ -307,9 +307,9 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">USUÁRIOS</p>
-                                    <h5 class="font-weight-bolder">
-                                        USUÁRIOS </h5>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold"></p>
+                                    <h6 class="font-weight-bolder">
+                                        USUÁRIOS </h6>
                                     <p class="mb-0">
                                         <span class="text-success text-sm font-weight-bolder">
                                            N° de Clientes</span>

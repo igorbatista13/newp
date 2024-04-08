@@ -12,7 +12,7 @@
                         alt="profile_image" class="w-100 border-radius-lg shadow-sm">
                 </div>
             </div>
-            <div class="col-lg-3 my-auto">
+            <div class="col-lg-4 my-auto">
 
                 <h2>Produtos</h2>
                 <div style="display: flex; align-items: center;">
@@ -29,7 +29,7 @@
                         class="w-100 border-radius-lg shadow-sm">
                 </div>
             </div>
-            <div id="carrinho" class="col-lg-5">
+            <div id="carrinho" class="col-lg-4">
                 <h2>Carrinho</h2>
 
                 <ul id="lista-carrinho" class="list-group"></ul>
@@ -41,7 +41,7 @@
                         class="w-100 border-radius-lg shadow-sm">
                 </div>
                 <div id="total"> Total: R$ </div>
-                <button id="finalizarCompra" class="btn btn-primary mt-3">Finalizar Venda</button>
+                <button id="finalizarVendaBtn" class="btn btn-primary mt-3">Finalizar Venda</button>
             </div>
 
         </div>
@@ -49,7 +49,7 @@
 
 
         <!-- Modal de Pagamento -->
-        <div class="modal fade" id="modalPagamento" tabindex="-1" aria-labelledby="modalPagamentoLabel"
+        <div class="modal fade" id="finalizarVendaBtn" tabindex="-1" aria-labelledby="modalPagamentoLabel"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -67,9 +67,11 @@
                                 <input type="text" class="form-control" id="Nome_Cliente" name="Nome_Cliente">
 
                                 {{-- <input type="hidden" id="vendas_id" name="vendas_id" value="{{$vendas->id}}"> --}}
-                                <input type="hidden" id="products" name="products[]" value="1">
-                                <input type="hidden" name="quantities[]" id="quantidade" class="form-control"
-                                    value="" />
+                                <input type="hidden" id="products" name="products[]" value="">
+                                <input type="hidden" name="quantities[]" id="quantidade" class="quantidade form-control" value="">
+
+
+
 
                                 </td>
 
@@ -148,5 +150,8 @@
 
                         {{-- <strong>Total da Venda:</strong> R$ {{ $venda->total }}</p> --}}
 
-
+                        @include('paginas.conteudo.vendas.scriptcopy')
+          
+          
+          
                         @include('paginas.base.rodape.rodape')
