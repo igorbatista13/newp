@@ -26,9 +26,11 @@ class ProdutoController extends Controller
      */
     public function index()
     {
+
+        
         $titulo = 'Produtos';
         $produtoqtd  = Produto::count();
-
+        $fornecedorqtd = Fornecedor::count();
         //  $produto = Produto::get();
         $produto = Produto::get();
         $fornecedor = Fornecedor::get();
@@ -40,7 +42,7 @@ class ProdutoController extends Controller
         } else {
             $produto = Produto::all();
         }
-        return view('paginas.conteudo.produtos.produtos', compact('venda','produto', 'fornecedor', 'search', 'titulo', 'produtoqtd'));
+        return view('paginas.conteudo.produtos.produtos', compact('fornecedorqtd','venda','produto', 'fornecedor', 'search', 'titulo', 'produtoqtd'));
     }
 
 

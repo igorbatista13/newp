@@ -131,7 +131,7 @@ Route::resource('planos', PlanosController::class);
 
 
 
-Route::get('/painel/index', [PainelGerencialController::class, 'index']);
+//Route::get('/painel/index', [PainelGerencialController::class, 'index']);
 Route::get('/painel/cadastro/index',  [PainelGerencialController::class, 'cadastro_menu']);
 Route::get('/painel/consulta_ficha',  [PainelGerencialController::class, 'consulta_ficha']);
 Route::get('/painel/consulta_aluno',  [AlunosController::class, 'search']);

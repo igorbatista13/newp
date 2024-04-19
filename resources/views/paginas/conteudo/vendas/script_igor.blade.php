@@ -3,7 +3,7 @@
     $(document).ready(function() {
         $('#termo').on('input', function() {
             var termo = $(this).val();
-            if (termo.length >= 2) {
+            if (termo.length > 2) {
                 buscarProduto(termo);
             } else {
                 $('#resultado').empty();
@@ -17,7 +17,7 @@
             var produtoCodigo = $(this).data('Codigo_barra');
             var produtoImage = $(this).data('image');
 
-            var quantidade = parseInt($(this).closest('.row').find('.quantidade').val());
+            var quantidade = parseInt($('#quantidadeInput').val());
 
 
             var produto = {
@@ -29,7 +29,7 @@
 
             };
 
-            adicionarAoCarrinho(produto, quantidade);
+            adicionarAoCarrinho(produto.id, quantidade);
         });
 
         function buscarProduto(termo) {
@@ -50,7 +50,7 @@
 
                         resultadoHtml += '<div class="row mt-4">';
                         resultadoHtml +=
-                        '  <div class="col-lg-12 col-md-12 mb-12 mb-lg-0">';
+                            '  <div class="col-lg-12 col-md-12 mb-12 mb-lg-0">';
                         resultadoHtml += '        <div class="card h-100 ">';
                         resultadoHtml += '<div class="card-header">';
                         resultadoHtml +=
@@ -106,51 +106,7 @@
         }
 
         function adicionarAoCarrinho(produto, quantidade) {
-
-            var produtoHtml = `
-        <div class="row mt-2">
-            <div class="col-sm-10">
-                <div class="card h-100">
-                    <div class="card-header pb-0 p-3">
-                        <div class="row">
-                            <div class="col-md-6">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body p-3">
-                        <ul class="list-group">
-                            <li class="list-group-item justify-content-between ps-0 pb-0 ">
-                                <div class="d-flex">
-                                    <div class="d-flex align-items-center">
-                                        <span class="p-2 d-flex align-items-center justify-content-center">
-                                            <img src="{{ asset('images/produtos/') }}/${produto.image}" width="50px"/>
-                                        </span>
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark text-sm">${produto.nome}</h6>
-                                            <span class="text-xs">Quantidade</span>
-                                            <input type="number" min="1" value="${quantidade}" class="form-control form-control-sm quantidade" style="width: 60px; display: inline-block;">
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold ms-auto preco"> + R$ ${produto.preco}
-                                        <button class="btn btn-link text-danger text-gradient px-3 mb-0 remover" data-id="${produto.id}"><i class="far fa-trash-alt fa-2x me-2" aria-hidden="true"></i></button>
-                                    </div>
-                                </div>
-                                <hr class="horizontal dark mt-3 mb-2" />
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-
-    // Adiciona o produto ao carrinho
-    $('#carrinho').append(produtoHtml);
-
-    // Atualiza o total do carrinho
-    atualizarTotal();
-    
-    //   console.log(produto); // Verifique o objeto produto recebido
+            //   console.log(produto); // Verifique o objeto produto recebido
             // Iniciando    
             var produtosSelecionados = $('#products').val();
             var produtoJson = JSON.stringify(produto);
@@ -167,8 +123,6 @@
             } else {
                 quantidadesSelecionadas = quantidade;
             }
-            //    $('#quantidade').val(quantidadesSelecionadas);
-
 
             $('#produtosSelecionados').val(produtosSelecionados);
 
@@ -243,9 +197,9 @@
             $('#total').html('<p>Total: R$ ' + total.toFixed(2) + '</p>');
         }
 
-    $('#finalizarVendaBtn').click(function() {
-        $('#modalPagamento').modal('show'); // Abre a modal de pagamento
-    });
+        $('#finalizarVendaBtn').click(function() {
+            $('#modalPagamento').modal('show'); // Abre a modal de pagamento
+        });
 
 
         $('#carrinho li').each(function() {
@@ -257,41 +211,37 @@
 
         $(document).on('click', '.FinalizarPagamento', function() {
 
-//   $('#adicionarProduto').click(function() {
-var produtoId = $('#alunoId').val();
-var quantidade = $('#quantidade').val();
-
-// Verificar se o produto selecionado possui ID
-if (produtoId) {
-    // Adicionar os dados do produto ao formulário
-    $('<input>').attr({
-        type: 'hidden',
-        name: 'products[]',
-        value: produtoId
-    }).appendTo('form');
-
-    $('<input>').attr({
-        type: 'hidden',
-        name: 'quantities[]',
-        value: quantidade
-    }).appendTo('form');
 
 
-    // Limpar os campos após adicionar o produto
-    $('#alunoId').val('');
-    $('#quantidade').val('');
+            var produtoId = $('#alunoId').val();
+            var quantidade = $('#quantidade').val();
 
-    // Limpar o resultado da busca
-    $('#resultado').empty();
-} else {
-    alert('Por favor, selecione um produto antes de adicionar.');
-}
-});
+            // Verificar se o produto selecionado possui ID
+            if (produtoId) {
+                // Adicionar os dados do produto ao formulário
+                $('<input>').attr({
+                    type: 'hidden',
+                    name: 'products[]',
+                    value: produtoId
+                }).appendTo('form');
 
-        //////////////////////////////////////////////////////////////////////////////
+                $('<input>').attr({
+                    type: 'hidden',
+                    name: 'quantities[]',
+                    value: quantidade
+                }).appendTo('form');
 
-        // Função para lidar com o envio do formulário de pagamento
 
+                // Limpar os campos após adicionar o produto
+                $('#alunoId').val('');
+                $('#quantidade').val('');
+
+                // Limpar o resultado da busca
+                $('#resultado').empty();
+            } else {
+                alert('Por favor, selecione um produto antes de adicionar.');
+            }
+        });
 
     });
 </script>

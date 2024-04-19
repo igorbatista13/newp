@@ -1,10 +1,10 @@
 {{-- FORNECEDOR --}}
 
-<button class="btn btn-icon btn-outline-dark ms-2 export" data-bs-toggle="modal" data-bs-target="#CreateFornecedor"
-    type="button">
-    <span class="btn-inner--icon"><i class="fa fa-plus"></i></span>
-    <span class="btn-inner--text"> Fornecedor</span>
-</button>
+    <button class="btn btn-icon btn-outline-dark ms-2 export" data-bs-toggle="modal" data-bs-target="#CreateFornecedor"
+        type="button">
+        <span class="btn-inner--icon"><i class="fa fa-plus"></i></span>
+        <span class="btn-inner--text"> Fornecedor</span>
+    </button>
 
 
 

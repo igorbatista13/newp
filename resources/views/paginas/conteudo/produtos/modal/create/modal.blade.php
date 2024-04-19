@@ -1,21 +1,17 @@
-
-
-<button class="btn btn-icon btn-outline-dark ms-2 export" data-bs-toggle="modal"
-data-bs-target="#Create" type="button">
+<button class="btn btn-icon btn-outline-dark ms-2 export" data-bs-toggle="modal" data-bs-target="#Create" type="button">
     <span class="btn-inner--icon"><i class="fa fa-plus"></i></span>
     <span class="btn-inner--text"> Novo Produto</span>
-    </button>
+</button>
 
 
 
 
-<div class="modal fade" id="Create" tabindex="-1" aria-labelledby="Create"
-    aria-hidden="true">
+<div class="modal fade" id="Create" tabindex="-1" aria-labelledby="Create" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="" id="Create"> Você está editando o Produto: <b>
-                     </b> </h5>
+                    </b> </h5>
                 <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">Fechar
                     (X)</button>
             </div>
@@ -32,14 +28,13 @@ data-bs-target="#Create" type="button">
                                         <h5 class="font-weight-bolder"></h5>
                                         <div class="row">
                                             <div class="col-12">
-                                                <img class="w-40 border-radius-lg shadow-lg mt-3"
-                                                    src=""
+                                                <img class="w-40 border-radius-lg shadow-lg mt-3" src=""
                                                     alt="product_image" width="200px">
                                             </div>
 
                                             <div class="col-lg-12 mt-5">
 
-                                              {!! Form::open(['route' => 'produtos.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                                                {!! Form::open(['route' => 'produtos.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
                                                 <div class="d-flex">
                                                     {!! Form::file('image', ['class' => 'form-control ']) !!}
@@ -55,7 +50,7 @@ data-bs-target="#Create" type="button">
                             <div class="col-lg-8 mt-lg-0 mt-4">
                                 <div class="card">
                                     <div class="card-body">
-                                
+
                                         <h5 class="font-weight-bolder">Informação de Produto</h5>
                                         <div class="row">
                                             <div class="col-12 col-sm-4">
@@ -64,7 +59,7 @@ data-bs-target="#Create" type="button">
                                             </div>
                                             <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                                 <label>Nome do produto</label>
-                                                {!! Form::text('Nome_Produto', null,  ['class' => 'form-control valid']) !!}
+                                                {!! Form::text('Nome_Produto', null, ['class' => 'form-control valid']) !!}
                                             </div>
                                             <div class="col-2 col-sm-2 mt-3 mt-sm-0">
                                                 <label>Quantidade</label>
@@ -99,7 +94,7 @@ data-bs-target="#Create" type="button">
                                             </div>
                                             <div class="col-sm-2">
                                                 <label class="mt-4">Vencimento</label>
-                                                {!! Form::date('Data_Vencimento', null,  ['class' => 'form-control']) !!}
+                                                {!! Form::date('Data_Vencimento', null, ['class' => 'form-control']) !!}
                                             </div>
                                             <div class="col-sm-2">
                                                 <label class="mt-4">Lote </label>
@@ -119,17 +114,31 @@ data-bs-target="#Create" type="button">
                             <div class="col-sm-4">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="font-weight-bolder">Fornecedor</h5>
+                                        <h5 class="font-weight-bolder"> Fornecedor
+                                              {{-- BOTÃO ADICIONAR FORNECEDOR --}}
+                                        <button class="btn btn-icon btn-outline-dark ms-2 export" data-bs-toggle="modal"
+                                        data-bs-target="#CreateFornecedor" type="button">
+                                        <span class="btn-inner--icon"><i class="fa fa-plus"></i></span>
+                                        <span class="btn-inner--text">Novo  Fornecedor</span>
+                                    </button>
+                                        </h5>
+                                  
+                                      
+
                                         <select name="Fornecedor_id" id="Fornecedor_id" class="form-control">
                                             <option value="" disabled> Selecione o Fornecedor</option>
                                             @foreach ($fornecedor as $fornecedores)
                                                 <option value=" {{ $fornecedores->id }}"> {{ $fornecedores->id }} -
-                                                    {{ $fornecedores->Nome_fantasia }} <small> <b> <i> CNPJ:
-                                                                {{ $fornecedores->Cnpj }} <b> </i></small></option>
+                                                    {{ $fornecedores->Nome_fantasia }} <small> </i></small></option>
+
                                                 {{-- {!! Form::text('Fornecedor_id', $produtos->Nome_fantasia . ' ' . $produtos->Nome_responsavel, ['class' => 'form-control']) !!} --}}
                                             @endforeach
                                         </select>
+
+
+
                                     </div>
+
                                 </div>
                             </div>
                             <div class="col-sm-8 mt-sm-0 mt-4">
@@ -156,8 +165,8 @@ data-bs-target="#Create" type="button">
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" type="checkbox"
                                                         name="Status_Produto" value="Sim">
-                                                    <label class="form-check-label" for="site">Disponível no
-                                                        site?</label>
+                                                    <label class="form-check-label" for="site">Produto disponível no
+                                                        Site?</label>
                                                 </div>
                                             </div>
                                             <div class="col-sm-8 mt-sm-1 mt-4">

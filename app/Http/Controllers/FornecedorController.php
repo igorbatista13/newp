@@ -75,7 +75,7 @@ class FornecedorController extends Controller
     
         Fornecedor::create($request->all());
     
-         return redirect()->route('fornecedor.index')
+         return back()
                          ->with('success','Fornecedor criado com sucesso!');
      }
     

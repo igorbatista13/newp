@@ -21,7 +21,7 @@ class PainelGerencialController extends Controller
     public function dashboard()
     {
 
-        $titulo = 'Recibos';
+        $titulo = 'Dashboard';
         $contratos = Contrato::with('empresa_cliente')->orderBy('id', 'DESC')->paginate(5);
         $recibos   = Recibo::with('empresa_cliente')->orderBy('id', 'DESC')->paginate(5);
         $clientes = Empresa_Cliente::all();
@@ -30,7 +30,8 @@ class PainelGerencialController extends Controller
         $recibo   = Recibo::count();
         $fornecedor   = Fornecedor::count();
 
-        return view('painel.index', compact(
+        return view('paginas.conteudo.dashboard.index', compact(
+    //    return view('painel.index', compact(
             'clientes',
             'produto',
             'contrato',
@@ -92,7 +93,7 @@ class PainelGerencialController extends Controller
     {
         // $userCount  =  FICHA::where('status_id', '=', auth()->id())
         // ->count();
-        return view('painel.index');
+        return view('paginas.conteudo.dashboard.index');
     }
 
     public function consulta_aluno()

@@ -1,4 +1,5 @@
 @include('paginas.base.topo.topo')
+@include('paginas.conteudo.vendas.menu_vendas')
 
 {{--      --}}
 {!! Form::open(['route' => 'vendas.store', 'method' => 'POST']) !!}
@@ -70,7 +71,7 @@
                                 <input type="hidden" id="products" name="products[]" value="">
                                 <input type="hidden" name="quantities[]" id="quantidade" class="quantidade form-control" value="">
 
-
+             
 
 
                                 </td>
@@ -150,7 +151,7 @@
 
                         {{-- <strong>Total da Venda:</strong> R$ {{ $venda->total }}</p> --}}
 
-                        @include('paginas.conteudo.vendas.scriptcopy')
+                        @include('paginas.conteudo.vendas.script')
           
           
           

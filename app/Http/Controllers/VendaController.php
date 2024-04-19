@@ -28,7 +28,8 @@ class VendaController extends Controller
 
     public function store(Request $request) {
         $venda = Venda::create($request->all());
-    
+    // Decodifica o objeto JSON para acessar o ID do produto
+
         $products = $request->input('products', []);
         $quantities = $request->input('quantities', []);
     
@@ -37,10 +38,12 @@ class VendaController extends Controller
             if (!empty($productId)) {
                 // Obter a quantidade correspondente para este produto
                 $quantity = isset($quantities[$key]) ? $quantities[$key] : 0;
-        
+                $productData = json_decode($productId);
+                $productId = $productData->id;
+                
                 // Anexar o produto ao recibo com quantidade
                 $venda->produtos()->attach($productId, [
-                    'quantidade' => $quantity
+                    'Quantidade' => $quantity,
                 ]);
             }
         }
