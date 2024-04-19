@@ -6,7 +6,6 @@
 {{-- @include('paginas.conteudo.alunos.1_alunos') --}}
 @include('paginas.conteudo.alunos.menu_alunos')
 
-<h1> Oi Cachorro </h1>
 
 
 <div class="container-fluid py-0">
