@@ -1,6 +1,13 @@
-<button type="button" class="btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal"
-    data-bs-target="#Create"><i class="fas fa-pencil-alt text-dark me-2"
-        aria-hidden="true"></i>Novo Produto</button>
+
+
+<button class="btn btn-icon btn-outline-dark ms-2 export" data-bs-toggle="modal"
+data-bs-target="#Create" type="button">
+    <span class="btn-inner--icon"><i class="fa fa-plus"></i></span>
+    <span class="btn-inner--text"> Novo Produto</span>
+    </button>
+
+
+
 
 <div class="modal fade" id="Create" tabindex="-1" aria-labelledby="Create"
     aria-hidden="true">

@@ -42,7 +42,7 @@
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="radio"
                                                                 name="planos_id" id="plano{{ $planos->id }}"
-                                                                value="{{ $planos->id }}">
+                                                                value="{{ $planos->id }}" required>
                                                             <label class="form-check-label"
                                                                 for="plano{{ $planos->id }}">
                                                                 <span

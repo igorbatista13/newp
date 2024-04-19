@@ -50,6 +50,28 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-12 col-12 my-auto">
+                       
+                            <hr class="horizontal light mt-2 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="ms-lg-1 ms-4">
+                                    @include('/paginas/conteudo/modalidades/modal/create')
+
+                                </div>
+                                <div class="ms-lg-1 ms-4">
+                                    @include('/paginas/conteudo/modalidades/modal/create')
+
+                                </div>
+                                <div class="ms-lg-1 ms-4">
+                                                     @include('/paginas/conteudo/modalidades/modal/create')
+
+                                </div>
+                                <div class="ms-lg-1 ms-4">
+                                                     @include('/paginas/conteudo/modalidades/modal/create')
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

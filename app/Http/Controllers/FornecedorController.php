@@ -31,7 +31,7 @@ class FornecedorController extends Controller
         $titulo = 'Fornecedor';
 
         $fornecedor = Fornecedor::all();
-
+//aaa
         $search = request('search');
 
         if($search) {

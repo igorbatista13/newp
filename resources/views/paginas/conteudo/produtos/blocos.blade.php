@@ -12,7 +12,7 @@
                         <div class="form-check form-switch ms-auto">
                             <a href="{{ asset('/matriculas') }}"> <button class="btn btn-icon btn-dark ms-2"
                                     type="button">
-                                    <span class="btn-inner--text"> Matrículas </span>
+                                    <span class="btn-inner--text"> Produtos </span>
                                 </button> </a>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                             <span class="text-lg ms-n2"> </span>
                         </h1>
                         {{-- <h6 class="mb-0 font-weight-bolder">Vendas</h6> --}}
-                        <p class="mt-2 mb-0 font-weight-bold text-white">Matrículas</p>
+                        <p class="mt-2 mb-0 font-weight-bold text-white">Produtos</p>
                         <p class="opacity-8 mb-0 text-sm"></p>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                         <p class="mb-0 text-white"></p>
                         <div class="form-check form-switch ms-auto">
                             <a href="{{ asset('/planos') }}"> <button class="btn btn-icon btn-dark ms-2" type="button">
-                                    <span class="btn-inner--text"> Planos </span>
+                                    <span class="btn-inner--text"> Fornecedores </span>
                                 </button>
                             </a>
                         </div>
@@ -48,7 +48,7 @@
                             <span class="text-lg ms-n2"> </span>
                         </h1>
                         {{-- <h6 class="mb-0 font-weight-bolder">Vendas</h6> --}}
-                        <p class="mt-2 mb-0 font-weight-bold text-white">Planos</p>
+                        <p class="mt-2 mb-0 font-weight-bold text-white">Fornecedores</p>
                         <p class="opacity-8 mb-0 text-sm"></p>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                         <p class="mb-0 text-white"></p>
                         <div class="form-check form-switch ms-auto">
                             <a href="{{ asset('/alunos') }}"> <button class="btn btn-icon btn-dark ms-2" type="button">
-                                    <span class="btn-inner--text"> Alunos </span>
+                                    <span class="btn-inner--text"> Vendas </span>
                                 </button>
                             </a>
                         </div>
@@ -74,8 +74,8 @@
                         <h1 class="text-gradient text-primary">
                             <span class="text-lg ms-n2"> </span>
                         </h1>
-                        {{-- <h6 class="mb-0 font-weight-bolder">Alunos</h6> --}}
-                        <p class="mt-2 mb-0 font-weight-bold text-white">Alunos</p>
+                        {{-- <h6 class="mb-0 font-weight-bolder">Vendas</h6> --}}
+                        <p class="mt-2 mb-0 font-weight-bold text-white">Vendas</p>
                         <p class="opacity-8 mb-0 text-sm"></p>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                         <div class="form-check form-switch ms-auto">
                             <a href="{{ asset('/professores') }}"> <button class="btn btn-icon btn-dark ms-2"
                                     type="button">
-                                    <span class="btn-inner--text"> Professores </span>
+                                    <span class="btn-inner--text"> Pedidos </span>
                                 </button>
                             </a>
                         </div>
@@ -102,8 +102,8 @@
                         <h1 class="text-gradient text-primary">
                             <span class="text-lg ms-n2"> </span>
                         </h1>
-                        {{-- <h6 class="mb-0 font-weight-bolder">Professores</h6> --}}
-                        <p class="mt-2 mb-0 font-weight-bold text-white">Professores</p>
+                        {{-- <h6 class="mb-0 font-weight-bolder">Pedidos</h6> --}}
+                        <p class="mt-2 mb-0 font-weight-bold text-white">Pedidos</p>
                         <p class="opacity-8 mb-0 text-sm"></p>
                     </div>
                 </div>
