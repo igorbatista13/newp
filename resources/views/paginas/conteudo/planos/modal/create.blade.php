@@ -89,6 +89,7 @@
                                             <div class="col-12 col-sm-6">
                                                 <label>Vigência</label>
                                                 <select name="Vigencia" id="Vigencia" class="form-select" required>
+                                                    <option value="Mensal">Diária</option>
                                                     <option value="Mensal">Mensal</option>
                                                     <option value="Trimestral">Trimestral</option>
                                                     <option value="Semestral">Semestral</option>

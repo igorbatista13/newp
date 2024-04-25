@@ -19,6 +19,28 @@
                         </tr>
                     </thead>
                     @foreach ($alunos as $aluno)
+
+                    
+
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <tbody>
                         <tr>
                             <td class="text-xs font-weight-bold">
