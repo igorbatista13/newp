@@ -202,7 +202,7 @@
                                         <h6 class="font-weight-bolder">
                                             VENDAS </h6>
                                         <p class="mb-0">
-                                            <span class="text-success text-sm font-weight-bolder">VENDAS</span>
+                                            <span class="text-success text-sm font-weight-bolder"></span>
                                         </p>
                                     </div>
                                 </div>
@@ -230,7 +230,7 @@
                                         </h5>
                                         <p class="mb-0">
                                             <span
-                                                class="text-success text-sm font-weight-bolder"> N° </span>
+                                                class="text-success text-sm font-weight-bolder"> </span>
                                                 {{-- class="text-success text-sm font-weight-bolder">{{ $produto }}</span> --}}
                                         </p>
                                     </div>
@@ -257,7 +257,7 @@
                                     <h6 class="font-weight-bolder">
                                         PEDIDOS </h6>
                                     <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">PEDIDOS</span>
+                                        <span class="text-success text-sm font-weight-bolder"></span>
                                     </p>
                                 </div>
                             </div>
@@ -281,10 +281,10 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold"></p>
                                     <h6 class="font-weight-bolder">
-                                        ALUNOS
+                                        USUÁRIOS
                                     </h6>
                                     <p class="mb-0">
-                                        <span class="text-danger text-sm font-weight-bolder">N° de Alunos</span>
+                                        <span class="text-danger text-sm font-weight-bolder"></span>
                                         {{-- <span class="text-danger text-sm font-weight-bolder">{{ $clientes }}</span> --}}
                                     </p>
                                 </div>
@@ -301,7 +301,7 @@
               </a>
             </div>
             <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
-              <a href="{{asset ('/usuarios')}}" class="card-link">
+              <a href="{{asset ('/alunos')}}" class="card-link">
                 <div class="card">
                     <div class="card-body p-3">
                         <div class="row">
@@ -312,7 +312,7 @@
                                         USUÁRIOS </h6>
                                     <p class="mb-0">
                                         <span class="text-success text-sm font-weight-bolder">
-                                           N° de Clientes</span>
+                                           </span>
                                         {{-- <span class="text-success text-sm font-weight-bolder">
                                             {{ $user }}</span> --}}
                                     </p>
