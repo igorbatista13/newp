@@ -34,8 +34,8 @@
                             </div>
                         </div>
                         <div class="col-lg-6 col-12 text-center">
-                            <img class="w-75 w-lg-100 mt-n7 mt-lg-n8 d-none d-md-block"
-                                src="https://demos.creative-tim.com/argon-dashboard-pro/assets/img/tesla.png"
+                            <img class="w-50 w-lg-60  mt-lg-n8"
+                                src="{{asset('/images/dashboard/dashboard-gym.png')}}" width=""
                                 alt="car image">
                             <div class="d-flex align-items-center">
                                 <h4 class="text-body opacity-7 ms-0 ms-md-auto">Available Range</h4>

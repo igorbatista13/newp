@@ -1,7 +1,4 @@
-@extends('base.base')
-
-@section('content')
-
+@include('paginas.base.topo.topo')
 
 
 
@@ -90,4 +87,4 @@
 
 
 
-@endsection
+                @include('paginas.base.rodape.rodape')

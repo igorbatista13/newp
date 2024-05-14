@@ -41,7 +41,7 @@
     data-scroll="false">
     <div class="container-fluid py-1 px-3">
       <nav aria-label="breadcrumb">
-        <h3 class="font-weight-bolder text-white mb-0">(logo) + Nome Empresa </h3>
+        <h3 class="font-weight-bolder text-white mb-0">(logo) + Nomeaaa Empresa </h3>
 
       </nav>
 
@@ -550,9 +550,10 @@
     <div class="card shadow-lg">
       <div class="card-header pb-0 pt-3 ">
         <div class="float-start">
-          <h5 class="mt-3 mb-0">Argon Configurator</h5>
-          <p>See our dashboard options.</p>
-        </div>
+          <h5 class="mt-3 mb-0">Seu Negócio</h5>
+          <button class="btn bg-gradient-primary w-100 px-3 mb-2 active me-2" data-class="bg-white"
+          onclick="sidebarType(this)">White</button>
+                </div>
         <div class="float-end mt-4">
           <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
             <i class="fa fa-close"></i>

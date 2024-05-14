@@ -34,7 +34,7 @@ class MinhaEmpresaController extends Controller
 
       // dd($empresa);
         $minhaempresa = MinhaEmpresa::get();
-        return view('minhaempresa.index',compact('minhaempresa','empresa', 'titulo'));
+        return view('paginas.conteudo.minhaempresa.index',compact('minhaempresa','empresa', 'titulo'));
         
     }
     
@@ -47,7 +47,7 @@ class MinhaEmpresaController extends Controller
     {
         $titulo = 'Minha Empresa';
 
-        return view('minhaempresa.create',compact('titulo'));
+        return view('paginas.conteudo.minhaempresa.create',compact('titulo'));
     }
 
 
@@ -76,7 +76,7 @@ class MinhaEmpresaController extends Controller
      */
     public function show(MinhaEmpresa $minhaempresa)
     {
-        return view('minhaempresa.show',compact('minhaempresa'));
+        return view('paginas.conteudo.minhaempresa.show',compact('minhaempresa'));
     }
     
     /**
@@ -89,7 +89,7 @@ class MinhaEmpresaController extends Controller
     {
         $titulo = 'Minha Empresa';
 
-        return view('minhaempresa.edit',compact('minhaempresa', 'titulo'));
+        return view('paginas.conteudo.minhaempresa.edit',compact('minhaempresa', 'titulo'));
     }
     
     /**
@@ -105,7 +105,7 @@ class MinhaEmpresaController extends Controller
     
         $minhaempresa->update($request->all());
     
-        return redirect()->route('minhaempresa.index')
+        return redirect()->route('paginas.conteudo.minhaempresa.index')
                         ->with('success','Minha Empresa atualizada com sucesso!');
     }
     
@@ -115,11 +115,11 @@ class MinhaEmpresaController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MinhaEmpresa $minhaempresa)
-    {
-        $minhaempresa->delete();
+    // public function destroy(MinhaEmpresa $minhaempresa)
+    // {
+    //     $minhaempresa->delete();
     
-        return redirect()->route('minhaempresa.index')
-                        ->with('success','Minha Empresa foi deletada com sucesso!');
-    }
+    //     return redirect()->route('minhaempresa.index')
+    //                     ->with('success','Minha Empresa foi deletada com sucesso!');
+    // }
 }

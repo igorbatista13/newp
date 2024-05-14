@@ -1,5 +1,6 @@
 @extends('base.base')
 @section('content')
+
 <div class="panel-header panel-header-lg">
     <canvas id="bigDashboardChart"></canvas>
   </div>

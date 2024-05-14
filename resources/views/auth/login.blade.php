@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
-    <title>Portal - Bootstrap 5 Admin Dashboard Template For Developers</title>
+    <title>GYM </title>
     
     <!-- Meta -->
     <meta charset="utf-8">
@@ -29,9 +29,9 @@
 		    <div class="d-flex flex-column align-content-end">
 			    <div class="app-auth-body mx-auto">	
 				    <div class="app-auth-branding mb-4"><a class="app-logo" href="index.html">
-                        <img class="logo-icon me-2" src="{{asset('images/app-logo.svg')}}" ></a>
+                        <img class="logo-icon me-2" src="{{asset('images/app-losgo.svg')}}" ></a>
                     </div>
-					<h2 class="auth-heading text-center mb-5">Acesso ao Sistema</h2>
+					<h2 class="auth-heading text-center mb-5">Seja bem vindo.</h2>
 			        <div class="auth-form-container text-start">
 
 						<form class="auth-form login-form"  method="POST" action="{{ route('login') }}">  
@@ -85,7 +85,7 @@
                 <footer class="app-auth-footer">
 				    <div class="container text-center py-3">
 				         <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-			        <small class="copyright">Desenvolvido <span class="sr-only"> </span><i class="fas fa-heart" style="color: #fb866a;"></i> por <a class="app-link" href="http://themes.3rdwavemedia.com" target="_blank"> Web Monkey</a> </small>
+			        <small class="copyright">Desenvolvido <span class="sr-only"> </span><i class="fas fa-heart" style="color: #fb866a;"></i> por <a class="app-link" href="http://webmonkey.com.br" target="_blank"> Web Monkey</a> </small>
 				       
 				    </div>
 			    </footer><!--//app-auth-footer-->	
@@ -99,8 +99,8 @@
 			    <div class="d-flex flex-column align-content-end h-100">
 				    <div class="h-100"></div>
 				    <div class="overlay-content p-3 p-lg-4 rounded">
-                        <h5 class="mb-3 overlay-title">Sistema desenvolvido para a Empresa </h5>
-					    <div> Leve Limpo  </div>
+                        <h5 class="mb-3 overlay-title">Desenvolvido por: </h5>
+					    <div> Web Monkey  </div>
 				    </div>
 				</div>
 		    </div><!--//auth-background-overlay-->

@@ -1,6 +1,4 @@
-@extends('base.base')
-
-@section('content')
+@include('paginas.base.topo.topo')
 
 
 <div class="panel-header panel-header-sm">
@@ -91,4 +89,4 @@
 
 
 
-@endsection
+@include('paginas.base.rodape.rodape')
