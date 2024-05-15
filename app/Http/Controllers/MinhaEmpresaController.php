@@ -64,7 +64,7 @@ class MinhaEmpresaController extends Controller
     
         MinhaEmpresa::create($request->all());
     
-        return redirect()->route('minhaempresa.index')
+        return redirect()->route('paginas.conteudo.minhaempresa.index')
                         ->with('success','Minha Empresa criada com sucesso!');
     }
     
@@ -102,11 +102,10 @@ class MinhaEmpresaController extends Controller
     public function update(Request $request, MinhaEmpresa $minhaempresa)
     {
 
-    
         $minhaempresa->update($request->all());
-    
-        return redirect()->route('paginas.conteudo.minhaempresa.index')
-                        ->with('success','Minha Empresa atualizada com sucesso!');
+
+        return redirect()->route('minhaempresa.index');
+
     }
     
     /**
