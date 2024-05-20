@@ -21,7 +21,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('/pdv/img/apple-icon.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('/pdv/img/favicon.png') }}">
     <title>
-        G  Y  M
+        G Y M
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -41,7 +41,7 @@
         data-scroll="false">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
-                <h3 class="font-weight-bolder text-white mb-0">(logo) + Nomeeee Empresa </h3>
+                <h3 class="font-weight-bolder text-white mb-0">(logo) + Nome da Empresa </h3>
 
             </nav>
 
@@ -54,27 +54,9 @@
           </div> --}}
                 </div>
                 <ul class="navbar-nav  justify-content-end">
-                    <li class="nav-item d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
-                            <i class="fa fa-user me-sm-1"></i>
-                            <span class="d-sm-inline d-none">{{ Auth::user()->name }}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
-                            <div class="sidenav-toggler-inner">
-                                <i class="sidenav-toggler-line bg-white">a</i>
-                                <i class="sidenav-toggler-line bg-white">b</i>
-                                <i class="sidenav-toggler-line bg-white">c</i>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="nav-item px-3 d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-white p-0">
-                            <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown pe-2 d-flex align-items-center">
+
+
+                    <li class="nav-item dropdown pe-4 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-bell cursor-pointer"></i>
@@ -149,7 +131,7 @@
                                             </h6>
                                             <p class="text-xs text-secondary mb-0">
                                                 <i class="fa fa-clock me-1"></i>
-                                                2 days
+                                                2 daysssssss!!@!@!@!@!
                                             </p>
                                         </div>
                                     </div>
@@ -157,179 +139,58 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                        <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-user me-sm-1"></i>
+                            <span class="d-sm-inline d-none">{{ Auth::user()->name }}</span>
+                        </a>
+                        <ul class="dropdown-menu  dropdown-menu-end " aria-labelledby="dropdownMenuButton">
+                            <li class="mb-2">
+                                <a class="dropdown-item border-radius-md" href="{{ asset('/perfil') }}">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="text-sm font-weight-normal mb-1">
+                                                <i class="fa fa-user me-1"></i>
+                                                <span class="font-weight-bold">Meu Perfil</span>
+                                            </h6>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a class="dropdown-item border-radius-md" href="{{ asset('/logout') }}">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="text-sm font-weight-normal mb-1">
+                                                <i class="fa fa-sign-out me-1"></i>
+                                                <span class="font-weight-bold">Sair do Sistema</span>
+                                            </h6>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a class="dropdown-item border-radius-md" href="{{ asset('/minhaempresa') }}">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="text-sm font-weight-normal mb-1">
+                                                <i class="fa fa-cog me-1"></i>
+                                            <span class="font-weight-bold">Minha Empresa</span>
+                                            </h6>
+                                    </div>
+                                </a>
+                            </li>
+
+                            
+                        </ul>
+                    </li>
+                    {{-- <li class="nav-item pe-2 d-flex align-items-center">
+                        <a href="javascript:;" class="nav-link text-white p-0">
+                            <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+                        </a>
+                    </li> --}}
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container-fluid py-3">
 
+    @include('/paginas/base/topo/menu')
 
-        <div class="row">
-          <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
-            <a href="{{asset ('/painel')}}" class="card-link">
-              <div class="card">
-                  <div class="card-body p-3">
-                      <div class="row">
-                          <div class="col-8">
-                              <div class="numbers">
-                                  <p class="text-sm mb-0 text-uppercase font-weight-bold"></p>
-                                  <h6 class="font-weight-bolder">
-                                      PAINEL </h6>
-                                  <p class="mb-0">
-                                      <span class="text-success text-sm font-weight-bolder"> </span>
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="col-4 text-end">
-                              <div
-                                  class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                                  <i class="ni ni-world-2 text-lg opacity-10" aria-hidden="true"></i>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-            </a>
-          </div>
-            <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
-                <a href="{{ asset('/vendas') }}" class="card-link">
-                    <div class="card">
-                        <div class="card-body p-3">
-                            <div class="row">
-                                <div class="col-8">
-                                    <div class="numbers">
-                                        <p class="text-sm mb-0 text-uppercase font-weight-bold"></p>
-                                        <h6 class="font-weight-bolder">
-                                            VENDAS </h6>
-                                        <p class="mb-0">
-                                            <span class="text-success text-sm font-weight-bolder"></span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-4 text-end">
-                                    <div
-                                        class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                                        <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
-                <a href="{{ asset('/produtos') }}" class="card-link">
-                    <div class="card">
-                        <div class="card-body p-3">
-                            <div class="row">
-                                <div class="col-8">
-                                    <div class="numbers">
-                                        <p class="text-sm mb-0 text-uppercase font-weight-bold"></p>
-                                        <h6 class="font-weight-bolder">
-                                            PRODUTOS
-                                        </h5>
-                                        <p class="mb-0">
-                                            <span
-                                                class="text-success text-sm font-weight-bolder"> </span>
-                                                {{-- class="text-success text-sm font-weight-bolder">{{ $produto }}</span> --}}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-4 text-end">
-                                    <div
-                                        class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                                        <i class="ni ni-box-2 text-lg opacity-10" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
-              <a href="{{asset ('/pedidos')}}" class="card-link">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold"></p>
-                                    <h6 class="font-weight-bolder">
-                                        PEDIDOS </h6>
-                                    <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder"></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div
-                                    class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                                    <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
-              <a href="{{asset ('/alunos    ')}}" class="card-link">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold"></p>
-                                    <h6 class="font-weight-bolder">
-                                        USUÁRIOS
-                                    </h6>
-                                    <p class="mb-0">
-                                        <span class="text-danger text-sm font-weight-bolder"></span>
-                                        {{-- <span class="text-danger text-sm font-weight-bolder">{{ $clientes }}</span> --}}
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div
-                                    class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                                    <i class="ni ni-badge text-lg opacity-10" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
-              <a href="{{asset ('/alunos')}}" class="card-link">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold"></p>
-                                    <h6 class="font-weight-bolder">
-                                        USUÁRIOS </h6>
-                                    <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">
-                                           </span>
-                                        {{-- <span class="text-success text-sm font-weight-bolder">
-                                            {{ $user }}</span> --}}
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div
-                                    class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                                    <i class="ni ni-circle-08 text-lg opacity-10" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-              </a>
-            </div>
- 
-        </div>
-    </div>
     @yield('topo')

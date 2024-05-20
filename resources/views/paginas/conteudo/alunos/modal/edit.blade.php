@@ -35,18 +35,29 @@
                                     <div class="card-body">
                                         <h5 class="font-weight-bolder"></h5>
                                         <div class="row">
+                                            <div class="card-body">
+                                                {{-- <img class="w-30 border-radius-lg shadow-lg mt-0" src="https://img.freepik.com/vetores-premium/modelo-de-logotipo-de-icone-de-academia-com-barra-haltere-design-de-logotipo-de-fitness_757387-345.jpg?w=2000"
+                                                alt="product_image" width="200px">   --}}
+                                                <h5 class="font-weight-bolder">Perfil</h5>
+                                                <select name="Perfil" id="Perfil" class="form-select">
+                                                    <option value="">Selecione</option>
+                                                    <option value="Aluno">Aluno</option>
+                                                    <option value="Professor">Professor</option>
+                                                    <option value="Funcionario">Funcionário</option>
+                                                </select>
+                                            </div>
                                             <div class="col-12">
                                                 <div class="card-body">
                                                     {{-- <img class="w-50 border-radius-lg shadow-lg mt-0" src="https://img.freepik.com/vetores-premium/modelo-de-logotipo-de-icone-de-academia-com-barra-haltere-design-de-logotipo-de-fitness_757387-345.jpg?w=2000"
                                                         alt="product_image" width="200px">   --}}
                                                     <h5 class="font-weight-bolder text-center">Foto</h5>
 
-                                                    <img src="{{ asset('/images/usuarios/') }}/{{ $aluno->image }}"
+                                                   <center> <img src="{{ asset('/images/usuarios/') }}/{{ $aluno->image }}"
                                                     class="avatar avatar-xl position-relative" alt="avatar image">
-
+                                                    
+                                                </div>
                                             <input type="file" name="image" id="image" class="form-control">
 
-                                                </div>
 
                                             </div>
 
@@ -125,7 +136,7 @@
                                         {{-- <img class="w-30 border-radius-lg shadow-lg mt-0" src="https://img.freepik.com/vetores-premium/modelo-de-logotipo-de-icone-de-academia-com-barra-haltere-design-de-logotipo-de-fitness_757387-345.jpg?w=2000"
                                         alt="product_image" width="200px">   --}}
                                         <h5 class="font-weight-bolder">Modalidades</h5>
-                                        {{-- @foreach ($modalidades as $modalidade)
+                                        @foreach ($modalidades as $modalidade)
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="modalidade_id[]"
                                                     id="modalidade_{{ $modalidade->id }}" value="{{ $modalidade->id }}">
@@ -133,19 +144,9 @@
                                                     {{ $modalidade->Nome_Modalidade }}
                                                 </label>
                                             </div>
-                                        @endforeach --}}
+                                        @endforeach 
                                     </div>
-                                    <div class="card-body">
-                                        {{-- <img class="w-30 border-radius-lg shadow-lg mt-0" src="https://img.freepik.com/vetores-premium/modelo-de-logotipo-de-icone-de-academia-com-barra-haltere-design-de-logotipo-de-fitness_757387-345.jpg?w=2000"
-                                        alt="product_image" width="200px">   --}}
-                                        <h5 class="font-weight-bolder">Perfil</h5>
-                                        <select name="Perfil" id="Perfil" class="form-select">
-                                            <option value="">Selecione</option>
-                                            <option value="Aluno">Aluno</option>
-                                            <option value="Professor">Professor</option>
-                                            <option value="Funcionario">Funcionário</option>
-                                        </select>
-                                    </div>
+                            
                                 </div>
                             </div>
 
@@ -156,28 +157,28 @@
                                             <h5 class="font-weight-bolder">Endereço</h5>
                                             <div class="col-3">
                                                 <label>CEP</label>
-                                                {!! Form::text('CEP', null, ['class' => 'form-control']) !!}
+                                                {!! Form::text('CEP', $aluno->CEP, ['class' => 'form-control']) !!}
                                             </div>
                                             <div class="col-4">
                                                 <label>Endereço</label>
-                                                {!! Form::text('Endereco', null, ['class' => 'form-control']) !!}
+                                                {!! Form::text('Endereco', $aluno->Endereco, ['class' => 'form-control']) !!}
 
                                             </div>
                                             <div class="col-2">
                                                 <label>Número</label>
-                                                {!! Form::text('Numero', null, ['class' => 'form-control']) !!}
+                                                {!! Form::text('Numero', $aluno->Numero, ['class' => 'form-control']) !!}
                                             </div>
                                             <div class="col-5">
                                                 <label>Complemento</label>
-                                                {!! Form::text('Complemento', null, ['class' => 'form-control']) !!}
+                                                {!! Form::text('Complemento', $aluno->Complemento, ['class' => 'form-control']) !!}
                                             </div>
                                             <div class="col-5">
                                                 <label>Bairro</label>
-                                                {!! Form::text('Bairro', null, ['class' => 'form-control']) !!}
+                                                {!! Form::text('Bairro', $aluno->Bairro, ['class' => 'form-control']) !!}
                                             </div>
                                             <div class="col-5">
                                                 <label>Cidade</label>
-                                                {!! Form::text('Cidade', null, ['class' => 'form-control']) !!}
+                                                {!! Form::text('Cidade', $aluno->Cidade , ['class' => 'form-control']) !!}
                                             </div>
                                             <div class="col-5">
                                                 <label for="estado">Estado</label>

@@ -20,8 +20,13 @@ class modalidades extends Model
         
         ];
 
-    public function alunos(){
-        return $this->belongsTo(Alunos::class);
+    // public function alunos(){
+    //     return $this->belongsTo(Alunos::class);
+    // }
+
+    public function alunos()
+    {
+        return $this->hasMany(Alunos::class, 'modalidade_id');
     }
 
 }

@@ -10,16 +10,17 @@
             <div class="col-auto my-auto">
                 <div class="h-100">
                     <h5 class="mb-1">
-                        Alunos
+                        Usuários
                     </h5>
                     <p class="mb-0 font-weight-bold text-sm">
+                        Alunos, Professores e Funcionários
                     </p>
                 </div>
             </div>
              <div class="col-lg-6 col-md-2 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
 
                        
-                {{-- <hr class="horizontal light mt-2 mb-3">
+                <hr class="horizontal light mt-2 mb-3">
                 <div class="d-flex align-items-center">
                     <div class="ms-lg-1 ms-4">
                         @include('/paginas/conteudo/alunos/modal/create')
@@ -37,7 +38,7 @@
                         @include('/paginas/conteudo/matriculas/modal/create')
 
                     </div>
-                </div> --}}
+                </div>
             </div>
             {{-- <div class="col-lg-4 col-md-4 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
                 <div class="nav-wrapper position-relative end-0">

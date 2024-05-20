@@ -32,13 +32,26 @@
                                     <div class="card-body">
                                         <h5 class="font-weight-bolder"></h5>
                                         <div class="row">
+                                            <div class="card-body">
+                                                {{-- <img class="w-30 border-radius-lg shadow-lg mt-0" src="https://img.freepik.com/vetores-premium/modelo-de-logotipo-de-icone-de-academia-com-barra-haltere-design-de-logotipo-de-fitness_757387-345.jpg?w=2000"
+                                                alt="product_image" width="200px">   --}}
+                                                <h5 class="font-weight-bolder">Perfil</h5>
+                                                <select name="Perfil" id="Perfil" class="form-select">
+                                                    <option value="">Selecione</option>
+                                                    <option value="Aluno">Aluno</option>
+                                                    <option value="Professor">Professor</option>
+                                                    <option value="Funcionario">Funcionário</option>
+                                                </select>
+                                            </div>
                                             <div class="col-12">
                                                 <div class="card-body">
                                                     {{-- <img class="w-50 border-radius-lg shadow-lg mt-0" src="https://img.freepik.com/vetores-premium/modelo-de-logotipo-de-icone-de-academia-com-barra-haltere-design-de-logotipo-de-fitness_757387-345.jpg?w=2000"
                                                         alt="product_image" width="200px">   --}}
+
                                                     <h5 class="font-weight-bolder text-center">Foto</h5>
 
-                                                    <input type="file" name="image" id="image" class="form-control">
+                                                    <input type="file" name="image" id="image"
+                                                        class="form-control">
 
                                                 </div>
 
@@ -62,23 +75,23 @@
                                         <h5 class="font-weight-bolder">Informação Pessoais </h5>
                                         <div class="row">
                                             <div class="col-6 ">
-                                                <label  class="mt-3" >Nome Completo</label>
+                                                <label class="mt-3">Nome Completo</label>
                                                 {!! Form::text('Nome_Completo', null, ['class' => 'form-control']) !!}
                                             </div>
                                             <div class="col-6 col-sm-4 mt-3 mt-sm-0">
-                                                <label  class="mt-3">E-mail</label>
+                                                <label class="mt-3">E-mail</label>
                                                 {!! Form::text('Email', null, ['class' => 'form-control valid']) !!}
                                             </div>
                                             <div class="col-2 col-sm-4 mt-3 mt-sm-0">
-                                                <label  class="mt-3">CPF</label>
+                                                <label class="mt-3">CPF</label>
                                                 {!! Form::text('CPF', null, ['class' => 'form-control']) !!}
                                             </div>
                                             <div class="col-2 col-sm-4 mt-3 mt-sm-0">
-                                                <label  class="mt-3" >RG</label>
+                                                <label class="mt-3">RG</label>
                                                 {!! Form::text('RG', null, ['class' => 'form-control']) !!}
                                             </div>
                                             <div class="col-2 col-sm-4 mt-3 mt-sm-0">
-                                                <label  class="mt-3">Sexo</label>
+                                                <label class="mt-3">Sexo</label>
                                                 <select name="Sexo" id="Sexo" class="form-select">
                                                     <option value="">Não desclarado</option>
                                                     <option value="Masculino">Masculino</option>
@@ -106,7 +119,7 @@
                                                 {!! Form::text('Empresa', null, ['class' => 'form-control']) !!}
                                             </div>
                                         </div>
-                
+
                                     </div>
                                 </div>
                             </div>
@@ -129,17 +142,7 @@
                                             </div>
                                         @endforeach
                                     </div>
-                                    <div class="card-body">
-                                        {{-- <img class="w-30 border-radius-lg shadow-lg mt-0" src="https://img.freepik.com/vetores-premium/modelo-de-logotipo-de-icone-de-academia-com-barra-haltere-design-de-logotipo-de-fitness_757387-345.jpg?w=2000"
-                                        alt="product_image" width="200px">   --}}
-                                        <h5 class="font-weight-bolder">Perfil</h5>
-                                        <select name="Perfil" id="Perfil" class="form-select">
-                                            <option value="">Selecione</option>
-                                            <option value="Aluno">Aluno</option>
-                                            <option value="Professor">Professor</option>
-                                            <option value="Funcionario">Funcionário</option>
-                                        </select>
-                                    </div>
+
                                 </div>
                             </div>
 

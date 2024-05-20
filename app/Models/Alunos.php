@@ -33,29 +33,40 @@ class Alunos extends Model
         'modalidade_id'
         ];
         
-    protected $table = 'alunos';
+        protected $table = 'alunos';
 
-    public function modalidades()
-    {
-        return $this->belongsToMany(modalidades::class);
-    }
+        public function modalidades()
+        {
+            return $this->belongsToMany(Modalidades::class, 'aluno_modalidade', 'aluno_id', 'modalidade_id');
+        }
+    
+        public function getModalidadeIdAttribute($value)
+        {
+            return json_decode($value, true);
+        }
+    
+        public function setModalidadeIdAttribute($value)
+        {
+            $this->attributes['modalidade_id'] = json_encode($value);
+        }
+    
+        public function getModalidadesNomesAttribute()
+        {
+            $modalidadeIds = $this->modalidade_id;
+            if (is_array($modalidadeIds)) {
+                return Modalidades::whereIn('id', $modalidadeIds)->pluck('Nome_Modalidade');
+            }
+            return [];
+        }
+    
+        public function matriculas()
+        {
+            return $this->hasMany(Matricula::class, 'alunos_id');
+        }
 
-       // Convertendo a string JSON armazenada no banco de dados de volta para um array
-       public function getModalidadeIdAttribute($value)
-       {
-           return json_decode($value, true);
-       }
-   
-       // Convertendo o array para uma string JSON antes de salvar no banco de dados
-       public function setModalidadeIdAttribute($value)
-       {
-           $this->attributes['modalidade_id'] = json_encode($value);
-       }
-
-       public function matriculas()
-       {
-        return $this->hasMany(Matricula::class, 'alunos_id');
-       }
-   
+        public function planos()
+        {
+            return $this->hasManyThrough(Planos::class, Matricula::class, 'alunos_id', 'id', 'id', 'planos_id');
+        }
 
 }

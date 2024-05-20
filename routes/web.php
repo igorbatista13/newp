@@ -96,11 +96,15 @@ Route::post('/finalizar-compra', 'ProdutoController@finalizarCompra')->name('fin
 // //VENDA
 // Route::post('/venda-finalizar', [VendaController::class, 'finalizarCompra']);
 
+// USUARIOS
+    Route::resource('usuarios', UsuariosController::class);
 // ALUNOS
-Route::resource('alunos', AlunosController::class);
-    // Professores
+    Route::resource('alunos', AlunosController::class);
+// Professores
     Route::get('/professores', [AlunosController::class, 'professores'])->name('professores');
-    // Matrícula 
+
+    
+// Matrícula 
     Route::post('/alunos/matricula', [AlunosController::class, 'matricula'])->name('alunos.matricula');
   
 

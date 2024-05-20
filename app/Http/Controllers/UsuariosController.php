@@ -22,20 +22,63 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 
 
-use App\Models\FICHA;
-use App\Models\CATEGORIA;
-use App\Models\ESCOLA;
-use App\Models\ALUNO;
-use App\Models\PERFIL;
+use App\Models\Alunos;
+use App\Models\modalidades;
+use App\Models\Matricula;
+use App\Models\Planos;
+
 
 
 class UsuariosController extends Controller
 {
     public function index(Request $request) {
         
-        $usuario = User::orderBy('id','DESC')->paginate(5);
-        return view('usuarios.index',compact('usuario'))
-            ->with('i', ($request->input('page', 1) - 1) * 5);
+        $alunos = Alunos::orderBy('created_at', 'desc')->take(5)->get();
+        $usuarios = Alunos::where('Perfil','=', 'Aluno')->get();
+        $professores = Alunos::where('Perfil','=', 'Professor')->get();
+        $funcionarios = Alunos::where('Perfil','=', 'Funcionario')->get();
+        //  $alunos = Alunos::get();
+          $badgeClasses = [
+              'bg-primary',
+              'bg-secondary',
+              'bg-info',
+              'bg-success',
+              'bg-warning',
+              'bg-danger',
+              // Adicione mais cores se necessário
+          ];
+  
+          // Obter todas as modalidades
+          $modalidades = modalidades::where('Situacao', 'Sim')->get();
+      
+          // Obter a contagem de modalidades
+          $qtdmodalidades = modalidades::count();
+      
+          // Obter a contagem de alunos por perfil
+          $qtdalunos = Alunos::where('perfil', 'Aluno')->count();
+          $qtdprofessor = Alunos::where('perfil', 'Professor')->count();
+          $qtdfunc = Alunos::where('perfil', 'Funcionario')->count();
+          $qtdplanos = Planos::count();
+          // Obter todas as matrículas e planos
+          $matricula = Matricula::all();
+          $plano = Planos::where('Status', 'Ativo')->get();
+      
+          return view('paginas.conteudo.usuarios.index', compact(
+              'alunos',
+              'modalidades',
+              'qtdalunos',
+              'qtdprofessor',
+              'qtdfunc',
+              'qtdmodalidades',
+              'matricula',
+              'plano',
+              'badgeClasses',
+              'qtdplanos',
+              'usuarios',
+              'professores',
+              'funcionarios'
+          ));
+  
     }
     
     public function create()

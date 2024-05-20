@@ -11,14 +11,13 @@
                 <table class="table table-flush" id="datatable-search">
                     <thead class="thead-light">
                         <tr>
-                            <th>ID</th>
                             <th>Nome</th>
                             <th>Preço</th>
                             <th>Status</th>
                             <th>Vigencia</th>
                             <th>Beneficos</th>
                             <th>Obs</th>
-                            <th> </th>
+                            <th> Ação</th>
                         </tr>
                     </thead>
                     @foreach ($plano as $planos)
@@ -39,14 +38,16 @@
                             <td class="text-xs font-weight-bold">
 
                                 <div class="d-flex align-items-center">
-                                    <button
-                                        class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i
-                                            class="fas fa-check" aria-hidden="true"></i></button>
-                                    <span>{{ $planos->Preco }}</span>
+                                  
+
+                                    <span>R$ {{ $planos->Preco }}</span>
                                 </div>
 
                             </td>
                             <td class="text-xs font-weight-bold">
+                                <button
+                                class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i
+                                    class="fas fa-check" aria-hidden="true"></i></button>
                                 <span class="my-2 text-xs">{{ $planos->Status }}</span>
                             </td>
                             <td class="text-xs font-weight-bold">
@@ -60,7 +61,7 @@
                             </td>
 
                             <td>
-                                EDITAR
+                                @include('/paginas/conteudo/planos/modal/edit')
                             </td>
                     
                         </tr>

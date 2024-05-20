@@ -1,4 +1,3 @@
-@include('paginas.base.topo.topo')
 
 
 <div class="container-fluid py-3">
@@ -85,7 +84,7 @@
             </a>
         </div>
         <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
-          <a href="{{asset ('/alunos')}}" class="card-link">
+          <a href="{{asset ('/pedidos')}}" class="card-link">
             <div class="card">
                 <div class="card-body p-3">
                     <div class="row">
@@ -111,7 +110,7 @@
           </a>
         </div>
         <div class="col-xl-2 col-sm-6 mb-xl-0 mb-4">
-          <a href="{{asset ('/alunos    ')}}" class="card-link">
+          <a href="{{asset ('/usuarios')}}" class="card-link">
             <div class="card">
                 <div class="card-body p-3">
                     <div class="row">

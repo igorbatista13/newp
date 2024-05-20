@@ -15,7 +15,10 @@ class AlunosController extends Controller
     public function index(Request $request)
     {
         $alunos = Alunos::orderBy('created_at', 'desc')->take(5)->get();
-        $alunos = Alunos::get();
+        $usuarios = Alunos::where('Perfil','=', 'Aluno')->get();
+        $professores = Alunos::where('Perfil','=', 'Professor')->get();
+        $funcionarios = Alunos::where('Perfil','=', 'Funcionario')->get();
+      //  $alunos = Alunos::get();
         $badgeClasses = [
             'bg-primary',
             'bg-secondary',
@@ -23,11 +26,24 @@ class AlunosController extends Controller
             'bg-success',
             'bg-warning',
             'bg-danger',
-            // Adicione mais cores se necessário
         ];
 
+        $badgeAvatar = [
+            'bg-gradient-primary',
+            'bg-gradient-dark',
+            'bg-gradient-info',
+            'bg-gradient-success',
+            'bg-gradient-warning',
+            'bg-gradient-danger',
+        ];
+
+        $colorIndex = 0;
+        $colorAvatar = 0;
+
+       
+
         // Obter todas as modalidades
-        $modalidades = modalidades::all();
+        $modalidades = modalidades::where('Situacao', 'Sim')->get();
     
         // Obter a contagem de modalidades
         $qtdmodalidades = modalidades::count();
@@ -36,7 +52,7 @@ class AlunosController extends Controller
         $qtdalunos = Alunos::where('perfil', 'Aluno')->count();
         $qtdprofessor = Alunos::where('perfil', 'Professor')->count();
         $qtdfunc = Alunos::where('perfil', 'Funcionario')->count();
-    
+        $qtdplanos = Planos::count();
         // Obter todas as matrículas e planos
         $matricula = Matricula::all();
         $plano = Planos::where('Status', 'Ativo')->get();
@@ -50,7 +66,14 @@ class AlunosController extends Controller
             'qtdmodalidades',
             'matricula',
             'plano',
-            'badgeClasses'
+            'badgeClasses',
+            'qtdplanos',
+            'usuarios',
+            'professores',
+            'funcionarios',
+            'colorIndex',
+            'badgeAvatar',
+            'colorAvatar'
         ));
     }
     
@@ -81,7 +104,76 @@ class AlunosController extends Controller
         }
     }
 
-public function professores(){
+public function professores(Request $request)
+{
+
+    $professores = Alunos::where('Perfil', 'Professor')->get();
+    $alunos = Alunos::orderBy('created_at', 'desc')->take(5)->get();
+        $usuarios = Alunos::where('Perfil','=', 'Aluno')->get();
+        $professores = Alunos::where('Perfil','=', 'Professor')->get();
+        $funcionarios = Alunos::where('Perfil','=', 'Funcionario')->get();
+      //  $alunos = Alunos::get();
+        $badgeClasses = [
+            'bg-primary',
+            'bg-secondary',
+            'bg-info',
+            'bg-success',
+            'bg-warning',
+            'bg-danger',
+        ];
+
+        $badgeAvatar = [
+            'bg-gradient-primary',
+            'bg-gradient-dark',
+            'bg-gradient-info',
+            'bg-gradient-success',
+            'bg-gradient-warning',
+            'bg-gradient-danger',
+        ];
+
+        $colorIndex = 0;
+        $colorAvatar = 0;
+
+       
+
+        // Obter todas as modalidades
+        $modalidades = modalidades::where('Situacao', 'Sim')->get();
+    
+        // Obter a contagem de modalidades
+        $qtdmodalidades = modalidades::count();
+    
+        // Obter a contagem de alunos por perfil
+        $qtdalunos = Alunos::where('perfil', 'Aluno')->count();
+        $qtdprofessor = Alunos::where('perfil', 'Professor')->count();
+        $qtdfunc = Alunos::where('perfil', 'Funcionario')->count();
+        $qtdplanos = Planos::count();
+        // Obter todas as matrículas e planos
+        $matricula = Matricula::all();
+        $plano = Planos::where('Status', 'Ativo')->get();
+    
+        return view('paginas.conteudo.professor.index', compact(
+            'alunos',
+            'modalidades',
+            'qtdalunos',
+            'qtdprofessor',
+            'qtdfunc',
+            'qtdmodalidades',
+            'matricula',
+            'plano',
+            'badgeClasses',
+            'qtdplanos',
+            'usuarios',
+            'professores',
+            'funcionarios',
+            'colorIndex',
+            'badgeAvatar',
+            'colorAvatar'
+   
+        ));
+
+}
+
+public function listalunos(){
 
     $professor = Alunos::where('Perfil', 'Professor')->get();
     return view('paginas.conteudo.professor.index', compact(
