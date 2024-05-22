@@ -28,13 +28,13 @@ class MinhaEmpresaController extends Controller
     {
         $titulo = 'Minha Empresa';
 
-        $empresa = Minhaempresa::where('id', '>=', 0)->exists();
+        $empresaExists = Minhaempresa::where('id', '>=', 1)->exists();
 
      //   $saldo_existe = Saldo::where('empresa_cliente_id', $cliente->id)->exists();
 
       // dd($empresa);
         $minhaempresa = MinhaEmpresa::get();
-        return view('paginas.conteudo.minhaempresa.index',compact('minhaempresa','empresa', 'titulo'));
+        return view('paginas.conteudo.minhaempresa.index',compact('minhaempresa','empresaExists', 'titulo'));
         
     }
     

@@ -108,5 +108,6 @@
                     </section>
                 </div>
             </div>
-        </div></div>
-            @include('paginas.base.rodape.rodape')
+        </div>
+    </div>
+    @include('paginas.base.rodape.rodape')

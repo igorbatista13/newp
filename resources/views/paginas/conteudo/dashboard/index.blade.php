@@ -24,7 +24,7 @@
                             <hr class="horizontal light mt-1 mb-3">
                             <div class="d-flex justify-content-center">
                                 <div>
-                                    <h6 class="mb-0 text-body opacity-7">Distance</h6>
+                                    <h6 class="mb-0 text-body opacity-7">Distanceeee</h6>
                                     <h3 class="text-body">145 <small class="text-sm align-top">Km</small></h3>
                                 </div>
                                 <div class="ms-lg-6 ms-4 text-center">
@@ -136,7 +136,7 @@
                         <div class="col-8">
                             <div class="numbers">
                                 <p class="text-white text-sm mb-0 text-uppercase font-weight-bold opacity-7">Music
-                                    Volume</p>
+                                    Volumeeeeeeeeee</p>
                                 <h5 class="text-white font-weight-bolder mb-0">
                                     15/100
                                 </h5>

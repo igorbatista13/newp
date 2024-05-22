@@ -1,9 +1,18 @@
 @include('paginas.base.topo.topo')
 
-@if ($empresa == false)
-    <a class="btn btn-warning" href="minhaempresa/create">Configurar minha
-        empresa</a>
+@if (!$empresaExists)
+    <div class="col-12 col-md-6 col-xl-6 mt-md-0 mt-4">
+        <div class="card h-100">
+            <div class="card-header pb-0 p-3">
+                <div class="row">
+                    <div class="col-md-8 d-flex align-items-center">
+                        <h5 class="font-weight-bolder mb-0">
+                            <a class="btn btn-warning" href="minhaempresa/create"> Configurar minha empresa</a>
+                        </h5>
+                    </div>
+                </div>
 @endif
+
 @foreach ($minhaempresa as $minhaempresas)
     <div class="col-12 col-md-6 col-xl-6 mt-md-0 mt-4">
         <div class="card h-100">
@@ -13,7 +22,7 @@
                         <h5 class="font-weight-bolder mb-0">
                             {{ $minhaempresas->Nome_Empresa ?? 'Não informado' }}
                         </h5>
-                        <h6 class="mb-0"> 
+                        <h6 class="mb-0">
                         </h6>
                     </div>
                     <div class="col-md-4 text-end">
@@ -63,8 +72,4 @@
     </div>
 @endforeach
 
-
-
-
-
-                                @include('paginas.base.rodape.rodape')
+@include('paginas.base.rodape.rodape')
