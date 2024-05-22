@@ -41,11 +41,12 @@
         data-scroll="false">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
-                <h3 class="font-weight-bolder text-white mb-0">(logo) + Nome da Empresa </h3>
-
+                @foreach ($empresa as $empresas)
+                    <h3 class="font-weight-bolder text-white mb-0">
+                        {{ $empresas->Nome_Empresa ?? 'Não configurado' }}
+                    </h3>
+                @endforeach
             </nav>
-
-
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                     {{-- <div class="input-group">
@@ -54,8 +55,6 @@
           </div> --}}
                 </div>
                 <ul class="navbar-nav  justify-content-end">
-
-
                     <li class="nav-item dropdown pe-4 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -149,36 +148,36 @@
                         <ul class="dropdown-menu  dropdown-menu-end " aria-labelledby="dropdownMenuButton">
                             <li class="mb-2">
                                 <a class="dropdown-item border-radius-md" href="{{ asset('/perfil') }}">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-sm font-weight-normal mb-1">
-                                                <i class="fa fa-user me-1"></i>
-                                                <span class="font-weight-bold">Meu Perfil</span>
-                                            </h6>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="text-sm font-weight-normal mb-1">
+                                            <i class="fa fa-user me-1"></i>
+                                            <span class="font-weight-bold">Meu Perfil</span>
+                                        </h6>
                                     </div>
                                 </a>
                             </li>
                             <li class="mb-2">
                                 <a class="dropdown-item border-radius-md" href="{{ asset('/logout') }}">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-sm font-weight-normal mb-1">
-                                                <i class="fa fa-sign-out me-1"></i>
-                                                <span class="font-weight-bold">Sair do Sistema</span>
-                                            </h6>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="text-sm font-weight-normal mb-1">
+                                            <i class="fa fa-sign-out me-1"></i>
+                                            <span class="font-weight-bold">Sair do Sistema</span>
+                                        </h6>
                                     </div>
                                 </a>
                             </li>
                             <li class="mb-2">
                                 <a class="dropdown-item border-radius-md" href="{{ asset('/minhaempresa') }}">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-sm font-weight-normal mb-1">
-                                                <i class="fa fa-cog me-1"></i>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="text-sm font-weight-normal mb-1">
+                                            <i class="fa fa-cog me-1"></i>
                                             <span class="font-weight-bold">Minha Empresa</span>
-                                            </h6>
+                                        </h6>
                                     </div>
                                 </a>
                             </li>
 
-                            
+
                         </ul>
                     </li>
                     {{-- <li class="nav-item pe-2 d-flex align-items-center">

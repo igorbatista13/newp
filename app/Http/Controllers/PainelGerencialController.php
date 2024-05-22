@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Contrato;
 use App\Models\Recibo;
 use App\Models\Fornecedor;
+use App\Models\MinhaEmpresa;
 
 
 
@@ -29,6 +30,8 @@ class PainelGerencialController extends Controller
         $contrato = Contrato::count();
         $recibo   = Recibo::count();
         $fornecedor   = Fornecedor::count();
+        $empresaExists = MinhaEmpresa::where('id', '>=', 1)->exists();
+        $empresa = MinhaEmpresa::get();
 
         return view('paginas.conteudo.dashboard.index', compact(
     //    return view('painel.index', compact(
@@ -39,7 +42,11 @@ class PainelGerencialController extends Controller
             'contratos',
             'recibos',
             'titulo',
-            'fornecedor'
+            'fornecedor',
+            'empresaExists',
+            'empresa'
+
+
         ));
     }
 

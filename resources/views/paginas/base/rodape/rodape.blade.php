@@ -40,6 +40,8 @@
 <script src="{{ asset('/pdv/js/core/bootstrap.min.js') }}"></script>
 <script src="{{ asset('/pdv/js/plugins/perfect-scrollbar.min.js') }}"></script>
 <script src="{{ asset('/pdv/js/plugins/smooth-scrollbar.min.js') }}"></script>
+
+{{-- C:\Users\00054957176\PROJETOS\newp\public\pdv\js\plugins\multistep-form.js --}}
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {

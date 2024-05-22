@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
     
 use App\Models\MinhaEmpresa;
+use App\Models\Produto;
+use App\Models\modalidades;
+use App\Models\planos;
 use Illuminate\Http\Request;
     
 class MinhaEmpresaController extends Controller
@@ -26,15 +29,18 @@ class MinhaEmpresaController extends Controller
      */
     public function index()
     {
-        $titulo = 'Minha Empresa';
+        //$titulo = 'Minha Empresa';
 
         $empresaExists = Minhaempresa::where('id', '>=', 1)->exists();
-
+        $produtoExists = Produto::where('id', '>=', 1)->exists();
+        $planoExists = planos::where('id', '>=', 1)->exists();
+        $modalidadeExists = modalidades::where('id', '>=', 1)->exists();
+        
      //   $saldo_existe = Saldo::where('empresa_cliente_id', $cliente->id)->exists();
 
       // dd($empresa);
         $minhaempresa = MinhaEmpresa::get();
-        return view('paginas.conteudo.minhaempresa.index',compact('minhaempresa','empresaExists', 'titulo'));
+        return view('paginas.conteudo.minhaempresa.index',compact('minhaempresa','empresaExists', 'produtoExists','planoExists','modalidadeExists'));
         
     }
     
@@ -63,9 +69,10 @@ class MinhaEmpresaController extends Controller
   
     
         MinhaEmpresa::create($request->all());
-    
-        return redirect()->route('paginas.conteudo.minhaempresa.index')
-                        ->with('success','Minha Empresa criada com sucesso!');
+        return redirect('/minhaempresa');
+
+      //  return redirect()->route('minhaempresa')
+      //                  ->with('success','Minha Empresa criada com sucesso!');
     }
     
     /**

@@ -11,7 +11,7 @@ use App\Http\Controllers\
     HomeController,  APIController, PainelGerencialController, FornecedorController,
     UsuariosController, RoleController, UserController, 
     PessoaController, Ficha_Conselho, CalendarController,
-    ObjetosController, SaldoController, SiteController, PedidosController, 
+    ObjetosController, SaldoController, SiteController, PedidosController, PerfilController,
     
     VendaController, AlunosController, MatriculaController, ModalidadesController, PlanosController
 };
@@ -37,7 +37,7 @@ Route::resource('users',                     UserController::class);
 Route::resource('cliente',                   Empresa_ClienteController::class);
 Route::resource('fornecedor',                FornecedorController::class);
 Route::resource('minhaempresa',              MinhaEmpresaController::class);
-// Route::resource('produtos',                  ProdutoController::class);
+// Route::resource('produtos',               ProdutoController::class);
 Route::resource('recibos',                   ReciboController::class);
 Route::resource('contrato',                  ContratoController::class);
 Route::resource('orcamento',                 OrcamentoController::class);
@@ -89,6 +89,7 @@ Route::get('/buscar', [ProdutoController::class, 'buscar'])->name('buscar');
 Route::get('/buscar-alunos', [AlunosController::class, 'buscarAlunos'])->name('buscarAlunos');
 
 Route::resource('produtos', ProdutoController::class);
+Route::resource('perfil', PerfilController::class);
 Route::post('/adicionar-carrinho', 'ProdutoController@adicionarCarrinho')->name('adicionarCarrinho');
 Route::post('/finalizar-compra', 'ProdutoController@finalizarCompra')->name('finalizarCompra');
 

@@ -32,7 +32,6 @@
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <link href="{{asset('/pdv/css/nucleo-svg.css')}}" rel="stylesheet" />
   <!-- CSS Files -->
-  <link id="pagestyle" href="{{asset('/pdv/css/argon-dashboard.css?v=2.0.4')}}" rel="stylesheet" />
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">

@@ -191,6 +191,8 @@ return [
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        App\Providers\EmpresaServiceProvider::class,
+
 
 
 

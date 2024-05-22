@@ -31,13 +31,35 @@
 
                             </div>
                         </div>
-
+                        {{-- <div class="card-body d-flex">
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center">
+                                <a href="javascript:;"
+                                    class="avatar avatar-lg border-1 rounded-circle bg-gradient-primary">
+                                    <i class="fas fa-plus text-white" aria-hidden="true"></i>
+                                </a>
+                                <p class="mb-0 text-sm" style="margin-top:6px;">Adicionar Aluno</p>
+                            </div>
+                        @foreach ($alunos as $aluno)
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center">
+                                <a href="javascript:;"
+                                    class="avatar avatar-lg rounded-circle border border-primary">
+                                    <img alt="" class="p-1"
+                                        src="{{ asset('/images/usuarios/') }}/{{ $aluno->image }}">
+                                </a>
+                                <p class="mb-0 text-sm">    {{ substr($aluno->Nome_Completo, 0, 10) }}
+                                </p>
+                            </div>
+                  
+                              
+                            @endforeach
+                            </div> --}}
                         <div class="table-responsive">
 
                             <table class="table align-items-center mb-0">
 
+                      
+                                    @foreach ($alunos as $aluno)
 
-                                @foreach ($alunos as $aluno)
                                     <div class="col-lg-12 mt-lg-0 mt-4">
 
                                         <div class="card card-body" id="profile">
@@ -105,15 +127,16 @@
                                     </div>
                                     <div class="d-flex flex-column">
                                         <h6 class="mb-1 text-dark text-sm">Alunos</h6>
-                                        <span class="text-xs">Total: <span class="font-weight-bold">{{ $qtdalunos }}
+                                        <span class="text-xs">Total: <span
+                                                class="font-weight-bold">{{ $qtdalunos }}
                                             </span></span>
                                     </div>
                                 </div>
                                 <div class="d-flex">
                                     <a href="{{ asset('/alunos') }}">
-                                         <button
-                                        class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
-                                            class="ni ni-bold-right" aria-hidden="true"></i>
+                                        <button
+                                            class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
+                                                class="ni ni-bold-right" aria-hidden="true"></i>
                                         </button>
                                     </a>
                                 </div>
@@ -126,17 +149,18 @@
                                     </div>
                                     <div class="d-flex flex-column">
                                         <h6 class="mb-1 text-dark text-sm">Professores</h6>
-                                        <span class="text-xs">Total: <span class="font-weight-bold">{{ $qtdprofessor }}
+                                        <span class="text-xs">Total: <span
+                                                class="font-weight-bold">{{ $qtdprofessor }}
                                             </span></span>
                                     </div>
                                 </div>
                                 <div class="d-flex">
                                     <a href="{{ asset('/professores') }}">
                                         <button
-                                       class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
-                                           class="ni ni-bold-right" aria-hidden="true"></i>
-                                       </button>
-                                   </a>
+                                            class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
+                                                class="ni ni-bold-right" aria-hidden="true"></i>
+                                        </button>
+                                    </a>
                             </li>
                             <li
                                 class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
@@ -154,10 +178,10 @@
                                 <div class="d-flex">
                                     <a href="{{ asset('/modalidades') }}">
                                         <button
-                                       class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
-                                           class="ni ni-bold-right" aria-hidden="true"></i>
-                                       </button>
-                                   </a>
+                                            class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
+                                                class="ni ni-bold-right" aria-hidden="true"></i>
+                                        </button>
+                                    </a>
                                 </div>
                             </li>
                             <li class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
@@ -167,17 +191,18 @@
                                     </div>
                                     <div class="d-flex flex-column">
                                         <h6 class="mb-1 text-dark text-sm">Planos</h6>
-                                        <span class="text-xs">Total: <span class="font-weight-bold">{{ $qtdplanos }}
+                                        <span class="text-xs">Total: <span
+                                                class="font-weight-bold">{{ $qtdplanos }}
                                             </span></span>
                                     </div>
                                 </div>
                                 <div class="d-flex">
                                     <a href="{{ asset('/planos') }}">
                                         <button
-                                       class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
-                                           class="ni ni-bold-right" aria-hidden="true"></i>
-                                       </button>
-                                   </a>
+                                            class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i
+                                                class="ni ni-bold-right" aria-hidden="true"></i>
+                                        </button>
+                                    </a>
                                 </div>
                             </li>
                         </ul>
