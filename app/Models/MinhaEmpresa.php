@@ -11,12 +11,28 @@ class MinhaEmpresa extends Model
     protected $table = 'empresas';
 
     protected $fillable = [
-        'Nome_Empresa', 'Cnpj', 'Chave_Pix', 'Email', 'Telefone', 'Site', 'image', 'facebook_url', 'instagram_url', 'linkedin_url'
+        'Nome_Empresa',
+        'Endereco',
+        'CEP',
+        'Estado',
+        'Cidade',
+        'Logo',
+        'Descricao',
+        'Cnpj',
+        'Email',
+        'Telefone',
+        'Site',
+        'Chave_Pix',
+        'image',
+        'facebook_url',
+        'instagram_url',
+        'linkedin_url'
     ];
 
 
 
-    public function recibo(){
+    public function recibo()
+    {
         return $this->belongsTo(Recibo::class);
     }
 }

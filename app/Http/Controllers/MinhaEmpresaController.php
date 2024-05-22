@@ -69,6 +69,34 @@ class MinhaEmpresaController extends Controller
   
     
         MinhaEmpresa::create($request->all());
+
+        
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $requestImage = $request->image;
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $imagePath = public_path('images/perfil') . '/' . $imageName;
+
+            // Crie uma instância da classe Intervention ImageManager
+            $imageManager = new ImageManager();
+
+            // Abra a imagem usando o ImageManager
+            $image = $imageManager->make($requestImage->path());
+
+            // Redimensione a imagem para as dimensões desejadas
+            $largura = 225;
+            $altura = 225;
+            $image->resize($largura, $altura, function ($constraint) {
+                $constraint->aspectRatio(); // Mantém a proporção da imagem
+                $constraint->upsize(); // Evita que a imagem seja dimensionada para cima
+            });
+
+            // Salve a imagem redimensionada
+            $image->save($imagePath);
+
+            $perfil->image = $imageName;
+        }
+
         return redirect('/minhaempresa');
 
       //  return redirect()->route('minhaempresa')
