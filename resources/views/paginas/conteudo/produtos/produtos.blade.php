@@ -24,7 +24,26 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="col-lg-4 col-sm-6">
+                                @foreach ($produto as $produtos)
+                                <div class="card mt-4">
+                                    <div class="card-body p-3">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <img src="{{ asset('/images/produtos/') }}/{{ $produtos->image }}"
+                                                    alt="kal" class="border-radius-lg shadow w-100">
+                                            </div>
+                                            <div class="col-4 my-auto">
+                                                <p class="text-muted text-sm font-weight-bold">
+                                                    {{ $produtos->Nome_Produto }} </p>
+                                                <a href="javascript:;" class="btn btn-sm bg-gradient-dark mb-0">Send
+                                                    message</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
                         <div class="table-responsive">
                             <table class="table align-items-center mb-0">
                                 <thead>
@@ -157,8 +176,8 @@
                                 </div>
                                 <div class="d-flex flex-column">
                                     <h6 class="mb-1 text-dark text-sm">Produtos</h6>
-                                    <span class="text-xs">Total: <span class="font-weight-bold">{{$produtoqtd}}
-                                           Cadastrados </span></span>
+                                    <span class="text-xs">Total: <span class="font-weight-bold">{{ $produtoqtd }}
+                                            Cadastrados </span></span>
                                 </div>
                             </div>
                             <div class="d-flex">
@@ -174,8 +193,8 @@
                                 </div>
                                 <div class="d-flex flex-column">
                                     <h6 class="mb-1 text-dark text-sm">Fornecedores:</h6>
-                                    <span class="text-xs">Total: <span class="font-weight-bold">{{$fornecedorqtd}}
-                                        Cadastrados    </span> </span>
+                                    <span class="text-xs">Total: <span class="font-weight-bold">{{ $fornecedorqtd }}
+                                            Cadastrados </span> </span>
                                 </div>
                             </div>
                             <div class="d-flex">
@@ -184,8 +203,8 @@
                                         class="ni ni-bold-right" aria-hidden="true"></i></button>
                             </div>
                         </li>
-             
-                       
+
+
                     </ul>
                 </div>
             </div>

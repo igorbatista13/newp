@@ -9,6 +9,7 @@ use App\Models\Contrato;
 use App\Models\Recibo;
 use App\Models\Fornecedor;
 use App\Models\MinhaEmpresa;
+use App\Models\Alunos;
 
 
 
@@ -22,7 +23,7 @@ class PainelGerencialController extends Controller
     public function dashboard()
     {
 
-        $titulo = 'Dashboard';
+        $titulo = 'Dashbosard';
         $contratos = Contrato::with('empresa_cliente')->orderBy('id', 'DESC')->paginate(5);
         $recibos   = Recibo::with('empresa_cliente')->orderBy('id', 'DESC')->paginate(5);
         $clientes = Empresa_Cliente::all();
@@ -32,7 +33,7 @@ class PainelGerencialController extends Controller
         $fornecedor   = Fornecedor::count();
         $empresaExists = MinhaEmpresa::where('id', '>=', 1)->exists();
         $empresa = MinhaEmpresa::get();
-
+        $alunos = Alunos::orderBy('created_at', 'desc')->take(5)->get();
         return view('paginas.conteudo.dashboard.index', compact(
     //    return view('painel.index', compact(
             'clientes',
@@ -44,7 +45,8 @@ class PainelGerencialController extends Controller
             'titulo',
             'fornecedor',
             'empresaExists',
-            'empresa'
+            'empresa',
+            'alunos'
 
 
         ));

@@ -10,10 +10,10 @@
             <div class="col-auto my-auto">
                 <div class="h-100">
                     <h5 class="mb-1">
-                        Usuários
+                        Produtos
                     </h5>
                     <p class="mb-0 font-weight-bold text-sm">
-                        Produtos, Fornecedores e ....
+                        Vendas, Cadastro de Produtos e Fornecedores 
                     </p>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                        
                 <hr class="horizontal light mt-2 mb-3">
                 <div class="d-flex align-items-center">
-                    <div class="ms-lg-1 ms-4">
+                    <div class="ms-lg-1 ms-6">
 
                          @include('/paginas/conteudo/produtos/modal/create/modal') 
 
