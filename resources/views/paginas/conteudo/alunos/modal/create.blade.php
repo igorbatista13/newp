@@ -49,7 +49,13 @@
                                                         alt="product_image" width="200px">   --}}
 
                                                     <h5 class="font-weight-bolder text-center">Foto</h5>
-
+                                                    <video id="video" width="240" height="240" autoplay></video>
+                                                    <button type="button" id="snap">Capturar</button>
+                                                    <canvas id="canvas" width="240" height="240"></canvas>
+                                            
+                                                    <input type="hidden" name="image" id="imageInput">
+                                            
+                                                    <button type="submit">Atualizar Aluno</button>
                                                     <input type="file" name="image" id="image"
                                                         class="form-control">
 

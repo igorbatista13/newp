@@ -24,9 +24,10 @@ class PerfilController extends Controller
 
     public function index()
     {
-        return view('paginas.conteudo.perfil.index');
+        $perfil = Perfil::all();
+        return view('paginas.conteudo.perfil.index', compact('perfil'));
     }
-    
+
     public function update(Request $request, Perfil $perfil)
     {
 

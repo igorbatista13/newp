@@ -95,6 +95,10 @@
                                                         <small id="profileVisibility">
                                                             @include('/paginas/conteudo/alunos/modal/edit')
                                                         </small>
+                                                        <small id="profileVisibility">
+                                                            @include('/paginas/conteudo/alunos/modal/webcam')
+                                                        </small>
+
                                                     </label>
                                                     <div class="form-check form-switch ms-2">
                                                     </div>

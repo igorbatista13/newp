@@ -107,7 +107,9 @@
                             <td>
                                 @include('/paginas/conteudo/alunos/modal/edit')
 
+                                
                             </td>
+                      
                         </tr>
                         
                         @endforeach

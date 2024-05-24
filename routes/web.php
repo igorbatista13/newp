@@ -13,7 +13,7 @@ use App\Http\Controllers\
     PessoaController, Ficha_Conselho, CalendarController,
     ObjetosController, SaldoController, SiteController, PedidosController, PerfilController,
     
-    VendaController, AlunosController, MatriculaController, ModalidadesController, PlanosController
+    VendaController, AlunosController, MatriculaController, ModalidadesController, PlanosController, ImageUploadController
 };
 
  Route::get('/escola/teste',      [PessoaController::class, 'index']);
@@ -102,13 +102,9 @@ Route::post('/finalizar-compra', 'ProdutoController@finalizarCompra')->name('fin
 // ALUNOS
     Route::resource('alunos', AlunosController::class);
 // Professores
-    Route::get('/professores', [AlunosController::class, 'professores'])->name('professores');
-
-    
+    Route::get('/professores', [AlunosController::class, 'professores'])->name('professores');    
 // Matrícula 
-    Route::post('/alunos/matricula', [AlunosController::class, 'matricula'])->name('alunos.matricula');
-  
-
+    Route::post('/alunos/matricula', [AlunosController::class, 'matricula'])->name('alunos.matricula'); 
 // MATRICULAS
 Route::resource('matriculas', MatriculaController::class);
 
@@ -118,6 +114,8 @@ Route::resource('modalidades', ModalidadesController::class);
 // PLANOS
 Route::resource('planos', PlanosController::class);
 
+// Webcam
+Route::post('/upload-image', [ImageUploadController::class, 'upload'])->name('upload.image');
 
 
 

@@ -6,6 +6,7 @@ use App\Models\Alunos;
 use App\Models\modalidades;
 use App\Models\Matricula;
 use App\Models\Planos;
+use Illuminate\Support\Facades\File;
 
 use Illuminate\Http\Request;
 
@@ -183,55 +184,73 @@ public function listalunos(){
 
 }
 
-    public function store(Request $request)
-    {
-        //    $modalidadeIds = $request->input('modalidade_id');
-        //dd($modalidadeIds);
-        $aluno = new Alunos;
-        $aluno = Alunos::create($request->all());
-        $aluno->Nome_Completo = $request->input('Nome_Completo');
-        $aluno->Email = $request->input('Email');
-        $aluno->Sexo = $request->input('Sexo');
-        $aluno->modalidade_id = json_encode($request->input('modalidade_id'));
+private function processarImagem(Request $request, $aluno)
+{
+    // Verificar se a imagem foi enviada
+    if ($request->has('image')) {
+        $imageData = $request->input('image');
 
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+        // Decodificar a imagem da base64
+        list($type, $imageData) = explode(';', $imageData);
+        list(, $imageData) = explode(',', $imageData);
+        $imageData = base64_decode($imageData);
 
-            $requestImage = $request->image;
+        // Definir o caminho e nome do arquivo
+        $imageName = md5($aluno->Nome_Completo . strtotime("now")) . '.png';
+        $path = public_path('images/usuarios/' . $imageName);
 
-            $extension = $requestImage->extension();
+        // Salvar a imagem no diretório público
+        File::put($path, $imageData);
 
-            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
-
-            $request->image->move(public_path('images/usuarios'), $imageName);
-
-            $aluno->image = $imageName;
-        }
-        //   dd($aluno);
-        $aluno->save();
-        return back()->with('success', 'Aluno adicionado com sucesso!');
+        // Atualizar o campo image do aluno
+        $aluno->image = $imageName;
     }
+
+    // Salvar as alterações do aluno
+    $aluno->save();
+}
+
+// Método para criar um novo aluno
+public function store(Request $request)
+{
+    // Criação do aluno
+    $aluno = Alunos::create($request->except('image'));
+    $aluno->Nome_Completo = $request->input('Nome_Completo');
+    $aluno->Email = $request->input('Email');
+    $aluno->Sexo = $request->input('Sexo');
+    $aluno->modalidade_id = json_encode($request->input('modalidade_id'));
+
+    // Processar a imagem capturada pela webcam
+    $this->processarImagem($request, $aluno);
+
+    return back()->with('success', 'Aluno adicionado com sucesso!');
+}
 
     public function update(Request $request, Alunos $aluno)
     {
-        
-        $aluno->update($request->all());
+        // Atualizar outros campos do aluno, se necessário
+        $aluno->update($request->except('image'));
 
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+        // Processar a imagem capturada pela webcam
+        if ($request->has('image')) {
+            $imageData = $request->input('image');
 
-            $requestImage = $request->image;
+            // Decodificar a imagem da base64
+            list($type, $imageData) = explode(';', $imageData);
+            list(, $imageData) = explode(',', $imageData);
+            $imageData = base64_decode($imageData);
 
-            $extension = $requestImage->extension();
+            // Definir o caminho e nome do arquivo
+            $imageName = md5($aluno->Nome_Completo . strtotime("now")) . '.png';
+            $path = public_path('images/usuarios/' . $imageName);
 
-            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            // Salvar a imagem no diretório público
+            File::put($path, $imageData);
 
-            $request->image->move(public_path('images/usuarios'), $imageName);
-
+            // Atualizar o campo image do aluno
             $aluno->image = $imageName;
+            $aluno->save();
         }
-      //  $alunos->save();
-
-     //   dd($alunos); // Verifique os dados recebidos do formulário
-        // $alunos->update();
 
         return back()->with('edit', 'Aluno atualizado com sucesso!');
     }
