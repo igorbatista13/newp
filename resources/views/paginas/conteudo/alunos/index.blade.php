@@ -8,116 +8,149 @@
         <div class="card">
             <div class="table-responsive">
                 <table class="table table-flush" id="datatable-search">
-                    <thead class="thead-light">
+                <thead class="thead-light">
                         <tr>
-                            <th>Id</th>
-                            <th>Data</th>
-                            <th>Status</th>
-                            <th>Nome</th>
-                            <th>Modalidade</th>
-                            <th>Planos</th>
-                            <th> Ação</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                Nome</th>
+                            
+                            <th
+                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                Perfil</th>
+                            <th
+                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                Matrícula</th>
+                            <th
+                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                Plano</th>                                  
+                            <th
+                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                Modalidade</th>                                  
+                            <th
+                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            </th>
                         </tr>
                     </thead>
-                    @foreach ($usuarios as $aluno)
-
                     <tbody>
-                        <tr>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="customCheck1">
+                            @foreach ($alunos as $aluno)
+                            <tr>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div>
+                                            <img src="{{ asset('/images/usuarios/') }}/{{ $aluno->image }}"
+                                                class="avatar avatar-sm me-3">
+                                        </div>
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm"> {{ $aluno->Nome_Completo }} </h6>
+                                        </div>
                                     </div>
-                                    <p class="text-xs font-weight-bold ms-2 mb-0">{{$aluno->id}}</p>
-                                </div>
-                            </td>
-                            <td class="font-weight-bold">
-                                <span class="my-2 text-xs">{{$aluno->created_at}}</span>
-                            </td>
-                            <td class="text-xs font-weight-bold">
-                                @if($aluno->matriculas->isNotEmpty())
-                                <button
-                                class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i
-                                    class="fas fa-check" aria-hidden="true"></i></button>
-                            <span>Matrículado</span>     
-                                                   @else
-                            <button
-                            class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i
-                                class="fas fa-times" aria-hidden="true"></i></button>
-                        <span>Não Matrículado</span>
-                                                    @endif
-                          {{--       <div class="d-flex align-items-center">
-                                    <button
-                                        class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i
-                                            class="fas fa-check" aria-hidden="true"></i></button>
-                                    <span>Matrículado</span>
-                                </div>
-
-                                <div class="d-flex align-items-center">
-                                    <button
-                                        class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i
-                                            class="fas fa-times" aria-hidden="true"></i></button>
-                                    <span>Não Matrículado</span>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <button
-                                        class="btn btn-icon-only btn-rounded btn-outline-dark mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i
-                                            class="fas fa-undo" aria-hidden="true"></i></button>
-                                    <span>Refunded</span>
-                                </div> --}}
-
-
-                            </td>
-                            <td class="text-xs font-weight-bold">
-                         
-                                <div class="d-flex align-items-center">
-                                            {{-- <div class="avatar avatar-xs me-2 bg-gradient-primary"> --}}
-                                      
-                                            <div class="avatar avatar-xs me-2 {{ $badgeAvatar[$colorAvatar] }} "> 
-                                                    {{ substr($aluno->Nome_Completo, 0, 1) }}
-                                                </div>
-                                                @php
-
-                                                    $colorAvatar = ($colorAvatar + 1) % count($badgeAvatar);
-                                                @endphp
-                                  
-                                    </div>
-                                    <span>{{ $aluno->Nome_Completo }}</span>
-                                </div>
-                            </td>
-                            <td class="text-xs font-weight-bold">
-                                <span class="my-2 text-xs">
-                                    @foreach($aluno->modalidades_nomes as $nome_modalidade)
-                                     <span class="badge bg-success">
-                                           {{ $nome_modalidade }}
-                                     @if(!$loop->last), @endif
-                                     </span>
-                                    @endforeach
-                                </span>
-                            </td>
-                            <td class="text-xs font-weight-bold">
-                                @foreach($aluno->planos as $plano)
-                                <span class="badge {{ $badgeClasses[$colorIndex] }} me-0"> {{ $plano->Nome_Plano }} </span>
-                                @php
-                                    $colorIndex = ($colorIndex + 1) % count($badgeClasses);
-                                @endphp
-                            @endforeach
-                                </span>
-                            </td>
-                            <td>
-                                @include('/paginas/conteudo/alunos/modal/edit')
-
+                                </td>
+                                <td>
+                                    <p class="text-sm text-secondary mb-0">
+                                        @if ($aluno->Perfil !== null && $aluno->Perfil !== 'Não informado' && $aluno->Perfil === 'Aluno')
+                                            <span class="badge bg-warning me-0">{{ $aluno->Perfil ?? 'Não informado' }}</span>
+                                        @endif
+                                        @if ($aluno->Perfil !== null && $aluno->Perfil !== 'Não informado' && $aluno->Perfil === 'Professor')
+                                            <span class="badge bg-success me-0">{{ $aluno->Perfil ?? 'Não informado' }}</span>
+                                        @endif
+                                        @if ($aluno->Perfil !== null && $aluno->Perfil !== 'Não informado' && $aluno->Perfil === 'Funcionario')
+                                            <span class="badge bg-danger me-0">{{ $aluno->Perfil ?? 'Não informado' }}</span>
+                                        @endif
+                                    </p>
+                                </td>
                                 
-                            </td>
+                                <td>
+                                    @if ($aluno->matriculas->isNotEmpty())
+                                            <button
+                                                class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-2 btn-sm d-flex align-items-center justify-content-center">
+                                                <i class="fas fa-check" aria-hidden="true"></i></button>
+                                        @else
+                                            <button
+                                                class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-2 btn-sm d-flex align-items-center justify-content-center">
+                                                <i class="fas fa-times" aria-hidden="true"></i></button>
+                                        @endif
+
+                                </td>
+                                <td>
+                                        @foreach($aluno->planos as $plano)
+                                        <span class="badge badge-dot me-4">
+
+                                        <i class="bg-danger"></i>
+                                        <span class="text-dark">
+                                           {{ $plano->Nome_Plano }} </span>
+                                        
+                                        </span>
+                                        @endforeach
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    @foreach ($aluno->modalidades_nomes as $nome_modalidade)
+                                        <span class="badge bg-success">
+                                            {{ $nome_modalidade }}
+                                            @if (!$loop->last)
+                                                
+                                            @endif
+                                        </span>
+                                    @endforeach
+                                </td>
                       
-                        </tr>
-                        
-                        @endforeach
-                    </tbody>
+                                <td class="align-middle text-center">
+                                    <span class="text-secondary text-sm">
+                                        @include('/paginas/conteudo/alunos/modal/edit')</span>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                        {{-- <div class="col-lg-12 mt-lg-0 mt-4">
+
+                            <div class="card card-body" id="profile">
+                                <div class="row justify-content-center align-items-center">
+                                    <div class="col-sm-auto col-4">
+                                        <div class="avatar avatar-xl position-relative">
+                                            <img src="{{ asset('/images/usuarios/') }}/{{ $aluno->image }}"
+                                                alt="bruce" class="w-100 border-radius-lg shadow-sm">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-auto col-8 my-auto">
+                                        <div class="h-100">
+                                            <h5 class="mb-1 font-weight-bolder">
+                                                {{ $aluno->Nome_Completo }} </h5>
+                                            <p class="mb-0 font-weight-bold text-sm">
+                                                @if ($aluno->Perfil !== null && $aluno->Perfil !== 'Não informado' && $aluno->Perfil === 'Aluno')
+                                                    <span
+                                                        class="badge bg-warning me-0">{{ $aluno->Perfil }}</span>
+                                                @endif
+                                                @if ($aluno->Perfil !== null && $aluno->Perfil !== 'Não informado' && $aluno->Perfil === 'Professor')
+                                                    <span
+                                                        class="badge bg-success me-0">{{ $aluno->Perfil }}</span>
+                                                @endif
+                                                @if ($aluno->Perfil !== null && $aluno->Perfil !== 'Não informado' && $aluno->Perfil === 'Funcionario')
+                                                    <span
+                                                        class="badge bg-danger me-0">{{ $aluno->Perfil }}</span>
+                                                @endif
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex">
+                                        <label class="form-check-label mb-0">
+                                            <small id="profileVisibility">
+                                                @include('/paginas/conteudo/alunos/modal/edit')
+                                            </small>
+                                            <small id="profileVisibility">
+                                                @include('/paginas/conteudo/alunos/modal/webcam')
+                                            </small>
+
+                                        </label>
+                                        <div class="form-check form-switch ms-2">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> --}}
+                    @endforeach
                 </table>
             </div>
         </div>
     </div>
 </div>
+
 
 @include('paginas.base.rodape.rodape')

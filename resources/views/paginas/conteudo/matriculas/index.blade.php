@@ -8,7 +8,7 @@
     <div class="col-12">
         <div class="card">
             <div class="table-responsive">
-                <table class="table table-flush" id="datatable-search">
+                <table class="table table-flush" id="datatable-basic">
                     <thead class="thead-light">
                         <tr>
                             <th>N° Matrícula</th>

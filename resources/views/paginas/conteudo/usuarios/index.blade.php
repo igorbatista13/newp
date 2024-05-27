@@ -31,36 +31,102 @@
 
                             </div>
                         </div>
-                        {{-- <div class="card-body d-flex">
-                            <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center">
-                                <a href="javascript:;"
-                                    class="avatar avatar-lg border-1 rounded-circle bg-gradient-primary">
-                                    <i class="fas fa-plus text-white" aria-hidden="true"></i>
-                                </a>
-                                <p class="mb-0 text-sm" style="margin-top:6px;">Adicionar Aluno</p>
-                            </div>
-                        @foreach ($alunos as $aluno)
-                            <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center">
-                                <a href="javascript:;"
-                                    class="avatar avatar-lg rounded-circle border border-primary">
-                                    <img alt="" class="p-1"
-                                        src="{{ asset('/images/usuarios/') }}/{{ $aluno->image }}">
-                                </a>
-                                <p class="mb-0 text-sm">    {{ substr($aluno->Nome_Completo, 0, 10) }}
-                                </p>
-                            </div>
-                  
-                              
-                            @endforeach
-                            </div> --}}
+    
                         <div class="table-responsive">
 
                             <table class="table align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Nome</th>
+                                        
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Perfil</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Matrícula</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Plano</th>                                  
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Modalidade</th>                                  
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        </th>
+                                    </tr>
+                                </thead>
+                                @foreach ($alunos as $aluno)
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div>
+                                                        <img src="{{ asset('/images/usuarios/') }}/{{ $aluno->image }}"
+                                                            class="avatar avatar-sm me-3">
+                                                    </div>
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm"> {{ $aluno->Nome_Completo }} </h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="text-sm text-secondary mb-0">
+                                                    @if ($aluno->Perfil !== null && $aluno->Perfil !== 'Não informado' && $aluno->Perfil === 'Aluno')
+                                                        <span class="badge bg-warning me-0">{{ $aluno->Perfil ?? 'Não informado' }}</span>
+                                                    @endif
+                                                    @if ($aluno->Perfil !== null && $aluno->Perfil !== 'Não informado' && $aluno->Perfil === 'Professor')
+                                                        <span class="badge bg-success me-0">{{ $aluno->Perfil ?? 'Não informado' }}</span>
+                                                    @endif
+                                                    @if ($aluno->Perfil !== null && $aluno->Perfil !== 'Não informado' && $aluno->Perfil === 'Funcionario')
+                                                        <span class="badge bg-danger me-0">{{ $aluno->Perfil ?? 'Não informado' }}</span>
+                                                    @endif
+                                                </p>
+                                            </td>
+                                            
+                                            <td>
+                                                @if ($aluno->matriculas->isNotEmpty())
+                                                        <button
+                                                            class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-2 btn-sm d-flex align-items-center justify-content-center">
+                                                            <i class="fas fa-check" aria-hidden="true"></i></button>
+                                                    @else
+                                                        <button
+                                                            class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-2 btn-sm d-flex align-items-center justify-content-center">
+                                                            <i class="fas fa-times" aria-hidden="true"></i></button>
+                                                    @endif
 
-                      
-                                    @foreach ($alunos as $aluno)
+                                            </td>
+                                            <td>
+                                                    @foreach($aluno->planos as $plano)
+                                                    <span class="badge badge-dot me-4">
 
-                                    <div class="col-lg-12 mt-lg-0 mt-4">
+                                                    <i class="bg-danger"></i>
+                                                    <span class="text-dark">
+                                                       {{ $plano->Nome_Plano }} </span>
+                                                    
+                                                    </span>
+                                                    @endforeach
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                @foreach ($aluno->modalidades_nomes as $nome_modalidade)
+                                                    <span class="badge bg-success">
+                                                        {{ $nome_modalidade }}
+                                                        @if (!$loop->last)
+                                                            
+                                                        @endif
+                                                    </span>
+                                                @endforeach
+                                            </td>
+                                  
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-sm">
+                                                    @include('/paginas/conteudo/alunos/modal/edit')</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                    {{-- <div class="col-lg-12 mt-lg-0 mt-4">
 
                                         <div class="card card-body" id="profile">
                                             <div class="row justify-content-center align-items-center">
@@ -105,7 +171,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 @endforeach
                             </table>
                         </div>
@@ -131,8 +197,7 @@
                                     </div>
                                     <div class="d-flex flex-column">
                                         <h6 class="mb-1 text-dark text-sm">Alunos</h6>
-                                        <span class="text-xs">Total: <span
-                                                class="font-weight-bold">{{ $qtdalunos }}
+                                        <span class="text-xs">Total: <span class="font-weight-bold">{{ $qtdalunos }}
                                             </span></span>
                                     </div>
                                 </div>
@@ -153,8 +218,7 @@
                                     </div>
                                     <div class="d-flex flex-column">
                                         <h6 class="mb-1 text-dark text-sm">Professores</h6>
-                                        <span class="text-xs">Total: <span
-                                                class="font-weight-bold">{{ $qtdprofessor }}
+                                        <span class="text-xs">Total: <span class="font-weight-bold">{{ $qtdprofessor }}
                                             </span></span>
                                     </div>
                                 </div>
@@ -195,8 +259,7 @@
                                     </div>
                                     <div class="d-flex flex-column">
                                         <h6 class="mb-1 text-dark text-sm">Planos</h6>
-                                        <span class="text-xs">Total: <span
-                                                class="font-weight-bold">{{ $qtdplanos }}
+                                        <span class="text-xs">Total: <span class="font-weight-bold">{{ $qtdplanos }}
                                             </span></span>
                                     </div>
                                 </div>
