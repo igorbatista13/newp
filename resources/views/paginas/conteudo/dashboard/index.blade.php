@@ -332,6 +332,47 @@
                                     <img src="https://demos.creative-tim.com/argon-dashboard-pro/assets/img/kal-visuals-square.jpg"
                                         alt="kal" class="border-radius-lg shadow w-100">
                                 </div>
+                                <div class="card-body p-3">
+                                    <div class="timeline timeline-one-side">
+                                        <div class="timeline-block mb-3">
+                                            <span class="timeline-step">
+                                                @if (!$empresaExists)
+                                                    <i class="fas fa-minus text-danger"></i>
+                                            </span>
+                                            <div class="timeline-content">
+                                                <h6 class="text-dark text-sm font-weight-bold mb-0">Configurar Empresa <a
+                                                        href="minhaempresa/create">
+                                                        <button class="btn btn-sm btn-primary"> Configurar </button> </a> </h6>
+                                            @else
+                                                <i class="fas fa-check text-success"></i>
+                                                </span>
+                                                <div class="timeline-content">
+                                                    <h6 class="text-dark text-sm font-weight-bold mb-0">Empresa Configurada!</h6>
+                                                    @endif
+                                                </div>
+                                            </div>
+                
+                                            <div class="timeline-block mb-3">
+                                                <span class="timeline-step">
+                                                    @if (!$planoExists)
+                                                        <i class="fas fa-minus text-danger"></i>
+                                                </span>
+                                                <div class="timeline-content">
+                                                    <h6 class="text-dark text-sm font-weight-bold mb-0">Configurar meu Perfil <a
+                                                            href="minhaempresa/create">
+                                                            <button class="btn btn-sm btn-primary"> Configurar </button> </a> </h6>
+                                                @else
+                                                    <i class="fa fa-user text-success"></i>
+                                                    </span>
+                                                    <div class="timeline-content">
+                                                        <h6 class="text-dark text-sm font-weight-bold mb-0">Perfil configurado</h6>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-8 my-auto">
                                     <p class="text-muted text-sm font-weight-bold">
                                         Today is Martina's birthday. Wish her the best of luck!

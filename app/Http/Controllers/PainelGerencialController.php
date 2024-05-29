@@ -10,6 +10,7 @@ use App\Models\Recibo;
 use App\Models\Fornecedor;
 use App\Models\MinhaEmpresa;
 use App\Models\Alunos;
+use App\Models\Planos;
 
 
 
@@ -31,9 +32,11 @@ class PainelGerencialController extends Controller
         $contrato = Contrato::count();
         $recibo   = Recibo::count();
         $fornecedor   = Fornecedor::count();
-        $empresaExists = MinhaEmpresa::where('id', '>=', 1)->exists();
         $empresa = MinhaEmpresa::get();
         $alunos = Alunos::orderBy('created_at', 'desc')->take(5)->get();
+        $empresaExists = MinhaEmpresa::where('id', '>=', 1)->exists();
+        $planoExists = planos::where('id', '>=', 1)->exists();
+
         return view('paginas.conteudo.dashboard.index', compact(
     //    return view('painel.index', compact(
             'clientes',
@@ -46,7 +49,8 @@ class PainelGerencialController extends Controller
             'fornecedor',
             'empresaExists',
             'empresa',
-            'alunos'
+            'alunos',
+            'planoExists'
 
 
         ));

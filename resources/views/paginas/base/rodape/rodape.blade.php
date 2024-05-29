@@ -58,56 +58,14 @@
 <script src="{{ asset('/pdv/upload/js/script.js') }}"></script>
 
 
-<script>
-    // Inicialize o CountUp
-    var options = {
-        startVal: 0, // Valor inicial
-        decimalPlaces: 0, // Casas decimais
-        duration: 2, // Duração da animação em segundos
-        useEasing: true, // Usar animação de easing
-        useGrouping: true, // Usar agrupamento de milhares
-        separator: ",", // Separador de milhares
-        decimal: ".", // Separador decimal
-        prefix: "", // Prefixo
-        suffix: "" // Sufixo
-    };
-
-    var countUp = new CountUp('state1', document.getElementById('state1').getAttribute('countTo'), options);
-
-    // Inicie o contador
-    countUp.start();
-</script>
-
 
 <script src="{{ asset('/pdv/js/argon-dashboard.min.js?v=2.0.4') }}"></script>
-<script src="{{ asset('/pdv/js/plugins/datatables.js') }}"></script>
-<script>
-    const dataTableSearch = new simpleDatatables.DataTable("#datatable-search", {
-        searchable: true,
-        fixedHeight: false,
-        perPageSelect: false
-    });
-
-    document.querySelectorAll(".export").forEach(function(el) {
-        el.addEventListener("click", function(e) {
-            var type = el.dataset.type;
-
-            var data = {
-                type: type,
-                filename: "soft-ui-" + type,
-            };
-
-            if (type === "csv") {
-                data.columnDelimiter = "|";
-            }
-
-            dataTableSearch.export(data);
-        });
-    });
-</script>
+<script src="{{ asset('/pdv/js/plugins/datatable-simple.js') }}"></script>
 
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+
+{{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> --}}
 
 
 

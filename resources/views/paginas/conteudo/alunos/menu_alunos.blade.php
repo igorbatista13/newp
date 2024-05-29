@@ -13,6 +13,7 @@
                         Alunos
                     </h5>
                     <p class="mb-0 font-weight-bold text-sm">
+                        Lista de Alunos
                     </p>
                 </div>
             </div>

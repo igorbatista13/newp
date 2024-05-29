@@ -10,14 +10,14 @@
             <div class="col-auto my-auto">
                 <div class="h-100">
                     <h5 class="mb-1">
-                        Professor
+                        Modalidades
                     </h5>
-                    <p class="mb-0 font-weight-bold text-sm"> Lista de Professores
+                    <p class="mb-0 font-weight-bold text-sm"> Lista de Modalidades
                         <!-- Alunos, Professores e Funcionários -->
                     </p>
                 </div>
             </div>
-           
+          
         </div>
     </div>
 </div>

@@ -33,6 +33,7 @@
     <link href="{{ asset('/pdv/css/nucleo-svg.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ asset('/pdv/css/argon-dashboard.css?v=2.0.4') }}" rel="stylesheet" />
+    <link id="pagestyle" href="{{ asset('/pdv/css/datatable.css') }}" rel="stylesheet" />
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">

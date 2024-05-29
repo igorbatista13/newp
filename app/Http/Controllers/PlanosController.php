@@ -81,9 +81,13 @@ class PlanosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Planos $plano)
     {
-        //
+        $plano->update($request->all());
+        $plano->update();
+        return back()->with('success', 'Plano atualizado com sucesso!');
+
+       
     }
 
     /**

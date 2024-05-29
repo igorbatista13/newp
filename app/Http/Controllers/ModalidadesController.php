@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\modalidades;
+use App\Models\Alunos;
 
 use Illuminate\Http\Request;
 
@@ -10,9 +11,9 @@ class ModalidadesController extends Controller
 
     public function index()
     {
-     //   $alunos = Alunos::get();
-      //  $modalidades = modalidades::with('modalidades')->get();  
-      return back();
+        $alunos = Alunos::get();
+        $modalidades = modalidades::get();  
+      return view('paginas.conteudo.modalidades.index', compact('alunos', 'modalidades'));
     
     }
 
@@ -24,19 +25,19 @@ class ModalidadesController extends Controller
     {
         $modalidades = modalidades::create($request->all());
         $modalidades->save();
+        return back()->with('success', 'Modalidade criado com sucesso!');
 
-        return redirect()->route('modalidades.index')
-                        ->with('success','Aluno criado com sucesso!');
+       
 
     }
 
-     public function update(Request $request, Modalidades $modalidades)
+     public function update(Request $request, modalidades $modalidade)
     {
-        $modalidades->update($request->all());
-        $modalidades->update();
+        $modalidade->update($request->all());
+        $modalidade->update();
+        return back()->with('success', 'Modalidade atualizado com sucesso!');
 
-        return redirect()->route('paginas.conteudo.alunos.index')
-        ->with('edit','Aluno atualizado com sucesso!');
+       
     }
 
 }
